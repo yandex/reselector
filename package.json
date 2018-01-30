@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-autotest",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
     "test": "BABEL_ENV=test jest",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "./node_modules/.bin/eslint .",
-    "postversion": "git push --follow-tags",
+    "preversion": "npm run lint && npm test",
+    "postversion": "git push --follow-tags && npm run build && npm publish lib",
     "precommit": "lint-staged"
   },
   "lint-staged": {

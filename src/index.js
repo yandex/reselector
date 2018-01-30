@@ -29,7 +29,7 @@ module.exports = ({ types: t }) => {
             if (!name) return
 
             const id = process.env.NODE_ENV === 'production'
-              ? shortid.generate()
+              ? shortid.generate().toLowerCase()
               : `test-${String(hash++)}`
 
             openingElement.attributes.push(

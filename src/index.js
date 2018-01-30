@@ -3,7 +3,7 @@
 const shortid = require('shortid')
 const template = require('babel-template')
 
-const { TEST_ID, TEST_ATTR } = require('./const')
+const { TEST_ID } = require('./const')
 
 const build = template(`
   COMPONENT.NAME = ID;
@@ -26,14 +26,14 @@ module.exports = ({ types: t }) => {
             const { openingElement } = node
             const { name } = openingElement.name
 
-            if (!(name && name[0] !== name[0].toUpperCase())) return
+            if (!name) return
 
             const id = process.env.NODE_ENV === 'production'
               ? shortid.generate()
-              : String(hash++)
+              : `test-${String(hash++)}`
 
             openingElement.attributes.push(
-              t.JSXAttribute(t.JSXIdentifier(TEST_ATTR), t.StringLiteral(id)),
+              t.JSXAttribute(t.JSXIdentifier(`data-${id}`)),
             )
 
             let path = p.parentPath
@@ -57,7 +57,7 @@ module.exports = ({ types: t }) => {
                   path.insertAfter(
                     build({
                       COMPONENT: t.identifier(componentNode.id.name),
-                      ID: t.identifier(id),
+                      ID: t.StringLiteral(id),
                       NAME: t.identifier(TEST_ID),
                     }),
                   )

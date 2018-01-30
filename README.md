@@ -31,16 +31,16 @@ import MyComponent from './MyComponent'
 import MyButton from './MyButton'
 
 /**
- * [data-test="dadad"] [data-test="czczxc"]
+ * [data-dadad] [data-czczx]
  */
 console.log(get`${MyComponent} ${MyButton}`)
 
 /**
- * .myClassName > [data-test="czczxc"]
+ * .myClassName > [data-czczx]
  */
 console.log(get`.myClassName > ${MyButton}`)
 ```
 
 ## How it works
 
-This plugin tries to find all React Component declarations, and to add `data-test` attribute to the Component's root node with the uniq hash-id. It also saves this id as the static property for this Component, so `get` function uses this property to build a selector.
+This plugin tries to find all React Component declarations and to add `data-{hash}` attribute with the uniq hash-id to the Component's root node. It also saves this hash as the static property for the Component, so `get` function uses this property to build a selector.

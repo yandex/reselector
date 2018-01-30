@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.2.0](https://github.com/lttb/babel-plugin-autotest/tree/v0.2.0) (2018-01-30)
+
+[Full Changelog](https://github.com/lttb/babel-plugin-autotest/compare/v0.1.0...v0.2.0)
+
+**Merged pull requests:**
+
+- Support roots by React Components [\#2](https://github.com/lttb/babel-plugin-autotest/pull/2) ([lttb](https://github.com/lttb))
+
 ## [v0.1.0](https://github.com/lttb/babel-plugin-autotest/tree/v0.1.0) (2018-01-30)
 
 [Full Changelog](https://github.com/lttb/babel-plugin-autotest/compare/99af820c758538d1c1d90363bfae8f07e212cb23...v0.1.0)

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babel plugin should find all the types of Components 1`] = `
+<div>
+  <ClassComponent>
+    <div
+      data-test="0"
+    />
+  </ClassComponent>
+</div>
+`;
+
+exports[`babel plugin should find all the types of Components 2`] = `
+<div>
+  <Component>
+    <div
+      data-test="1"
+    />
+  </Component>
+</div>
+`;
+
+exports[`babel plugin should find all the types of Components 3`] = `
+<div>
+  <FunctionalComponent>
+    <p
+      data-test="2"
+    />
+  </FunctionalComponent>
+</div>
+`;
+
+exports[`babel plugin should find nested Component 1`] = `
+<ClassComponent>
+  <div
+    data-test="0"
+  >
+    <Component>
+      <div
+        data-test="1"
+      >
+        <FunctionalComponent>
+          <p
+            data-test="2"
+          />
+        </FunctionalComponent>
+      </div>
+    </Component>
+  </div>
+</ClassComponent>
+`;
+
+exports[`babel plugin test transformed source code 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.ArrowFunctionalComponent = exports.ClassComponent = undefined;
+exports.FunctionalComponent = FunctionalComponent;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class ClassComponent extends _react2.default.Component {
+  render() {
+    return _react2.default.createElement(
+      'div',
+      {
+        'data-test': '0'
+      },
+      this.props.children
+    );
+  }
+}
+
+exports.ClassComponent = ClassComponent; /* eslint-disable react/prefer-stateless-function */
+
+ClassComponent.testId = 0;
+const ArrowFunctionalComponent = exports.ArrowFunctionalComponent = ({ children }) => _react2.default.createElement(
+  'div',
+  {
+    'data-test': '1'
+  },
+  children
+);
+
+ArrowFunctionalComponent.testId = 1;
+function FunctionalComponent({ children }) {
+  return _react2.default.createElement(
+    'p',
+    {
+      'data-test': '2'
+    },
+    children
+  );
+}
+FunctionalComponent.testId = 2;"
+`;

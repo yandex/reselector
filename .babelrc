@@ -1,0 +1,18 @@
+{
+  env: {
+    test: {
+      presets: ['react'],
+      plugins: [
+        './src/index',
+        'transform-es2015-modules-commonjs',
+      ],
+    },
+    production: {
+      presets: [['env', {
+        targets: {
+          node: '6.10',
+        },
+      }]],
+    },
+  },
+}

@@ -1,0 +1,55 @@
+{
+  "name": "babel-plugin-autotest",
+  "version": "0.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lttb/babel-plugin-autotest.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "prebuild": "npm run clean",
+    "build": "BABEL_ENV=production ./node_modules/.bin/babel src --ignore '**/tests/**' --out-dir lib",
+    "postbuild": "npm run cp:meta",
+    "cp:meta": "copyfiles -e '**/tests/**' package.json README.md './.*' 'src/.*' -a -f lib",
+    "test": "BABEL_ENV=test jest",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "./node_modules/.bin/eslint .",
+    "postversion": "git push --follow-tags",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ]
+  },
+  "devDependencies": {
+    "@lttb/eslint-config-default": "github:lttb/configs#js",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "copyfiles": "^1.2.0",
+    "coveralls": "^3.0.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
+    "eslint": "^4.13.1",
+    "husky": "^0.14.3",
+    "jest": "^22.0.3",
+    "lint-staged": "^6.1.0",
+    "raf": "^3.4.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "babel-template": "^6.26.0",
+    "shortid": "^2.2.8"
+  }
+}

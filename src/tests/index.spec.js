@@ -6,11 +6,12 @@ import {
   ClassComponent,
   ArrowFunctionalComponent,
   FunctionalComponent,
+  ComposedComponent,
 } from './App'
 import { get } from '../'
 
 describe('babel plugin', () => {
-  it('test transformed source code', () => {
+  it('should transform source code well', () => {
     const { code } = transformFileSync(require.resolve('./App'))
 
     expect(code).toMatchSnapshot()
@@ -21,13 +22,16 @@ describe('babel plugin', () => {
       ClassComponent,
       ArrowFunctionalComponent,
       FunctionalComponent,
+      ComposedComponent,
     ]
 
     components.forEach((Component) => {
       const wrapper = mount(<div><Component /></div>)
 
+      const selector = get`${Component}`
+
       expect(wrapper).toMatchSnapshot()
-      expect(wrapper.find(get`${Component}`).length).toBe(1)
+      expect(wrapper.find(selector).hostNodes().length).toBe(1)
     })
   })
 
@@ -35,14 +39,16 @@ describe('babel plugin', () => {
     const wrapper = mount((
       <ClassComponent>
         <ArrowFunctionalComponent>
-          <FunctionalComponent />
+          <FunctionalComponent>
+            <ComposedComponent />
+          </FunctionalComponent>
         </ArrowFunctionalComponent>
       </ClassComponent>
     ))
 
+    const selector = get`${ClassComponent} ${ArrowFunctionalComponent} ${FunctionalComponent} ${ComposedComponent}`
+
     expect(wrapper).toMatchSnapshot()
-    expect(wrapper.find(
-      get`${ClassComponent} ${ArrowFunctionalComponent} ${FunctionalComponent}`,
-    ).length).toBe(1)
+    expect(wrapper.find(selector).hostNodes().length).toBe(1)
   })
 })

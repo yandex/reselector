@@ -1,11 +1,11 @@
 'use strict'
 
-const { TEST_ID, TEST_ATTR } = require('./const')
+const { TEST_ID } = require('./const')
 
 const get = (strings, ...values) => strings.reduce(
   (acc, val, i) => acc.concat(
     val,
-    values[i] ? `[${TEST_ATTR}="${values[i][TEST_ID]}"]` : '',
+    values[i] ? `[data-${values[i][TEST_ID]}]` : '',
   ),
   '',
 )

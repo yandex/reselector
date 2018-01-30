@@ -10,8 +10,26 @@ import {
 } from './App'
 import { get } from '../'
 
+jest.mock('shortid')
+
 describe('babel plugin', () => {
-  it('should transform source code well', () => {
+  beforeAll(() => {
+    process.env.NODE_ENV = 'test'
+  })
+
+  it('should transform source code well for development', () => {
+    const { code } = transformFileSync(require.resolve('./App'))
+
+    expect(code).toMatchSnapshot()
+  })
+
+  it('should transform source code well for production', () => {
+    process.env.NODE_ENV = 'production'
+
+    let hash = 0
+    const shortid = require('shortid')
+    shortid.generate.mockImplementation(() => `shortid-${hash++}`)
+
     const { code } = transformFileSync(require.resolve('./App'))
 
     expect(code).toMatchSnapshot()

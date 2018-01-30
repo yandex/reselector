@@ -74,7 +74,7 @@ exports[`babel plugin should find nested Component 1`] = `
 </ClassComponent>
 `;
 
-exports[`babel plugin should transform source code well 1`] = `
+exports[`babel plugin should transform source code well for development 1`] = `
 "'use strict';
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -133,4 +133,65 @@ const ComposedComponent = exports.ComposedComponent = ({ children }) => _react2.
   children
 );
 ComposedComponent.testId = 'test-3';"
+`;
+
+exports[`babel plugin should transform source code well for production 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = undefined;
+exports.FunctionalComponent = FunctionalComponent;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Button = props => _react2.default.createElement('button', props, props.children); /* eslint-disable react/prefer-stateless-function */
+
+class ClassComponent extends _react2.default.Component {
+  render() {
+    return _react2.default.createElement(
+      'div',
+      {
+        'data-shortid-0': true
+      },
+      this.props.children
+    );
+  }
+}
+
+exports.ClassComponent = ClassComponent;
+ClassComponent.testId = 'shortid-0';
+const ArrowFunctionalComponent = exports.ArrowFunctionalComponent = ({ children }) => _react2.default.createElement(
+  'div',
+  {
+    'data-shortid-1': true
+  },
+  children
+);
+
+ArrowFunctionalComponent.testId = 'shortid-1';
+function FunctionalComponent({ children }) {
+  return _react2.default.createElement(
+    'p',
+    {
+      'data-shortid-2': true
+    },
+    children
+  );
+}
+
+FunctionalComponent.testId = 'shortid-2';
+const ComposedComponent = exports.ComposedComponent = ({ children }) => _react2.default.createElement(
+  Button,
+  {
+    'data-shortid-3': true
+  },
+  children
+);
+ComposedComponent.testId = 'shortid-3';"
 `;

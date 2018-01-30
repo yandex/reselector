@@ -12,11 +12,13 @@ import { get } from '../'
 
 jest.mock('shortid')
 
-describe('babel plugin', () => {
-  beforeAll(() => {
-    process.env.NODE_ENV = 'test'
-  })
+const mockHashGeneration = () => {
+  let hash = 0
+  const shortid = require('shortid')
+  shortid.generate.mockImplementation(() => `shortid-${hash++}`)
+}
 
+describe('babel plugin', () => {
   it('should transform source code well for development', () => {
     const { code } = transformFileSync(require.resolve('./App'))
 
@@ -25,10 +27,7 @@ describe('babel plugin', () => {
 
   it('should transform source code well for production', () => {
     process.env.NODE_ENV = 'production'
-
-    let hash = 0
-    const shortid = require('shortid')
-    shortid.generate.mockImplementation(() => `shortid-${hash++}`)
+    mockHashGeneration()
 
     const { code } = transformFileSync(require.resolve('./App'))
 

@@ -41,6 +41,8 @@ module.exports = ({ types: t }) => {
             while (path) {
               path = path.parentPath
 
+              if (!path) return
+
               let componentNode = path.node
 
               switch (path.type) {

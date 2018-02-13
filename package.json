@@ -1,20 +1,20 @@
 {
-  "name": "babel-plugin-autotest",
+  "name": "reselector",
   "version": "0.3.1",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git@github.com:lttb/babel-plugin-autotest.git"
+    "url": "git@github.com:lttb/reselector.git"
   },
   "author": "",
   "license": "MIT",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "clean": "rimraf lib",
     "prebuild": "npm run clean",
     "build": "BABEL_ENV=production ./node_modules/.bin/babel src --ignore '**/tests/**' --out-dir lib",
     "postbuild": "npm run cp:meta",
-    "cp:meta": "copyfiles -e '**/tests/**' package.json README.md './.*' 'src/.*' -a -f lib",
+    "cp:meta": "copyfiles -e '**/tests/**' package.json README.md 'src/.*' -a -f lib",
     "test": "BABEL_ENV=test jest",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "./node_modules/.bin/eslint .",
@@ -30,7 +30,6 @@
   "devDependencies": {
     "@lttb/eslint-config-default": "github:lttb/configs#js",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -50,7 +49,10 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-template": "^6.26.0",
-    "shortid": "^2.2.8"
+    "string-hash": "^1.1.3"
   }
 }

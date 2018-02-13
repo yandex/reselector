@@ -1,28 +1,28 @@
 # Change Log
 
-## [v0.3.0](https://github.com/lttb/babel-plugin-autotest/tree/v0.3.0) (2018-01-30)
+## [v0.3.0](https://github.com/lttb/reselector/tree/v0.3.0) (2018-01-30)
 
-[Full Changelog](https://github.com/lttb/babel-plugin-autotest/compare/v0.2.0...v0.3.0)
-
-**Merged pull requests:**
-
-- Rewrite hash generation [\#3](https://github.com/lttb/babel-plugin-autotest/pull/3) ([lttb](https://github.com/lttb))
-
-## [v0.2.0](https://github.com/lttb/babel-plugin-autotest/tree/v0.2.0) (2018-01-30)
-
-[Full Changelog](https://github.com/lttb/babel-plugin-autotest/compare/v0.1.0...v0.2.0)
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.2.0...v0.3.0)
 
 **Merged pull requests:**
 
-- Support roots by React Components [\#2](https://github.com/lttb/babel-plugin-autotest/pull/2) ([lttb](https://github.com/lttb))
+- Rewrite hash generation [\#3](https://github.com/lttb/reselector/pull/3) ([lttb](https://github.com/lttb))
 
-## [v0.1.0](https://github.com/lttb/babel-plugin-autotest/tree/v0.1.0) (2018-01-30)
+## [v0.2.0](https://github.com/lttb/reselector/tree/v0.2.0) (2018-01-30)
 
-[Full Changelog](https://github.com/lttb/babel-plugin-autotest/compare/99af820c758538d1c1d90363bfae8f07e212cb23...v0.1.0)
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.1.0...v0.2.0)
 
 **Merged pull requests:**
 
-- babel-plugin-autotest [\#1](https://github.com/lttb/babel-plugin-autotest/pull/1) ([lttb](https://github.com/lttb))
+- Support roots by React Components [\#2](https://github.com/lttb/reselector/pull/2) ([lttb](https://github.com/lttb))
+
+## [v0.1.0](https://github.com/lttb/reselector/tree/v0.1.0) (2018-01-30)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/99af820c758538d1c1d90363bfae8f07e212cb23...v0.1.0)
+
+**Merged pull requests:**
+
+- reselector [\#1](https://github.com/lttb/reselector/pull/1) ([lttb](https://github.com/lttb))
 
 
 

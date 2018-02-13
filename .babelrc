@@ -3,7 +3,7 @@
     test: {
       presets: ['react'],
       plugins: [
-        './src/index',
+        './src/babel',
         'transform-es2015-modules-commonjs',
       ],
     },

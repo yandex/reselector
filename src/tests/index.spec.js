@@ -7,28 +7,12 @@ import {
   ArrowFunctionalComponent,
   FunctionalComponent,
   ComposedComponent,
+  ComponentWithAttrs,
 } from './App'
-import { get } from '../'
-
-jest.mock('shortid')
-
-const mockHashGeneration = () => {
-  let hash = 0
-  const shortid = require('shortid')
-  shortid.generate.mockImplementation(() => `shortid-${hash++}`)
-}
+import { select } from '../'
 
 describe('babel plugin', () => {
   it('should transform source code well for development', () => {
-    const { code } = transformFileSync(require.resolve('./App'))
-
-    expect(code).toMatchSnapshot()
-  })
-
-  it('should transform source code well for production', () => {
-    process.env.NODE_ENV = 'production'
-    mockHashGeneration()
-
     const { code } = transformFileSync(require.resolve('./App'))
 
     expect(code).toMatchSnapshot()
@@ -40,16 +24,25 @@ describe('babel plugin', () => {
       ArrowFunctionalComponent,
       FunctionalComponent,
       ComposedComponent,
+      ComponentWithAttrs,
     ]
 
     components.forEach((Component) => {
       const wrapper = mount(<div><Component /></div>)
 
-      const selector = get`${Component}`
+      const selector = select`${Component}`
 
       expect(wrapper).toMatchSnapshot()
       expect(wrapper.find(selector).hostNodes().length).toBe(1)
     })
+  })
+
+  it('should save Component`s root attrs', () => {
+    const wrapper = mount(<ComponentWithAttrs />)
+    const selector = select`${ComponentWithAttrs}`
+
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.find(selector).getDOMNode().dataset).toMatchSnapshot()
   })
 
   it('should find nested Component', () => {
@@ -63,7 +56,12 @@ describe('babel plugin', () => {
       </ClassComponent>
     ))
 
-    const selector = get`${ClassComponent} ${ArrowFunctionalComponent} ${FunctionalComponent} ${ComposedComponent}`
+    const selector = select`
+      ${ClassComponent}
+      ${ArrowFunctionalComponent}
+      ${FunctionalComponent}
+      ${ComposedComponent}
+    `
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(selector).hostNodes().length).toBe(1)

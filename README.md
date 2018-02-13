@@ -1,13 +1,17 @@
-# babel-plugin-autotest
+# reselector
 
-[![Travis branch](https://img.shields.io/travis/lttb/babel-plugin-autotest/master.svg?style=flat)](https://travis-ci.org/lttb/babel-plugin-autotest)
-[![Coverage Status branch](https://img.shields.io/coveralls/lttb/babel-plugin-autotest/master.svg?style=flat)](https://img.shields.io/coveralls/lttb/babel-plugin-autotest/master.svg?branch=master)
-[![npm version](https://img.shields.io/npm/v/babel-plugin-autotest.svg?style=flat)](https://www.npmjs.com/package/babel-plugin-autotest)
-[![npm license](https://img.shields.io/npm/l/babel-plugin-autotest.svg?style=flat)](https://www.npmjs.com/package/babel-plugin-autotest)
+[![Travis branch](https://img.shields.io/travis/lttb/reselector/master.svg?style=flat)](https://travis-ci.org/lttb/reselector)
+[![Coverage Status branch](https://img.shields.io/coveralls/lttb/reselector/master.svg?style=flat)](https://img.shields.io/coveralls/lttb/reselector/master.svg?branch=master)
+[![npm version](https://img.shields.io/npm/v/reselector.svg?style=flat)](https://www.npmjs.com/package/reselector)
+[![npm license](https://img.shields.io/npm/l/reselector.svg?style=flat)](https://www.npmjs.com/package/reselector)
 
 ## Usage
 
-Add `babel-plugin-autotest` to plugin list in `.babelrc`. For example:
+You can use it as a babel-plugin or as the runtime function, or both.
+
+### babel-plugin
+
+Add `reselector` to the plugin list in `.babelrc` for your client code. For example:
 
 ```js
 {
@@ -15,17 +19,61 @@ Add `babel-plugin-autotest` to plugin list in `.babelrc`. For example:
     env: {
         test: {
             plugins: [
-                'autotest',
+                'reselector/babel',
             ],
         },
     },
 }
 ```
 
-Use `get` function to build any css selector by React Components.
+### Find Components in the DOM
+
+Use `select` function to build any css selector by React Components.
+
+#### Runtime (node.js)
+
+Use `resolve` or `resolveBy` functions to get Components' selector.
 
 ```jsx
-import {get} from 'babel-plugin-autotest'
+const {resolve} = require('reselector')
+
+const {MyComponent} = resolve(require.resolve('./MyComponent'))
+const {MyButton} = resolve(require.resolve('./MyButton'))
+
+/**
+ * [data-dadad] [data-czczx]
+ */
+console.log(select`${MyComponent} ${MyButton}`)
+
+/**
+ * .myClassName > [data-czczx]
+ */
+console.log(select`.myClassName > ${MyButton}`)
+```
+
+```jsx
+const {resolveBy} = require('reselector')
+
+const resolve = resolveBy(require.resolve)
+
+const {MyComponent} = resolve('./MyComponent')
+const {MyButton} = resolve('./MyButton')
+
+/**
+ * [data-dadad] [data-czczx]
+ */
+console.log(select`${MyComponent} ${MyButton}`)
+
+/**
+ * .myClassName > [data-czczx]
+ */
+console.log(select`.myClassName > ${MyButton}`)
+```
+
+If you have a change to transpile components with this plugin for your unit tests/autotests, you can import React Component as is.
+
+```jsx
+import {select} from 'reselector'
 
 import MyComponent from './MyComponent'
 import MyButton from './MyButton'
@@ -33,12 +81,13 @@ import MyButton from './MyButton'
 /**
  * [data-dadad] [data-czczx]
  */
-console.log(get`${MyComponent} ${MyButton}`)
+console.log(select`${MyComponent} ${MyButton}`)
 
 /**
  * .myClassName > [data-czczx]
  */
-console.log(get`.myClassName > ${MyButton}`)
+console.log(select`.myClassName > ${MyButton}`)
+
 ```
 
 ## How it works

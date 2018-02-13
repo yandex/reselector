@@ -189,7 +189,5 @@ exports.default = ({ children }) => _react2.default.createElement(
     'data-5f9b51d4': true
   },
   children
-);
-
-exports.default.testId = '5f9b51d4';"
+);"
 `;

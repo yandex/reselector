@@ -1,5 +1,17 @@
 # Change Log
 
+## [v0.4.0](https://github.com/lttb/reselector/tree/v0.4.0) (2018-02-13)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.3.1...v0.4.0)
+
+**Merged pull requests:**
+
+- reselector [\#4](https://github.com/lttb/reselector/pull/4) ([lttb](https://github.com/lttb))
+
+## [v0.3.1](https://github.com/lttb/reselector/tree/v0.3.1) (2018-02-07)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.3.0...v0.3.1)
+
 ## [v0.3.0](https://github.com/lttb/reselector/tree/v0.3.0) (2018-01-30)
 
 [Full Changelog](https://github.com/lttb/reselector/compare/v0.2.0...v0.3.0)
@@ -22,7 +34,7 @@
 
 **Merged pull requests:**
 
-- reselector [\#1](https://github.com/lttb/reselector/pull/1) ([lttb](https://github.com/lttb))
+- babel-plugin-autotest [\#1](https://github.com/lttb/reselector/pull/1) ([lttb](https://github.com/lttb))
 
 
 

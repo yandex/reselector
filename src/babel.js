@@ -6,7 +6,14 @@ const { TEST_ID } = require('./const')
 const { getName, getId, getNode } = require('./utils')
 
 const build = template(`
-  COMPONENT.PROP = ID;
+  COMPONENT.PROP = ID
+`)
+
+
+const buildDefaultExport = template(`
+    if (module.exports) {
+      module.exports.default.PROP = ID
+    }
 `)
 
 module.exports = ({ types: t }) => ({
@@ -24,16 +31,21 @@ module.exports = ({ types: t }) => ({
         t.JSXAttribute(t.JSXIdentifier(`data-${id}`)),
       )
 
-      if (name === 'default') {
+      if (process.env.NODE_ENV === 'production') {
         return
       }
 
       rootPath.insertAfter(
-        build({
-          COMPONENT: t.identifier(name),
-          ID: t.StringLiteral(id),
-          PROP: t.identifier(TEST_ID),
-        }),
+        name === 'default'
+          ? buildDefaultExport({
+            ID: t.StringLiteral(id),
+            PROP: t.identifier(TEST_ID),
+          })
+          : build({
+            COMPONENT: t.identifier(name),
+            ID: t.StringLiteral(id),
+            PROP: t.identifier(TEST_ID),
+          }),
       )
     },
   },

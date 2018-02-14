@@ -17,8 +17,10 @@ module.exports.getNode = (t, p) => {
       if (!name) return null
 
       let currentPath = p
+      const prevPaths = []
 
       do {
+        prevPaths.push(currentPath)
         currentPath = currentPath.parentPath
 
         if (!currentPath) return null
@@ -35,10 +37,11 @@ module.exports.getNode = (t, p) => {
           case 'ExportNamedDeclaration':
           case 'FunctionDeclaration': {
             if (currentPath.parent.type === 'ExportNamedDeclaration') {
+              prevPaths.push(currentPath)
               currentPath = currentPath.parentPath
             }
 
-            return { rootPath: currentPath, componentNode, openingElement }
+            return { rootPath: currentPath, prevPaths, componentNode, openingElement }
           }
         }
       } while (currentPath)

@@ -70,7 +70,9 @@ console.log(select`${MyComponent} ${MyButton}`)
 console.log(select`.myClassName > ${MyButton}`)
 ```
 
-If you have a change to transpile components with this plugin for your unit tests/autotests, you can import React Component as is.
+#### Babel
+
+If you have a chanсe to transpile components with this plugin for your unit tests/autotests, you can import React Component as is.
 
 ```jsx
 import {select} from 'reselector'

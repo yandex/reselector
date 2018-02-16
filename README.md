@@ -5,6 +5,12 @@
 [![npm version](https://img.shields.io/npm/v/reselector.svg?style=flat)](https://www.npmjs.com/package/reselector)
 [![npm license](https://img.shields.io/npm/l/reselector.svg?style=flat)](https://www.npmjs.com/package/reselector)
 
+## Installation
+
+```sh
+npm install --save-dev reselector
+```
+
 ## Usage
 
 You can use it as a babel-plugin or as the runtime function, or both.

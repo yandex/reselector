@@ -1,6 +1,6 @@
 'use strict'
 
-const template = require('babel-template')
+const template = require('@babel/template').default
 
 const { TEST_ID } = require('./const')
 const { getName, getId, getNode } = require('./utils')
@@ -31,7 +31,7 @@ module.exports = ({ types: t }) => ({
         t.JSXAttribute(t.JSXIdentifier(`data-${id}`)),
       )
 
-      if (process.env.NODE_ENV === 'production') {
+      if (process.env.NODE_ENV !== 'test') {
         return
       }
 

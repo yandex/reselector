@@ -101,3 +101,57 @@ console.log(select`.myClassName > ${MyButton}`)
 ## How it works
 
 This plugin tries to find all React Component declarations and to add `data-{hash}` attribute with the uniq hash-id to the Component's root node. It also saves this hash as the static property for the Component, so `get` function uses this property to build a selector.
+
+
+## Configuration
+
+By default, this plugin works with these syntaxes:
+
+```
+@babel/plugin-syntax-async-generators
+@babel/plugin-syntax-class-properties
+@babel/plugin-syntax-decorators
+@babel/plugin-syntax-dynamic-import
+@babel/plugin-syntax-export-default-from
+@babel/plugin-syntax-export-namespace-from
+@babel/plugin-syntax-flow
+@babel/plugin-syntax-function-bind
+@babel/plugin-syntax-import-meta
+@babel/plugin-syntax-jsx
+@babel/plugin-syntax-nullish-coalescing-operator
+@babel/plugin-syntax-numeric-separator
+@babel/plugin-syntax-object-rest-spread
+@babel/plugin-syntax-optional-catch-binding
+@babel/plugin-syntax-optional-chaining
+@babel/plugin-syntax-pipeline-operator
+@babel/plugin-syntax-throw-expressions
+```
+
+But you can declare your own syntax list by `reselector.config.js`. For example:
+
+```js
+// .reselectorrc.js
+
+module.exports = {
+  syntaxes: [
+    '@babel/plugin-syntax-async-generators',
+    '@babel/plugin-syntax-class-properties',
+    '@babel/plugin-syntax-decorators',
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-syntax-export-default-from',
+    '@babel/plugin-syntax-export-namespace-from',
+    '@babel/plugin-syntax-flow',
+    '@babel/plugin-syntax-function-bind',
+    '@babel/plugin-syntax-import-meta',
+    '@babel/plugin-syntax-jsx',
+    '@babel/plugin-syntax-nullish-coalescing-operator',
+    '@babel/plugin-syntax-numeric-separator',
+    '@babel/plugin-syntax-object-rest-spread',
+    '@babel/plugin-syntax-optional-catch-binding',
+    '@babel/plugin-syntax-optional-chaining',
+    '@babel/plugin-syntax-pipeline-operator',
+    '@babel/plugin-syntax-throw-expressions',
+  ],
+}
+
+```

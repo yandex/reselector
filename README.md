@@ -41,7 +41,7 @@ Use `select` function to build any css selector by React Components.
 Use `resolve` or `resolveBy` functions to get Components' selector.
 
 ```jsx
-const {resolve} = require('reselector')
+const {resolve, select} = require('reselector')
 
 const {MyComponent} = resolve(require.resolve('./MyComponent'))
 const {MyButton} = resolve(require.resolve('./MyButton'))
@@ -58,7 +58,7 @@ console.log(select`.myClassName > ${MyButton}`)
 ```
 
 ```jsx
-const {resolveBy} = require('reselector')
+const {resolveBy, select} = require('reselector')
 
 const resolve = resolveBy(require.resolve)
 

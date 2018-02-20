@@ -1,18 +1,21 @@
 {
+  presets: [
+    ['@babel/preset-env', {
+      modules: 'commonjs',
+      useBuiltIns: 'usage',
+      targets: {
+        node: '6.10',
+      },
+    }]
+  ],
   env: {
     test: {
-      presets: ['react'],
+      presets: [
+        '@babel/preset-react'
+      ],
       plugins: [
         './src/babel',
-        'transform-es2015-modules-commonjs',
       ],
-    },
-    production: {
-      presets: [['env', {
-        targets: {
-          node: '6.10',
-        },
-      }]],
     },
   },
 }

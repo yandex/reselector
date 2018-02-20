@@ -12,11 +12,11 @@ exports[`babel plugin should find all the types of Components 1`] = `
 
 exports[`babel plugin should find all the types of Components 2`] = `
 <div>
-  <Component>
+  <ArrowFunctionalComponent>
     <div
       data-f49764c6={true}
     />
-  </Component>
+  </ArrowFunctionalComponent>
 </div>
 `;
 
@@ -32,7 +32,7 @@ exports[`babel plugin should find all the types of Components 3`] = `
 
 exports[`babel plugin should find all the types of Components 4`] = `
 <div>
-  <Component>
+  <ComposedComponent>
     <Button
       data-8e388bfc={true}
     >
@@ -40,18 +40,18 @@ exports[`babel plugin should find all the types of Components 4`] = `
         data-8e388bfc={true}
       />
     </Button>
-  </Component>
+  </ComposedComponent>
 </div>
 `;
 
 exports[`babel plugin should find all the types of Components 5`] = `
 <div>
-  <Component>
+  <ComponentWithAttrs>
     <div
       data-889909b2={true}
       data-test="testme"
     />
-  </Component>
+  </ComponentWithAttrs>
 </div>
 `;
 
@@ -60,7 +60,7 @@ exports[`babel plugin should find nested Component 1`] = `
   <div
     data-a8f769be={true}
   >
-    <Component>
+    <ArrowFunctionalComponent>
       <div
         data-f49764c6={true}
       >
@@ -68,7 +68,7 @@ exports[`babel plugin should find nested Component 1`] = `
           <p
             data-b5d7faff={true}
           >
-            <Component>
+            <ComposedComponent>
               <Button
                 data-8e388bfc={true}
               >
@@ -76,22 +76,22 @@ exports[`babel plugin should find nested Component 1`] = `
                   data-8e388bfc={true}
                 />
               </Button>
-            </Component>
+            </ComposedComponent>
           </p>
         </FunctionalComponent>
       </div>
-    </Component>
+    </ArrowFunctionalComponent>
   </div>
 </ClassComponent>
 `;
 
 exports[`babel plugin should save Component\`s root attrs 1`] = `
-<Component>
+<ComponentWithAttrs>
   <div
     data-889909b2={true}
     data-test="testme"
   />
-</Component>
+</ComponentWithAttrs>
 `;
 
 exports[`babel plugin should save Component\`s root attrs 2`] = `
@@ -102,96 +102,92 @@ DOMStringMap {
 `;
 
 exports[`babel plugin should transform source code well for development 1`] = `
-"'use strict';
+"\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
 });
-exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = undefined;
 exports.FunctionalComponent = FunctionalComponent;
+exports.default = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = void 0;
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require(\\"react\\"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Button = props => _react2.default.createElement('button', props, props.children);
-
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
+const Button = props => _react.default.createElement('button', props, props.children);
+/* eslint-disable no-unused-vars */
 
-const UnexportComponent = ({ children }) => _react2.default.createElement(
-  'div',
-  {
-    'data-c7b7156f': true
-  },
+
+const UnexportComponent = ({
   children
-);
+}) => _react.default.createElement(\\"div\\", {
+  \\"data-c7b7156f\\": true
+}, children);
 /* eslint-enable no-unused-vars */
 
-UnexportComponent.testId = 'c7b7156f';
-class ClassComponent extends _react2.default.Component {
+
+UnexportComponent.testId = \\"c7b7156f\\";
+
+class ClassComponent extends _react.default.Component {
   render() {
-    return _react2.default.createElement(
-      'div',
-      {
-        'data-a8f769be': true
-      },
-      this.props.children
-    );
+    return _react.default.createElement(\\"div\\", {
+      \\"data-a8f769be\\": true
+    }, this.props.children);
   }
+
 }
 
 exports.ClassComponent = ClassComponent;
-ClassComponent.testId = 'a8f769be';
-const ArrowFunctionalComponent = exports.ArrowFunctionalComponent = ({ children }) => _react2.default.createElement(
-  'div',
-  {
-    'data-f49764c6': true
-  },
-  children
-);
+ClassComponent.testId = \\"a8f769be\\";
 
-ArrowFunctionalComponent.testId = 'f49764c6';
-function FunctionalComponent({ children }) {
-  return _react2.default.createElement(
-    'p',
-    {
-      'data-b5d7faff': true
-    },
-    children
-  );
+const ArrowFunctionalComponent = ({
+  children
+}) => _react.default.createElement(\\"div\\", {
+  \\"data-f49764c6\\": true
+}, children);
+
+exports.ArrowFunctionalComponent = ArrowFunctionalComponent;
+ArrowFunctionalComponent.testId = \\"f49764c6\\";
+
+function FunctionalComponent({
+  children
+}) {
+  return _react.default.createElement(\\"p\\", {
+    \\"data-b5d7faff\\": true
+  }, children);
 }
 
-FunctionalComponent.testId = 'b5d7faff';
-const ComposedComponent = exports.ComposedComponent = ({ children }) => _react2.default.createElement(
-  Button,
-  {
-    'data-8e388bfc': true
-  },
-  children
-);
+FunctionalComponent.testId = \\"b5d7faff\\";
 
-ComposedComponent.testId = '8e388bfc';
-const ComponentWithAttrs = exports.ComponentWithAttrs = ({ children }) => _react2.default.createElement(
-  'div',
-  { 'data-test': 'testme', 'data-889909b2': true
-  },
+const ComposedComponent = ({
   children
-);
+}) => _react.default.createElement(Button, {
+  \\"data-8e388bfc\\": true
+}, children);
 
-ComponentWithAttrs.testId = '889909b2';
+exports.ComposedComponent = ComposedComponent;
+ComposedComponent.testId = \\"8e388bfc\\";
 
-exports.default = ({ children }) => _react2.default.createElement(
-  'div',
-  {
-    'data-5f9b51d4': true
-  },
+const ComponentWithAttrs = ({
   children
-);
+}) => _react.default.createElement(\\"div\\", {
+  \\"data-test\\": \\"testme\\",
+  \\"data-889909b2\\": true
+}, children);
+
+exports.ComponentWithAttrs = ComponentWithAttrs;
+ComponentWithAttrs.testId = \\"889909b2\\";
+
+var _default = ({
+  children
+}) => _react.default.createElement(\\"div\\", {
+  \\"data-5f9b51d4\\": true
+}, children);
+
+exports.default = _default;
 
 if (module.exports) {
-  module.exports.default.testId = '5f9b51d4';
+  module.exports.default.testId = \\"5f9b51d4\\";
 }"
 `;

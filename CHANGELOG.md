@@ -1,5 +1,30 @@
 # Change Log
 
+## [v0.7.0](https://github.com/lttb/reselector/tree/v0.7.0) (2018-02-20)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.6.1...v0.7.0)
+
+**Merged pull requests:**
+
+- Support different syntaxes [\#8](https://github.com/lttb/reselector/pull/8) ([lttb](https://github.com/lttb))
+- Add select function in require [\#7](https://github.com/lttb/reselector/pull/7) ([leonidlebedev](https://github.com/leonidlebedev))
+
+## [v0.6.1](https://github.com/lttb/reselector/tree/v0.6.1) (2018-02-16)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.6.0...v0.6.1)
+
+**Merged pull requests:**
+
+- Add Installation description [\#5](https://github.com/lttb/reselector/pull/5) ([leonidlebedev](https://github.com/leonidlebedev))
+
+## [v0.6.0](https://github.com/lttb/reselector/tree/v0.6.0) (2018-02-14)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.5.0...v0.6.0)
+
+## [v0.5.0](https://github.com/lttb/reselector/tree/v0.5.0) (2018-02-13)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.4.0...v0.5.0)
+
 ## [v0.4.0](https://github.com/lttb/reselector/tree/v0.4.0) (2018-02-13)
 
 [Full Changelog](https://github.com/lttb/reselector/compare/v0.3.1...v0.4.0)

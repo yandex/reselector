@@ -58,6 +58,7 @@ const resolve = (path) => {
     const parser = getParser()
 
     transformFileSync(path, {
+      babelrc: false,
       plugins: [
         ...config.syntaxes,
         [parser.plugin],

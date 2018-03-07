@@ -1,9 +1,8 @@
 'use strict'
 
 const cosmiconfig = require('cosmiconfig')
-const { name } = require('../package.json')
 
-const { config } = (cosmiconfig(name, { sync: true }).load() || {})
+const { config } = (cosmiconfig('reselector', { sync: true }).load() || {})
 
 module.exports = Object.assign({
   prefix: 'data-',

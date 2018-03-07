@@ -1,5 +1,21 @@
 # Change Log
 
+## [v0.8.1](https://github.com/lttb/reselector/tree/v0.8.1) (2018-03-07)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.8.0...v0.8.1)
+
+**Merged pull requests:**
+
+- Fix config usage, add prefix option [\#11](https://github.com/lttb/reselector/pull/11) ([lttb](https://github.com/lttb))
+
+## [v0.8.0](https://github.com/lttb/reselector/tree/v0.8.0) (2018-03-06)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.7.0...v0.8.0)
+
+**Merged pull requests:**
+
+- Ignore project's babelrc [\#9](https://github.com/lttb/reselector/pull/9) ([lttb](https://github.com/lttb))
+
 ## [v0.7.0](https://github.com/lttb/reselector/tree/v0.7.0) (2018-02-20)
 
 [Full Changelog](https://github.com/lttb/reselector/compare/v0.6.1...v0.7.0)

@@ -2,6 +2,7 @@
 
 const template = require('@babel/template').default
 
+const config = require('./config')
 const { TEST_ID } = require('./const')
 const { getName, getId, getNode } = require('./utils')
 
@@ -28,7 +29,7 @@ module.exports = ({ types: t }) => ({
       const id = getId(filename, name)
 
       openingElement.attributes.push(
-        t.JSXAttribute(t.JSXIdentifier(`data-${id}`)),
+        t.JSXAttribute(t.JSXIdentifier(`${config.prefix}${id}`)),
       )
 
       if (process.env.NODE_ENV !== 'test') {

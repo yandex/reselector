@@ -27,14 +27,17 @@ module.exports = ({ types: t }) => ({
       const name = getName({ rootPath, componentNode })
       const id = getId(filename, name)
 
-      openingElement.attributes.push(
-        t.JSXAttribute(
-          t.JSXIdentifier(`${config.prefix}${id}`),
-          config.env
-            ? t.jSXExpressionContainer(t.identifier('process.env.RESELECTOR === "true"'))
-            : null,
-        ),
+      const propName = `${config.prefix}${id}`
+
+      const prop = config.env ? (
+        t.jSXSpreadAttribute(
+          t.identifier(`process.env.RESELECTOR === "true" ? {'${propName}': true} : {}`),
+        )
+      ) : (
+        t.JSXAttribute(t.JSXIdentifier(propName))
       )
+
+      openingElement.attributes.push(prop)
 
       if (process.env.NODE_ENV !== 'test') {
         return

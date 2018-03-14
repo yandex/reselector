@@ -114,16 +114,15 @@ var _react = _interopRequireDefault(require(\\"react\\"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable react/prefer-stateless-function */
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 const Button = props => _react.default.createElement('button', props, props.children);
 /* eslint-disable no-unused-vars */
 
 
 const UnexportComponent = ({
   children
-}) => _react.default.createElement(\\"div\\", {
-  \\"data-c7b7156f\\": process.env.RESELECTOR === \\"true\\"
-}, children);
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-c7b7156f': true} : {}, children);
 /* eslint-enable no-unused-vars */
 
 
@@ -131,9 +130,7 @@ UnexportComponent.testId = \\"c7b7156f\\";
 
 class ClassComponent extends _react.default.Component {
   render() {
-    return _react.default.createElement(\\"div\\", {
-      \\"data-a8f769be\\": process.env.RESELECTOR === \\"true\\"
-    }, this.props.children);
+    return _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-a8f769be': true} : {}, this.props.children);
   }
 
 }
@@ -143,9 +140,7 @@ ClassComponent.testId = \\"a8f769be\\";
 
 const ArrowFunctionalComponent = ({
   children
-}) => _react.default.createElement(\\"div\\", {
-  \\"data-f49764c6\\": process.env.RESELECTOR === \\"true\\"
-}, children);
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-f49764c6': true} : {}, children);
 
 exports.ArrowFunctionalComponent = ArrowFunctionalComponent;
 ArrowFunctionalComponent.testId = \\"f49764c6\\";
@@ -153,37 +148,30 @@ ArrowFunctionalComponent.testId = \\"f49764c6\\";
 function FunctionalComponent({
   children
 }) {
-  return _react.default.createElement(\\"p\\", {
-    \\"data-b5d7faff\\": process.env.RESELECTOR === \\"true\\"
-  }, children);
+  return _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {'data-b5d7faff': true} : {}, children);
 }
 
 FunctionalComponent.testId = \\"b5d7faff\\";
 
 const ComposedComponent = ({
   children
-}) => _react.default.createElement(Button, {
-  \\"data-8e388bfc\\": process.env.RESELECTOR === \\"true\\"
-}, children);
+}) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {'data-8e388bfc': true} : {}, children);
 
 exports.ComposedComponent = ComposedComponent;
 ComposedComponent.testId = \\"8e388bfc\\";
 
 const ComponentWithAttrs = ({
   children
-}) => _react.default.createElement(\\"div\\", {
-  \\"data-test\\": \\"testme\\",
-  \\"data-889909b2\\": process.env.RESELECTOR === \\"true\\"
-}, children);
+}) => _react.default.createElement(\\"div\\", _extends({
+  \\"data-test\\": \\"testme\\"
+}, process.env.RESELECTOR === \\"true\\" ? {'data-889909b2': true} : {}), children);
 
 exports.ComponentWithAttrs = ComponentWithAttrs;
 ComponentWithAttrs.testId = \\"889909b2\\";
 
 var _default = ({
   children
-}) => _react.default.createElement(\\"div\\", {
-  \\"data-5f9b51d4\\": process.env.RESELECTOR === \\"true\\"
-}, children);
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-5f9b51d4': true} : {}, children);
 
 exports.default = _default;
 

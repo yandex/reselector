@@ -10,7 +10,6 @@ const build = template(`
   COMPONENT.PROP = ID
 `)
 
-
 const buildDefaultExport = template(`
     if (module.exports) {
       module.exports.default.PROP = ID
@@ -28,9 +27,17 @@ module.exports = ({ types: t }) => ({
       const name = getName({ rootPath, componentNode })
       const id = getId(filename, name)
 
-      openingElement.attributes.push(
-        t.JSXAttribute(t.JSXIdentifier(`${config.prefix}${id}`)),
+      const propName = `${config.prefix}${id}`
+
+      const prop = config.env ? (
+        t.jSXSpreadAttribute(
+          t.identifier(`process.env.RESELECTOR === "true" ? {'${propName}': true} : {}`),
+        )
+      ) : (
+        t.JSXAttribute(t.JSXIdentifier(propName))
       )
+
+      openingElement.attributes.push(prop)
 
       if (process.env.NODE_ENV !== 'test') {
         return

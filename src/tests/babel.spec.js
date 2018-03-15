@@ -1,5 +1,5 @@
 import React from 'react'
-import { transformFileSync } from 'babel-core'
+import { transformFileSync } from '@babel/core'
 import { mount } from 'enzyme'
 
 import {
@@ -12,10 +12,30 @@ import {
 import { select } from '../'
 
 describe('babel plugin', () => {
-  it('should transform source code well for development', () => {
-    const { code } = transformFileSync(require.resolve('./App'))
+  describe('transform', () => {
+    let config = {}
 
-    expect(code).toMatchSnapshot()
+    beforeEach(() => {
+      config = {}
+
+      jest.doMock('../config', () => new Proxy(jest.requireActual('../config'), {
+        get: (target, value) => (value in config ? config[value] : target[value]),
+      }))
+    })
+
+    it('should transform source code well for development', () => {
+      const { code } = transformFileSync(require.resolve('./App'))
+
+      expect(code).toMatchSnapshot()
+    })
+
+    it('should transform source code depends on the env option', () => {
+      config.env = true
+
+      const { code } = transformFileSync(require.resolve('./App'))
+
+      expect(code).toMatchSnapshot()
+    })
   })
 
   it('should find all the types of Components', () => {

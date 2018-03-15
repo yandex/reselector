@@ -36,9 +36,78 @@ Add `reselector` to the plugin list in `.babelrc` for your client code. For exam
 
 Use `select` function to build any css selector by React Components.
 
-#### Runtime (node.js)
+Just a simple example with [jest](https://facebook.github.io/jest/)
 
-Use `resolve` or `resolveBy` functions to get Components' selector.
+```jsx
+import React from 'react'
+import {render} from 'react-dom'
+import {select} from 'reselector'
+
+const Text = ({children}) => <p>{children}</p>
+
+const Button = ({children}) => (
+  <button>
+    <Text>{children}</Text>
+  </button>
+)
+
+describe('Button', () => {
+  beforeEach(() => document.body.innerHTML = '<div id="app" />')
+
+  it('should render a text', () => {
+    const text = 'hello world!'
+    render(<Button>{text}</Button>, window.app)
+
+    const node = document.querySelector(select`${Button} > ${Text}`)
+    expect(node.textContent).toBe(text)
+  })
+})
+```
+
+### enzyme
+
+It also works with libraries like [enzyme](https://github.com/airbnb/enzyme) out of the box.
+
+```jsx
+import {render} from 'enzyme'
+
+import Button from './Button'
+import Text from './Text'
+
+describe('Button', () => {
+  it('should render a text', () => {
+    const text = 'hello world!'
+    const wrapper = render(<Button>{text}</Button>)
+
+    expect(wrapper.find(select`${Button} > ${Text}`).text()).toBe(text)
+  })
+})
+```
+
+#### Babel
+
+If you have a chanсe to transpile components with this plugin for your unit tests/autotests, you can import React Component as is.
+
+```jsx
+import {select} from 'reselector'
+
+import MyComponent from './MyComponent'
+import MyButton from './MyButton'
+
+/**
+ * [data-dadad] [data-czczx]
+ */
+console.log(select`${MyComponent} ${MyButton}`)
+
+/**
+ * .myClassName > [data-czczx]
+ */
+console.log(select`.myClassName > ${MyButton}`)
+```
+
+#### Runtime (just node.js, without babel)
+
+It may be useful for autotests (for example, with PageObjects) when you don't need to transpile code. Just use `resolve` or `resolveBy` functions to get Components' selector.
 
 ```jsx
 const {resolve, select} = require('reselector')
@@ -76,28 +145,6 @@ console.log(select`${MyComponent} ${MyButton}`)
 console.log(select`.myClassName > ${MyButton}`)
 ```
 
-#### Babel
-
-If you have a chanсe to transpile components with this plugin for your unit tests/autotests, you can import React Component as is.
-
-```jsx
-import {select} from 'reselector'
-
-import MyComponent from './MyComponent'
-import MyButton from './MyButton'
-
-/**
- * [data-dadad] [data-czczx]
- */
-console.log(select`${MyComponent} ${MyButton}`)
-
-/**
- * .myClassName > [data-czczx]
- */
-console.log(select`.myClassName > ${MyButton}`)
-
-```
-
 ## How it works
 
 This plugin tries to find all React Component declarations and to add `data-{hash}` attribute with the uniq hash-id to the Component's root node. It also saves this hash as the static property for the Component, so `get` function uses this property to build a selector.
@@ -105,7 +152,33 @@ This plugin tries to find all React Component declarations and to add `data-{has
 
 ## Configuration
 
-By default, this plugin works with these syntaxes:
+You can provide some options via `reselector.config.js`, rc-files or in `package.json`.
+
+### prefix
+
+{**string**} By default, it's `data-`. So this plugin generates attributes like `data-c7b7156f`.
+
+But you can define your own prefix, for example
+
+```js
+module.exports = {prefix: ''}
+```
+
+With that, you'll get just a `{hash}` attribute on nodes like `<button c7b7156f />`.
+
+### env
+
+{**boolean**} Be default, `false`. Just set it on `true` to control attributes appending by `process.env.RESELECTOR`. So it will no append hashes at runtime when `process.env.RESELECTOR !== 'true'`.
+
+For example:
+
+```js
+module.exports = {env: true}
+```
+
+### syntaxes
+
+{**string[]**} By default, this plugin works with these syntax list:
 
 ```
 @babel/plugin-syntax-async-generators
@@ -127,7 +200,7 @@ By default, this plugin works with these syntaxes:
 @babel/plugin-syntax-throw-expressions
 ```
 
-But you can declare your own syntax list by `reselector.config.js`. For example:
+But you can declare your own syntax list, for example:
 
 ```js
 // .reselectorrc.js
@@ -153,5 +226,4 @@ module.exports = {
     '@babel/plugin-syntax-throw-expressions',
   ],
 }
-
 ```

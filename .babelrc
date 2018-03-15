@@ -6,16 +6,6 @@
       targets: {
         node: '6.10',
       },
-    }]
+    }],
   ],
-  env: {
-    test: {
-      presets: [
-        '@babel/preset-react'
-      ],
-      plugins: [
-        './src/babel',
-      ],
-    },
-  },
 }

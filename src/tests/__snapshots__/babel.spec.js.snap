@@ -101,7 +101,86 @@ DOMStringMap {
 }
 `;
 
-exports[`babel plugin should transform source code well for development 1`] = `
+exports[`babel plugin transform should transform source code depends on the env option 1`] = `
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.FunctionalComponent = FunctionalComponent;
+exports.default = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = void 0;
+
+var _react = _interopRequireDefault(require(\\"react\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+const Button = props => _react.default.createElement('button', props, props.children);
+/* eslint-disable no-unused-vars */
+
+
+const UnexportComponent = ({
+  children
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-c7b7156f': true} : {}, children);
+/* eslint-enable no-unused-vars */
+
+
+UnexportComponent.testId = \\"c7b7156f\\";
+
+class ClassComponent extends _react.default.Component {
+  render() {
+    return _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-a8f769be': true} : {}, this.props.children);
+  }
+
+}
+
+exports.ClassComponent = ClassComponent;
+ClassComponent.testId = \\"a8f769be\\";
+
+const ArrowFunctionalComponent = ({
+  children
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-f49764c6': true} : {}, children);
+
+exports.ArrowFunctionalComponent = ArrowFunctionalComponent;
+ArrowFunctionalComponent.testId = \\"f49764c6\\";
+
+function FunctionalComponent({
+  children
+}) {
+  return _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {'data-b5d7faff': true} : {}, children);
+}
+
+FunctionalComponent.testId = \\"b5d7faff\\";
+
+const ComposedComponent = ({
+  children
+}) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {'data-8e388bfc': true} : {}, children);
+
+exports.ComposedComponent = ComposedComponent;
+ComposedComponent.testId = \\"8e388bfc\\";
+
+const ComponentWithAttrs = ({
+  children
+}) => _react.default.createElement(\\"div\\", _extends({
+  \\"data-test\\": \\"testme\\"
+}, process.env.RESELECTOR === \\"true\\" ? {'data-889909b2': true} : {}), children);
+
+exports.ComponentWithAttrs = ComponentWithAttrs;
+ComponentWithAttrs.testId = \\"889909b2\\";
+
+var _default = ({
+  children
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-5f9b51d4': true} : {}, children);
+
+exports.default = _default;
+
+if (module.exports) {
+  module.exports.default.testId = \\"5f9b51d4\\";
+}"
+`;
+
+exports[`babel plugin transform should transform source code well for development 1`] = `
 "\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {

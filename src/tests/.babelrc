@@ -1,0 +1,13 @@
+{
+  extends: '../../.babelrc',
+  env: {
+    test: {
+      plugins: [
+        '../babel',
+      ],
+      presets: [
+        '@babel/preset-react',
+      ],
+    },
+  },
+}

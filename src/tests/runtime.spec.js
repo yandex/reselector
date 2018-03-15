@@ -1,4 +1,4 @@
-import { resolveBy, select } from '../../'
+import { resolveBy, select } from '../'
 import * as app from './App'
 import { TEST_ID } from '../const'
 

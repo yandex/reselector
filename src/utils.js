@@ -52,7 +52,7 @@ module.exports.getNode = (t, p) => {
 }
 
 module.exports.getName = ({ rootPath, componentNode }) =>
-  (rootPath.type === 'ExportDefaultDeclaration'
+  (rootPath.type === 'ExportDefaultDeclaration' || rootPath.parent.type === 'ExportDefaultDeclaration'
     ? 'default'
     : componentNode.id.name
   )

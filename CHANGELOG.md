@@ -1,5 +1,37 @@
 # Change Log
 
+## [v0.9.1](https://github.com/lttb/reselector/tree/v0.9.1) (2018-04-16)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.9.0...v0.9.1)
+
+**Merged pull requests:**
+
+- Fix for default function export case [\#13](https://github.com/lttb/reselector/pull/13) ([nickshevr](https://github.com/nickshevr))
+
+## [v0.9.0](https://github.com/lttb/reselector/tree/v0.9.0) (2018-03-15)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.9.0-2...v0.9.0)
+
+**Merged pull requests:**
+
+- Support RESELECTOR env variable [\#12](https://github.com/lttb/reselector/pull/12) ([lttb](https://github.com/lttb))
+
+## [v0.9.0-2](https://github.com/lttb/reselector/tree/v0.9.0-2) (2018-03-14)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.9.0-1...v0.9.0-2)
+
+## [v0.9.0-1](https://github.com/lttb/reselector/tree/v0.9.0-1) (2018-03-14)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.9.0-0...v0.9.0-1)
+
+## [v0.9.0-0](https://github.com/lttb/reselector/tree/v0.9.0-0) (2018-03-14)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.8.2...v0.9.0-0)
+
+## [v0.8.2](https://github.com/lttb/reselector/tree/v0.8.2) (2018-03-07)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.8.1...v0.8.2)
+
 ## [v0.8.1](https://github.com/lttb/reselector/tree/v0.8.1) (2018-03-07)
 
 [Full Changelog](https://github.com/lttb/reselector/compare/v0.8.0...v0.8.1)

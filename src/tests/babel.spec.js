@@ -36,6 +36,18 @@ describe('babel plugin', () => {
 
       expect(code).toMatchSnapshot()
     })
+
+    it('should transform default anonymous function', () => {
+      const { code } = transformFileSync(require.resolve('./App/defaultAnonymousFunctionExport'))
+
+      expect(code).toMatchSnapshot()
+    })
+
+    it('should transform default named function', () => {
+      const { code } = transformFileSync(require.resolve('./App/defaultNamedFunctionExport'))
+
+      expect(code).toMatchSnapshot()
+    })
   })
 
   it('should find all the types of Components', () => {

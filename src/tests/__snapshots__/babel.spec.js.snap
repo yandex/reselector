@@ -101,6 +101,56 @@ DOMStringMap {
 }
 `;
 
+exports[`babel plugin transform should transform default anonymous function 1`] = `
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.default = _default;
+
+var _react = _interopRequireDefault(require(\\"react\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _default({
+  children
+}) {
+  return _react.default.createElement(\\"div\\", {
+    \\"data-65353e34\\": true
+  }, children);
+}
+
+if (module.exports) {
+  module.exports.default.testId = \\"65353e34\\";
+}"
+`;
+
+exports[`babel plugin transform should transform default named function 1`] = `
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.default = NamedFunc;
+
+var _react = _interopRequireDefault(require(\\"react\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function NamedFunc({
+  children
+}) {
+  return _react.default.createElement(\\"div\\", {
+    \\"data-e7f23ea4\\": true
+  }, children);
+}
+
+if (module.exports) {
+  module.exports.default.testId = \\"e7f23ea4\\";
+}"
+`;
+
 exports[`babel plugin transform should transform source code depends on the env option 1`] = `
 "\\"use strict\\";
 

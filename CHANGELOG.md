@@ -1,5 +1,17 @@
 # Change Log
 
+## [v0.9.2](https://github.com/lttb/reselector/tree/v0.9.2) (2018-04-17)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.9.1...v0.9.2)
+
+**Fixed bugs:**
+
+- Fails on function declaration components [\#6](https://github.com/lttb/reselector/issues/6)
+
+**Merged pull requests:**
+
+- Skip data-hash for React.Fragment [\#15](https://github.com/lttb/reselector/pull/15) ([lttb](https://github.com/lttb))
+
 ## [v0.9.1](https://github.com/lttb/reselector/tree/v0.9.1) (2018-04-16)
 
 [Full Changelog](https://github.com/lttb/reselector/compare/v0.9.0...v0.9.1)

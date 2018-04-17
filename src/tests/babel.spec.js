@@ -98,4 +98,18 @@ describe('babel plugin', () => {
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.find(selector).hostNodes().length).toBe(1)
   })
+
+  it('should skip React.Fragment', () => {
+    const { code } = transformFileSync(require.resolve('./App/reactFragment'))
+
+    expect(code).toMatchSnapshot()
+
+    const { A, B } = require('./App/reactFragment')
+
+    const wrappers = [mount(<A />), mount(<B />)]
+
+    wrappers.forEach((wrapper) => {
+      expect(wrapper.childAt(0).props()).toEqual({})
+    })
+  })
 })

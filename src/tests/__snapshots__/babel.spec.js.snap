@@ -55,6 +55,26 @@ exports[`babel plugin should find all the types of Components 5`] = `
 </div>
 `;
 
+exports[`babel plugin should find all the types of Components 6`] = `
+<div>
+  <DefaultClass>
+    <div
+      data-51b7b868={true}
+    />
+  </DefaultClass>
+</div>
+`;
+
+exports[`babel plugin should find all the types of Components 7`] = `
+<div>
+  <DefaultClass>
+    <div
+      data-7d3c8cda={true}
+    />
+  </DefaultClass>
+</div>
+`;
+
 exports[`babel plugin should find nested Component 1`] = `
 <ClassComponent>
   <div
@@ -122,6 +142,33 @@ const B = () => _react.default.createElement(_react.Fragment, null, _react.defau
 exports.B = B;"
 `;
 
+exports[`babel plugin transform should transform declared named class in default 1`] = `
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require(\\"react\\"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+// eslint-disable-next-line
+class DefaultClass extends _react.Component {
+  render() {
+    return _react.default.createElement(\\"div\\", {
+      \\"data-7d3c8cda\\": true
+    }, this.props.children);
+  }
+
+}
+
+DefaultClass.testId = \\"7d3c8cda\\";
+var _default = DefaultClass;
+exports.default = _default;"
+`;
+
 exports[`babel plugin transform should transform default anonymous function 1`] = `
 "\\"use strict\\";
 
@@ -144,6 +191,35 @@ function _default({
 
 if (module.exports) {
   module.exports.default.testId = \\"65353e34\\";
+}"
+`;
+
+exports[`babel plugin transform should transform default named class 1`] = `
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require(\\"react\\"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+// eslint-disable-next-line
+class DefaultClass extends _react.Component {
+  render() {
+    return _react.default.createElement(\\"div\\", {
+      \\"data-51b7b868\\": true
+    }, this.props.children);
+  }
+
+}
+
+exports.default = DefaultClass;
+
+if (module.exports) {
+  module.exports.default.testId = \\"51b7b868\\";
 }"
 `;
 

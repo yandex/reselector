@@ -140,7 +140,9 @@ const ternaryRender = ({
   flag
 }) => flag ? _react.default.createElement(\\"div\\", {
   \\"data-96c8a304\\": true
-}, children) : _react.default.createElement(\\"a\\", null, children);
+}, children) : _react.default.createElement(\\"a\\", {
+  \\"data-96c8a304\\": true
+}, children);
 /* eslint-disable-next-line no-unused-vars */
 
 

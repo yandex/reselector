@@ -57,18 +57,16 @@ module.exports = ({ types: t }) => {
           t.JSXAttribute(t.JSXIdentifier(propName))
         )
 
-        if (prop.type === 'JSXAttribute') {
-          const propMeta = !prop ? 'null' : hash(JSON.stringify(prop))
-          const hashId = hash(`${filename}_${name}_${propMeta}`).toString(16)
+        openingElement.attributes.push(prop)
 
-          if (attributeMap[hashId]) {
-            return
-          }
+        const propMeta = !prop ? 'null' : hash(JSON.stringify(prop))
+        const hashId = hash(`${filename}_${name}_${propMeta}`).toString(16)
 
-          attributeMap[hashId] = true
+        if (attributeMap[hashId]) {
+          return
         }
 
-        openingElement.attributes.push(prop)
+        attributeMap[hashId] = true
 
         if (process.env.NODE_ENV !== 'test') {
           return

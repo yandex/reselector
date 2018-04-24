@@ -126,6 +126,8 @@ console.log(select`${MyComponent} ${MyButton}`)
 console.log(select`.myClassName > ${MyButton}`)
 ```
 
+With `resolveBy`:
+
 ```jsx
 const {resolveBy, select} = require('reselector')
 

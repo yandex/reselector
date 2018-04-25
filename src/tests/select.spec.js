@@ -13,6 +13,6 @@ describe('select', () => {
   })
 
   it('should build xpath selector', () => {
-    expect(select.xpath`//${Button}/${Text}`).toMatchSnapshot()
+    expect(select.xpath`//*${Button}/${Text}`).toMatchSnapshot()
   })
 })

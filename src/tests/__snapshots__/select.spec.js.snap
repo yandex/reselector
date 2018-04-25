@@ -2,4 +2,4 @@
 
 exports[`select should build css selector 1`] = `"[data-30d26c9a] > [data-ffe55b71]"`;
 
-exports[`select should build xpath selector 1`] = `"//[@data-30d26c9a]/[@data-ffe55b71]"`;
+exports[`select should build xpath selector 1`] = `"//*[@data-30d26c9a]/[@data-ffe55b71]"`;

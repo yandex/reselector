@@ -4,13 +4,22 @@ const { TEST_ID } = require('./const')
 const config = require('./config')
 
 const selectors = {
-  css: value => (value ? `[${config.prefix}${value[TEST_ID]}]` : ''),
-  xpath: value => (value ? `[@${config.prefix}${value[TEST_ID]}]` : ''),
+  css: value => `[${config.prefix}${value}]`,
+  xpath: value => `[@${config.prefix}${value}]`,
 }
 
 const build = selector => (strings, ...values) => (
   strings
-    .reduce((acc, val, i) => acc.concat(val, selector(values[i])), '')
+    .reduce((acc, string, i) => {
+      const value = values[i]
+
+      if (value === undefined) return acc.concat(string)
+
+      return acc.concat(
+        string,
+        value && value[TEST_ID] ? selector(value[TEST_ID]) : value,
+      )
+    }, '')
     .replace(/\s+/g, ' ')
     .trim()
 )

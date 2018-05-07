@@ -15,4 +15,10 @@ describe('select', () => {
   it('should build xpath selector', () => {
     expect(select.xpath`//*${Button}/${Text}`).toMatchSnapshot()
   })
+
+  it('should work with variables', () => {
+    const index = 0
+
+    expect(select`${Button} > ${Text}:nth-child(${index})`).toMatchSnapshot()
+  })
 })

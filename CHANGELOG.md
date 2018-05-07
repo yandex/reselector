@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.10.1](https://github.com/lttb/reselector/tree/v0.10.1) (2018-05-07)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.10.0...v0.10.1)
+
+**Fixed bugs:**
+
+- Fix variables in select literal [\#20](https://github.com/lttb/reselector/issues/20) [[bug](https://github.com/lttb/reselector/labels/bug)]
+
+**Merged pull requests:**
+
+- Fix variables in select, resolve \#20 [\#21](https://github.com/lttb/reselector/pull/21) ([lttb](https://github.com/lttb))
+
 ## [v0.10.0](https://github.com/lttb/reselector/tree/v0.10.0) (2018-04-25)
 
 [Full Changelog](https://github.com/lttb/reselector/compare/v0.9.2...v0.10.0)

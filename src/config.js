@@ -10,7 +10,10 @@ module.exports = Object.assign({
   syntaxes: [
     '@babel/plugin-syntax-async-generators',
     '@babel/plugin-syntax-class-properties',
-    '@babel/plugin-syntax-decorators',
+    /**
+     * @see https://github.com/babel/babel/issues/7786
+     */
+    ['@babel/plugin-syntax-decorators', { legacy: true }],
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-export-default-from',
     '@babel/plugin-syntax-export-namespace-from',

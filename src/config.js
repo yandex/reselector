@@ -26,7 +26,7 @@ module.exports = Object.assign({
     '@babel/plugin-syntax-object-rest-spread',
     '@babel/plugin-syntax-optional-catch-binding',
     '@babel/plugin-syntax-optional-chaining',
-    '@babel/plugin-syntax-pipeline-operator',
+    ['@babel/plugin-syntax-pipeline-operator', { proposal: 'minimal' }],
     '@babel/plugin-syntax-throw-expressions',
   ],
 }, config)

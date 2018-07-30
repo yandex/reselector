@@ -3,7 +3,7 @@
 [![Travis branch](https://img.shields.io/travis/lttb/reselector/master.svg?style=flat)](https://travis-ci.org/lttb/reselector)
 [![Coverage Status branch](https://img.shields.io/coveralls/lttb/reselector/master.svg?style=flat)](https://img.shields.io/coveralls/lttb/reselector/master.svg?branch=master)
 [![npm version](https://img.shields.io/npm/v/reselector.svg?style=flat)](https://www.npmjs.com/package/reselector)
-[![npm license](https://img.shields.io/npm/l/reselector.svg?style=flat)](https://www.npmjs.com/package/reselector)
+[![npm license](https://img.shields.io/npm/l/reselector.svg?style=flat)](https://www.npmjs.com/package/reselector) [![Greenkeeper badge](https://badges.greenkeeper.io/lttb/reselector.svg)](https://greenkeeper.io/)
 
 ## Installation
 

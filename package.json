@@ -75,5 +75,10 @@
     "@babel/template": "7.0.0-beta.55",
     "cosmiconfig": "4.0.0",
     "string-hash": "1.1.3"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "cosmiconfig"
+    ]
   }
 }

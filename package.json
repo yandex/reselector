@@ -72,7 +72,7 @@
     "@babel/plugin-syntax-pipeline-operator": "7.0.0-rc.1",
     "@babel/plugin-syntax-throw-expressions": "7.0.0-rc.1",
     "@babel/plugin-syntax-typescript": "7.0.0-rc.1",
-    "@babel/template": "7.0.0-beta.55",
+    "@babel/template": "7.0.0-rc.1",
     "cosmiconfig": "4.0.0",
     "string-hash": "1.1.3"
   },

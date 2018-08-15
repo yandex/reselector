@@ -51,7 +51,7 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
-    "@babel/core": "7.0.0-beta.55",
+    "@babel/core": "7.0.0-rc.1",
     "@babel/plugin-syntax-async-generators": "7.0.0-beta.55",
     "@babel/plugin-syntax-class-properties": "7.0.0-beta.55",
     "@babel/plugin-syntax-decorators": "7.0.0-beta.55",

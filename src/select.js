@@ -4,8 +4,8 @@ const { TEST_ID } = require('./const')
 const config = require('./config')
 
 const selectors = {
-  css: value => `[${config.prefix}${value}]`,
-  xpath: value => `[@${config.prefix}${value}]`,
+  css: value => `[${config.prefix}${TEST_ID}~="${value}"]`,
+  xpath: value => `[@${config.prefix}${TEST_ID}~="${value}"]`,
 }
 
 const build = selector => (strings, ...values) => (

@@ -7,6 +7,7 @@ import {
   ArrowFunctionalComponent,
   FunctionalComponent,
   ComposedComponent,
+  ComposedComponent2,
   ComponentWithAttrs,
 } from './App'
 import defaultNamedClassComponent from './App/defaultNamedClassExport'
@@ -133,5 +134,12 @@ describe('babel plugin', () => {
     wrappers.forEach((wrapper) => {
       expect(wrapper.childAt(0).props()).toEqual({})
     })
+  })
+
+  it('should find wrapped component', () => {
+    const text = 'test text'
+    const wrapper = mount(<ComposedComponent2>{text}</ComposedComponent2>)
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.find(select`${ComposedComponent2}`).hostNodes().text()).toBe(text)
   })
 })

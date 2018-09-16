@@ -28,4 +28,12 @@ export const ComponentWithAttrs = ({ children }) => (
   <div data-test="testme">{children}</div>
 )
 
+export const ComponentNoDestructure = props => (
+  <p>{props.children}</p>
+)
+
+export const ComposedComponent2 = ({ children }) => (
+  <ComposedComponent><div>{children}</div></ComposedComponent>
+)
+
 export default ({ children }) => <div>{children}</div>

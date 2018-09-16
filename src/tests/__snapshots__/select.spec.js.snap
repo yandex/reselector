@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`select should build css selector 1`] = `"[data-30d26c9a] > [data-ffe55b71]"`;
+exports[`select should build css selector 1`] = `"[data-testid~=\\"30d26c9a\\"] > [data-testid~=\\"ffe55b71\\"]"`;
 
-exports[`select should build xpath selector 1`] = `"//*[@data-30d26c9a]/[@data-ffe55b71]"`;
+exports[`select should build xpath selector 1`] = `"//*[@data-testid~=\\"30d26c9a\\"]/[@data-testid~=\\"ffe55b71\\"]"`;
 
-exports[`select should work with variables 1`] = `"[data-30d26c9a] > [data-ffe55b71]:nth-child(0)"`;
+exports[`select should work with variables 1`] = `"[data-testid~=\\"30d26c9a\\"] > [data-testid~=\\"ffe55b71\\"]:nth-child(0)"`;

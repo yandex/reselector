@@ -16,6 +16,12 @@ const buildDefaultExport = template(`
     }
 `)
 
+const concat = (ID, CURR_ID) => (CURR_ID === "''"
+  ? `"${ID}"`
+  : `"${ID}" + (${CURR_ID} ? (' ' + ${CURR_ID}) : '')`)
+
+const buildProps = template.expression(concat('ID', 'CURR_ID'))
+
 module.exports = ({ types: t }) => {
   /**
    * Basic React.Fragment check
@@ -44,14 +50,43 @@ module.exports = ({ types: t }) => {
         const name = getName({ rootPath, componentNode })
         const id = getId(filename, name)
 
-        const propName = `${config.prefix}${id}`
+        const propName = `${config.prefix}${TEST_ID}`
+
+        let CURR_ID = "''"
+
+        if (componentNode.type === 'ClassDeclaration') {
+          CURR_ID = `this.props['${propName}']`
+        } else {
+          const curr = componentNode.init || componentNode.declaration || componentNode
+          const [props] = curr.params
+
+          if (!props) {
+            curr.params.push(t.identifier('__props__'))
+            CURR_ID = `__props__['${propName}']`
+          } else if (props.type === 'Identifier') {
+            CURR_ID = `${props.name}['${propName}']`
+          } else {
+            props.properties.push(t.objectProperty(
+              t.identifier(`'${propName}'`),
+              t.identifier('__dataprop__'),
+            ))
+            CURR_ID = '__dataprop__'
+          }
+        }
 
         const prop = config.env ? (
           t.jSXSpreadAttribute(
-            t.identifier(`process.env.RESELECTOR === "true" ? {'${propName}': true} : {}`),
+            t.identifier(`process.env.RESELECTOR === "true" ? {'${propName}': ${concat(
+              id, CURR_ID,
+            )}} : {}`),
           )
         ) : (
-          t.JSXAttribute(t.JSXIdentifier(propName))
+          t.JSXAttribute(t.JSXIdentifier(propName), t.JSXExpressionContainer(
+            buildProps({
+              CURR_ID: t.identifier(CURR_ID),
+              ID: t.StringLiteral(id),
+            }),
+          ))
         )
 
         openingElement.attributes.push(prop)

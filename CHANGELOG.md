@@ -1,4 +1,52 @@
-# Change Log
+# Changelog
+
+## [v0.12.0](https://github.com/lttb/reselector/tree/v0.12.0) (2018-07-30)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.11.1...v0.12.0)
+
+**Merged pull requests:**
+
+- Freeze babel dependencies [\#25](https://github.com/lttb/reselector/pull/25) ([lttb](https://github.com/lttb))
+
+## [v0.11.1](https://github.com/lttb/reselector/tree/v0.11.1) (2018-07-06)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.11.0...v0.11.1)
+
+**Merged pull requests:**
+
+- fix babel pipeline-operator default config [\#24](https://github.com/lttb/reselector/pull/24) ([lttb](https://github.com/lttb))
+
+## [v0.11.0](https://github.com/lttb/reselector/tree/v0.11.0) (2018-06-19)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.10.1...v0.11.0)
+
+**Closed issues:**
+
+- Fails with default config with "Error: \[BABEL\] .../\*\*/index.js: The new decorators proposal is not supported yet." [\#22](https://github.com/lttb/reselector/issues/22)
+
+**Merged pull requests:**
+
+- Fix syntax decorators plugin, resolve \#22 [\#23](https://github.com/lttb/reselector/pull/23) ([lttb](https://github.com/lttb))
+
+## [v0.10.1](https://github.com/lttb/reselector/tree/v0.10.1) (2018-05-07)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.10.0...v0.10.1)
+
+**Fixed bugs:**
+
+- Fix variables in select literal [\#20](https://github.com/lttb/reselector/issues/20) [[bug](https://github.com/lttb/reselector/labels/bug)]
+
+**Merged pull requests:**
+
+- Fix variables in select, resolve \#20 [\#21](https://github.com/lttb/reselector/pull/21) ([lttb](https://github.com/lttb))
+
+## [v0.10.0](https://github.com/lttb/reselector/tree/v0.10.0) (2018-04-25)
+
+[Full Changelog](https://github.com/lttb/reselector/compare/v0.9.2...v0.10.0)
+
+**Merged pull requests:**
+
+- Support xpath selectors [\#19](https://github.com/lttb/reselector/pull/19) ([lttb](https://github.com/lttb))
 
 ## [v0.9.2](https://github.com/lttb/reselector/tree/v0.9.2) (2018-04-17)
 
@@ -6,7 +54,7 @@
 
 **Fixed bugs:**
 
-- Fails on function declaration components [\#6](https://github.com/lttb/reselector/issues/6)
+- Fails on function declaration components [\#6](https://github.com/lttb/reselector/issues/6) [[bug](https://github.com/lttb/reselector/labels/bug)]
 
 **Merged pull requests:**
 

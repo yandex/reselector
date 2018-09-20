@@ -9,6 +9,8 @@ import {
   ComposedComponent,
   ComponentWithAttrs,
 } from './App'
+import defaultNamedClassComponent from './App/defaultNamedClassExport'
+import defaultDeclaredNamedClassComponent from './App/defaultDeclaredNamedClassExport'
 import { select } from '../'
 
 describe('babel plugin', () => {
@@ -49,6 +51,18 @@ describe('babel plugin', () => {
       expect(code).toMatchSnapshot()
     })
 
+    it('should transform default named class', () => {
+      const { code } = transformFileSync(require.resolve('./App/defaultNamedClassExport'))
+
+      expect(code).toMatchSnapshot()
+    })
+
+    it('should transform declared named class in default', () => {
+      const { code } = transformFileSync(require.resolve('./App/defaultDeclaredNamedClassExport'))
+
+      expect(code).toMatchSnapshot()
+    })
+
     it('should transform conditionals functions', () => {
       const { code } = transformFileSync(require.resolve('./App/conditionalRenderComponents'))
 
@@ -63,6 +77,8 @@ describe('babel plugin', () => {
       FunctionalComponent,
       ComposedComponent,
       ComponentWithAttrs,
+      defaultNamedClassComponent,
+      defaultDeclaredNamedClassComponent,
     ]
 
     components.forEach((Component) => {

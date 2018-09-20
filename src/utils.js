@@ -9,6 +9,8 @@ module.exports.getNode = (t, p) => {
   const { node, parent } = p
 
   switch (parent.type) {
+    case 'ConditionalExpression':
+    case 'LogicalExpression':
     case 'ReturnStatement':
     case 'ArrowFunctionExpression': {
       const { openingElement } = node

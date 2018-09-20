@@ -62,6 +62,12 @@ describe('babel plugin', () => {
 
       expect(code).toMatchSnapshot()
     })
+
+    it('should transform conditionals functions', () => {
+      const { code } = transformFileSync(require.resolve('./App/conditionalRenderComponents'))
+
+      expect(code).toMatchSnapshot()
+    })
   })
 
   it('should find all the types of Components', () => {

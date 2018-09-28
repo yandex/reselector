@@ -5,7 +5,7 @@ const { getNode, getId, getName, isElement, isFragment } = require('./utils')
 
 const config = require('./config')
 
-const TEST_ID = config.name
+const NAME = config.name
 
 const getParser = () => {
   const exports = {}
@@ -19,7 +19,7 @@ const getParser = () => {
     const name = getName(data)
     const id = getId(filename, name)
 
-    exports[name] = { [TEST_ID]: id }
+    exports[name] = { [NAME]: id }
   }
 
   return {

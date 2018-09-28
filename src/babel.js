@@ -12,12 +12,12 @@ const {
 } = require('./utils')
 
 const build = template(`
-  COMPONENT.PROP = ID
+  COMPONENT["PROP"] = ID
 `)
 
 const buildDefaultExport = template(`
     if (module.exports) {
-      module.exports.default.PROP = ID
+      module.exports.default["PROP"] = ID
     }
 `)
 
@@ -27,7 +27,7 @@ const concat = (ID, CURR_ID) => (CURR_ID === "''"
 
 const buildProps = template.expression(concat('ID', 'CURR_ID'))
 
-const TEST_ID = config.name
+const NAME = config.name
 
 const PROPS_ARG = '__props__'
 const DATAPROP_ARG = '__dataprop__'
@@ -36,7 +36,7 @@ const DATAPROP_ARG = '__dataprop__'
 const argsMap = new Map()
 const componentsList = new Set()
 
-const addDataProp = (componentNode, propName) => {
+const addDataProp = (componentNode) => {
   if (argsMap.has(componentNode)) {
     return argsMap.get(componentNode)
   }
@@ -44,19 +44,19 @@ const addDataProp = (componentNode, propName) => {
   let CURR_ID = "''"
 
   if (componentNode.type === 'ClassDeclaration') {
-    CURR_ID = `this.props['${propName}']`
+    CURR_ID = `this.props['${NAME}']`
   } else {
     const curr = componentNode.init || componentNode.declaration || componentNode
     const [props] = curr.params
 
     if (!props) {
       curr.params.push(t.identifier(PROPS_ARG))
-      CURR_ID = `${PROPS_ARG}['${propName}']`
+      CURR_ID = `${PROPS_ARG}['${NAME}']`
     } else if (props.type === 'Identifier') {
-      CURR_ID = `${props.name}['${propName}']`
+      CURR_ID = `${props.name}['${NAME}']`
     } else {
       props.properties.push(t.objectProperty(
-        t.identifier(`'${propName}'`),
+        t.identifier(`'${NAME}'`),
         t.identifier(DATAPROP_ARG),
       ))
       CURR_ID = DATAPROP_ARG
@@ -83,18 +83,16 @@ module.exports = () => ({
       const name = getName({ rootPath, componentNode })
       const id = getId(filename, name)
 
-      const propName = `${config.prefix}${TEST_ID}`
-
-      const CURR_ID = addDataProp(componentNode, propName)
+      const CURR_ID = addDataProp(componentNode)
 
       const [, props] = p.node.arguments
 
       const prop = config.env ? (
-        t.SpreadElement(t.identifier(`process.env.RESELECTOR === "true" ? {'${propName}': ${concat(
+        t.SpreadElement(t.identifier(`process.env.RESELECTOR === "true" ? {'${NAME}': ${concat(
           id, CURR_ID,
         )}} : {}`))
       ) : (
-        t.ObjectProperty(t.StringLiteral(propName), buildProps({
+        t.ObjectProperty(t.StringLiteral(NAME), buildProps({
           CURR_ID: t.identifier(CURR_ID),
           ID: t.StringLiteral(id),
         }))
@@ -127,12 +125,12 @@ module.exports = () => ({
         name === 'default'
           ? buildDefaultExport({
             ID: t.StringLiteral(id),
-            PROP: t.identifier(TEST_ID),
+            PROP: t.StringLiteral(NAME),
           })
           : build({
             COMPONENT: t.identifier(name),
             ID: t.StringLiteral(id),
-            PROP: t.identifier(TEST_ID),
+            PROP: t.StringLiteral(NAME),
           }),
       )
     },

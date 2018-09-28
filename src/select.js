@@ -2,11 +2,11 @@
 
 const config = require('./config')
 
-const TEST_ID = config.name
+const NAME = config.name
 
 const selectors = {
-  css: value => `[${config.prefix}${TEST_ID}~="${value}"]`,
-  xpath: value => `[@${config.prefix}${TEST_ID}~="${value}"]`,
+  css: value => `[${NAME}~="${value}"]`,
+  xpath: value => `[@${NAME}~="${value}"]`,
 }
 
 const build = selector => (strings, ...values) => (
@@ -18,7 +18,7 @@ const build = selector => (strings, ...values) => (
 
       return acc.concat(
         string,
-        value && value[TEST_ID] ? selector(value[TEST_ID]) : value,
+        value && value[NAME] ? selector(value[NAME]) : value,
       )
     }, '')
     .replace(/\s+/g, ' ')

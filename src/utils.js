@@ -1,24 +1,20 @@
 'use strict'
 
-const path = require('path')
+const t = require('@babel/types')
 const hash = require('string-hash')
+const path = require('path')
 
 const projectPath = process.cwd()
 
-module.exports.getNode = (t, p) => {
-  const { node, parent } = p
+module.exports.getNode = (node) => {
+  const { parent } = node
 
   switch (parent.type) {
     case 'ConditionalExpression':
     case 'LogicalExpression':
     case 'ReturnStatement':
     case 'ArrowFunctionExpression': {
-      const { openingElement } = node
-      const { name } = openingElement.name
-
-      if (!name) return null
-
-      let currentPath = p
+      let currentPath = node
       const prevPaths = []
 
       do {
@@ -43,7 +39,7 @@ module.exports.getNode = (t, p) => {
               currentPath = currentPath.parentPath
             }
 
-            return { rootPath: currentPath, prevPaths, componentNode, openingElement }
+            return { rootPath: currentPath, prevPaths, componentNode }
           }
         }
       } while (currentPath)
@@ -61,3 +57,40 @@ module.exports.getName = ({ rootPath, componentNode }) =>
 
 module.exports.getId = (filename, name) =>
   hash(`${path.relative(projectPath, filename)}:${name}`).toString(16)
+
+/**
+ * Basic React.Fragment check
+ * We can improve it by checking import aliases if needs
+ */
+const isFragment = (element) => {
+  if (t.isIdentifier(element) || t.isJSXIdentifier(element)) {
+    return element.name === 'Fragment'
+  }
+
+  if (t.isMemberExpression(element) || t.isJSXMemberExpression(element)) {
+    return element.object.name === 'React' && element.property.name === 'Fragment'
+  }
+
+  return false
+}
+
+const isReactElement = ({ object, property }) => (
+  object.name === 'React' && property.name === 'createElement'
+)
+
+module.exports.isElement = (p) => {
+  const { callee } = p.node
+  const [element] = p.node.arguments
+
+  return (
+    element
+    && t.isMemberExpression(callee)
+    && isReactElement(callee)
+    && !(isFragment(element))
+  )
+}
+
+Object.assign(module.exports, {
+  isFragment,
+  isReactElement,
+})

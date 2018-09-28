@@ -37,7 +37,7 @@ exports[`babel plugin should find all the types of Components 4`] = `
       data-testid="8e388bfc"
     >
       <button
-        data-testid="8e388bfc"
+        data-testid="dda89e29 8e388bfc"
       />
     </Button>
   </ComposedComponent>
@@ -93,7 +93,7 @@ exports[`babel plugin should find nested Component 1`] = `
                 data-testid="8e388bfc"
               >
                 <button
-                  data-testid="8e388bfc"
+                  data-testid="dda89e29 8e388bfc"
                 />
               </Button>
             </ComposedComponent>
@@ -114,7 +114,7 @@ exports[`babel plugin should find wrapped component 1`] = `
       data-testid="8e388bfc 60d032ee"
     >
       <button
-        data-testid="8e388bfc 60d032ee"
+        data-testid="dda89e29 8e388bfc 60d032ee"
       >
         <div>
           test text
@@ -336,17 +336,22 @@ Object.defineProperty(exports, \\"__esModule\\", {
   value: true
 });
 exports.FunctionalComponent = FunctionalComponent;
-exports.default = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = void 0;
+exports.default = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
 
 var _react = _interopRequireDefault(require(\\"react\\"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
-const Button = props => _react.default.createElement('button', props, props.children);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const Button = props => _react.default.createElement('button', _objectSpread({}, props, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"dda89e29\\" + (props['data-testid'] ? (' ' + props['data-testid']) : '')} : {}), props.children);
 /* eslint-disable no-unused-vars */
 
+
+exports.Button = Button;
+Button.testid = \\"dda89e29\\";
 
 const UnexportComponent = ({
   children,
@@ -395,7 +400,7 @@ ComposedComponent.testid = \\"8e388bfc\\";
 const ComponentWithAttrs = ({
   children,
   'data-testid': __dataprop__
-}) => _react.default.createElement(\\"div\\", _extends({
+}) => _react.default.createElement(\\"div\\", _objectSpread({
   \\"data-test\\": \\"testme\\"
 }, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"889909b2\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}), children);
 
@@ -434,16 +439,24 @@ Object.defineProperty(exports, \\"__esModule\\", {
   value: true
 });
 exports.FunctionalComponent = FunctionalComponent;
-exports.default = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = void 0;
+exports.default = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
 
 var _react = _interopRequireDefault(require(\\"react\\"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable react/prefer-stateless-function */
-const Button = props => _react.default.createElement('button', props, props.children);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const Button = props => _react.default.createElement('button', _objectSpread({}, props, {
+  \\"data-testid\\": \\"dda89e29\\" + (props['data-testid'] ? ' ' + props['data-testid'] : '')
+}), props.children);
 /* eslint-disable no-unused-vars */
 
+
+exports.Button = Button;
+Button.testid = \\"dda89e29\\";
 
 const UnexportComponent = ({
   children,

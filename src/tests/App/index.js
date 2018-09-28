@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const Button = props => React.createElement('button', props, props.children)
+export const Button = props => React.createElement('button', props, props.children)
 
 /* eslint-disable no-unused-vars */
 const UnexportComponent = ({ children }) => <div>{children}</div>

@@ -73,6 +73,7 @@
     "@babel/plugin-syntax-throw-expressions": "7.0.0",
     "@babel/plugin-syntax-typescript": "7.0.0",
     "@babel/template": "7.0.0",
+    "@babel/types": "^7.0.0",
     "cosmiconfig": "4.0.0",
     "string-hash": "1.1.3"
   },

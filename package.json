@@ -70,7 +70,7 @@
     "@babel/plugin-syntax-optional-catch-binding": "7.0.0",
     "@babel/plugin-syntax-optional-chaining": "7.0.0",
     "@babel/plugin-syntax-pipeline-operator": "7.0.0",
-    "@babel/plugin-syntax-throw-expressions": "7.0.0-rc.1",
+    "@babel/plugin-syntax-throw-expressions": "7.0.0",
     "@babel/plugin-syntax-typescript": "7.0.0-rc.1",
     "@babel/template": "7.0.0-rc.1",
     "cosmiconfig": "4.0.0",

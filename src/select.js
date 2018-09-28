@@ -1,7 +1,8 @@
 'use strict'
 
-const { TEST_ID } = require('./const')
 const config = require('./config')
+
+const TEST_ID = config.name
 
 const selectors = {
   css: value => `[${config.prefix}${TEST_ID}~="${value}"]`,

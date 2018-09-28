@@ -59,7 +59,7 @@ exports[`babel plugin should find all the types of Components 6`] = `
 <div>
   <DefaultClass>
     <div
-      data-51b7b868={true}
+      data-testid="51b7b868"
     />
   </DefaultClass>
 </div>
@@ -69,7 +69,7 @@ exports[`babel plugin should find all the types of Components 7`] = `
 <div>
   <DefaultClass>
     <div
-      data-7d3c8cda={true}
+      data-testid="7d3c8cda"
     />
   </DefaultClass>
 </div>
@@ -177,37 +177,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* eslint-disable-next-line no-unused-vars */
 const ternaryRender = ({
   children,
-  flag
+  flag,
+  'data-testid': __dataprop__
 }) => flag ? _react.default.createElement(\\"div\\", {
-  \\"data-96c8a304\\": true
+  \\"data-testid\\": \\"96c8a304\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children) : _react.default.createElement(\\"a\\", {
-  \\"data-96c8a304\\": true
+  \\"data-testid\\": \\"96c8a304\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-disable-next-line no-unused-vars */
 
 
 exports.ternaryRender = ternaryRender;
-ternaryRender.testId = \\"96c8a304\\";
+ternaryRender.testid = \\"96c8a304\\";
 
 const conditionalRender = ({
   children,
-  flag
+  flag,
+  'data-testid': __dataprop__
 }) => flag && _react.default.createElement(\\"div\\", {
-  \\"data-e8ffac7d\\": true
+  \\"data-testid\\": \\"e8ffac7d\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-disable-next-line no-unused-vars */
 
 
 exports.conditionalRender = conditionalRender;
-conditionalRender.testId = \\"e8ffac7d\\";
+conditionalRender.testid = \\"e8ffac7d\\";
 
 const ifRender = ({
   children,
-  flag
+  flag,
+  'data-testid': __dataprop__
 }) => {
   if (flag) {
     return _react.default.createElement(\\"div\\", {
-      \\"data-633adcac\\": true
+      \\"data-testid\\": \\"633adcac\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
     }, children);
   }
 
@@ -215,7 +218,7 @@ const ifRender = ({
 };
 
 exports.ifRender = ifRender;
-ifRender.testId = \\"633adcac\\";"
+ifRender.testid = \\"633adcac\\";"
 `;
 
 exports[`babel plugin transform should transform declared named class in default 1`] = `
@@ -234,13 +237,13 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 class DefaultClass extends _react.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-7d3c8cda\\": true
+      \\"data-testid\\": \\"7d3c8cda\\" + (this.props['data-testid'] ? ' ' + this.props['data-testid'] : '')
     }, this.props.children);
   }
 
 }
 
-DefaultClass.testId = \\"7d3c8cda\\";
+DefaultClass.testid = \\"7d3c8cda\\";
 var _default = DefaultClass;
 exports.default = _default;"
 `;
@@ -287,7 +290,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 class DefaultClass extends _react.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-51b7b868\\": true
+      \\"data-testid\\": \\"51b7b868\\" + (this.props['data-testid'] ? ' ' + this.props['data-testid'] : '')
     }, this.props.children);
   }
 
@@ -296,7 +299,7 @@ class DefaultClass extends _react.Component {
 exports.default = DefaultClass;
 
 if (module.exports) {
-  module.exports.default.testId = \\"51b7b868\\";
+  module.exports.default.testid = \\"51b7b868\\";
 }"
 `;
 

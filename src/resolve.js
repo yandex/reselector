@@ -3,8 +3,9 @@
 const { transformFileSync } = require('@babel/core')
 const { getNode, getId, getName } = require('./utils')
 
-const { TEST_ID } = require('./const')
 const config = require('./config')
+
+const TEST_ID = config.name
 
 const getParser = () => {
   const exports = {}

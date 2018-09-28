@@ -7,6 +7,7 @@ const { config } = (cosmiconfig('reselector', { sync: true }).load() || {})
 module.exports = Object.assign({
   env: false,
   prefix: 'data-',
+  name: 'testid',
   syntaxes: [
     '@babel/plugin-syntax-async-generators',
     '@babel/plugin-syntax-class-properties',

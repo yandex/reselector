@@ -1,6 +1,7 @@
 import { resolveBy, select } from '../'
 import * as app from './App'
-import { TEST_ID } from '../const'
+
+const TEST_ID = 'testid'
 
 const resolve = resolveBy(require.resolve)
 

@@ -4,10 +4,9 @@ const template = require('@babel/template').default
 const hash = require('string-hash')
 
 const config = require('./config')
-const { TEST_ID } = require('./const')
 const { getName, getId, getNode } = require('./utils')
 
-const attributeMap = {}
+const attributeMap = new Set()
 
 const build = template(`
   COMPONENT.PROP = ID
@@ -24,6 +23,11 @@ const concat = (ID, CURR_ID) => (CURR_ID === "''"
   : `"${ID}" + (${CURR_ID} ? (' ' + ${CURR_ID}) : '')`)
 
 const buildProps = template.expression(concat('ID', 'CURR_ID'))
+
+const TEST_ID = config.name
+
+const PROPS_ARG = '__props__'
+const DATAPROP_ARG = '__dataprop__'
 
 module.exports = ({ types: t }) => {
   /**
@@ -42,6 +46,40 @@ module.exports = ({ types: t }) => {
     return false
   }
 
+  const argsMap = new Map()
+
+  const addDataProp = (componentNode, propName) => {
+    if (argsMap.has(componentNode)) {
+      return argsMap.get(componentNode)
+    }
+
+    let CURR_ID = "''"
+
+    if (componentNode.type === 'ClassDeclaration') {
+      CURR_ID = `this.props['${propName}']`
+    } else {
+      const curr = componentNode.init || componentNode.declaration || componentNode
+      const [props] = curr.params
+
+      if (!props) {
+        curr.params.push(t.identifier(PROPS_ARG))
+        CURR_ID = `${PROPS_ARG}['${propName}']`
+      } else if (props.type === 'Identifier') {
+        CURR_ID = `${props.name}['${propName}']`
+      } else {
+        props.properties.push(t.objectProperty(
+          t.identifier(`'${propName}'`),
+          t.identifier(DATAPROP_ARG),
+        ))
+        CURR_ID = DATAPROP_ARG
+      }
+    }
+
+    argsMap.set(componentNode, CURR_ID)
+
+    return CURR_ID
+  }
+
   return ({
     visitor: {
       JSXElement(p, { file }) {
@@ -55,27 +93,7 @@ module.exports = ({ types: t }) => {
 
         const propName = `${config.prefix}${TEST_ID}`
 
-        let CURR_ID = "''"
-
-        if (componentNode.type === 'ClassDeclaration') {
-          CURR_ID = `this.props['${propName}']`
-        } else {
-          const curr = componentNode.init || componentNode.declaration || componentNode
-          const [props] = curr.params
-
-          if (!props) {
-            curr.params.push(t.identifier('__props__'))
-            CURR_ID = `__props__['${propName}']`
-          } else if (props.type === 'Identifier') {
-            CURR_ID = `${props.name}['${propName}']`
-          } else {
-            props.properties.push(t.objectProperty(
-              t.identifier(`'${propName}'`),
-              t.identifier('__dataprop__'),
-            ))
-            CURR_ID = '__dataprop__'
-          }
-        }
+        const CURR_ID = addDataProp(componentNode, propName)
 
         const prop = config.env ? (
           t.jSXSpreadAttribute(
@@ -97,15 +115,15 @@ module.exports = ({ types: t }) => {
         const propMeta = !prop ? 'null' : hash(JSON.stringify(prop))
         const hashId = hash(`${filename}_${name}_${propMeta}`).toString(16)
 
-        if (attributeMap[hashId]) {
-          return
-        }
-
-        attributeMap[hashId] = true
-
         if (process.env.NODE_ENV !== 'test') {
           return
         }
+
+        if (attributeMap.has(hashId)) {
+          return
+        }
+
+        attributeMap.add(hashId)
 
         rootPath.insertAfter(
           name === 'default'

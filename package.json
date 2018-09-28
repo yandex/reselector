@@ -53,7 +53,7 @@
   "dependencies": {
     "@babel/core": "7.1.1",
     "@babel/plugin-syntax-async-generators": "7.0.0",
-    "@babel/plugin-syntax-class-properties": "7.0.0-rc.1",
+    "@babel/plugin-syntax-class-properties": "7.0.0",
     "@babel/plugin-syntax-decorators": "7.0.0-rc.1",
     "@babel/plugin-syntax-do-expressions": "7.0.0-rc.1",
     "@babel/plugin-syntax-dynamic-import": "7.0.0-rc.1",

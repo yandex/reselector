@@ -336,7 +336,7 @@ Object.defineProperty(exports, \\"__esModule\\", {
   value: true
 });
 exports.FunctionalComponent = FunctionalComponent;
-exports.default = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
+exports.default = exports.RenderFunction = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
 
 var _react = _interopRequireDefault(require(\\"react\\"));
 
@@ -416,9 +416,21 @@ const ComposedComponent2 = ({
   children,
   'data-testid': __dataprop__
 }) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"60d032ee\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}, _react.default.createElement(\\"div\\", null, children));
+/**
+ * Tests should not fail
+ */
+
 
 exports.ComposedComponent2 = ComposedComponent2;
 ComposedComponent2[\\"data-testid\\"] = \\"60d032ee\\";
+
+const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", _objectSpread({
+  \\"data-a\\": a,
+  \\"data-b\\": b
+}, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"ca715737\\"} : {}));
+
+exports.RenderFunction = RenderFunction;
+RenderFunction[\\"data-testid\\"] = \\"ca715737\\";
 
 var _default = ({
   children,
@@ -439,7 +451,7 @@ Object.defineProperty(exports, \\"__esModule\\", {
   value: true
 });
 exports.FunctionalComponent = FunctionalComponent;
-exports.default = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
+exports.default = exports.RenderFunction = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
 
 var _react = _interopRequireDefault(require(\\"react\\"));
 
@@ -536,9 +548,22 @@ const ComposedComponent2 = ({
 }) => _react.default.createElement(ComposedComponent, {
   \\"data-testid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, _react.default.createElement(\\"div\\", null, children));
+/**
+ * Tests should not fail
+ */
+
 
 exports.ComposedComponent2 = ComposedComponent2;
 ComposedComponent2[\\"data-testid\\"] = \\"60d032ee\\";
+
+const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", {
+  \\"data-a\\": a,
+  \\"data-b\\": b,
+  \\"data-testid\\": \\"ca715737\\" + ('' ? ' ' + '' : '')
+});
+
+exports.RenderFunction = RenderFunction;
+RenderFunction[\\"data-testid\\"] = \\"ca715737\\";
 
 var _default = ({
   children,

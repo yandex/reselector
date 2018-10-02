@@ -35,6 +35,7 @@ const DATAPROP_ARG = '__dataprop__'
 
 const argsMap = new Map()
 const componentsList = new Set()
+const pathsList = new Set()
 
 const addDataProp = (componentNode) => {
   if (argsMap.has(componentNode)) {
@@ -43,18 +44,33 @@ const addDataProp = (componentNode) => {
 
   let CURR_ID = "''"
 
-  if (componentNode.type === 'ClassDeclaration') {
+  if (t.isClassDeclaration(componentNode)) {
     CURR_ID = `this.props['${NAME}']`
   } else {
     const curr = componentNode.init || componentNode.declaration || componentNode
+
+    if (!curr.params) return CURR_ID
+
     const [props] = curr.params
 
     if (!props) {
+      /**
+       * If there are no arguments, add one
+       */
+
       curr.params.push(t.identifier(PROPS_ARG))
       CURR_ID = `${PROPS_ARG}['${NAME}']`
-    } else if (props.type === 'Identifier') {
+    } else if (t.isIdentifier(props)) {
+      /**
+       * Get the first argument name
+       */
+
       CURR_ID = `${props.name}['${NAME}']`
-    } else {
+    } else if (t.isObjectPattern(props)) {
+      /**
+       * Add property
+       */
+
       props.properties.push(t.objectProperty(
         t.identifier(`'${NAME}'`),
         t.identifier(DATAPROP_ARG),
@@ -79,6 +95,12 @@ module.exports = () => ({
 
       if (!rootPath) return
 
+      if (pathsList.has(p)) {
+        return
+      }
+
+      pathsList.add(p)
+
       const { filename } = file.opts
       const name = getName({ rootPath, componentNode })
       const id = getId(filename, name)
@@ -87,7 +109,7 @@ module.exports = () => ({
 
       const [, props] = p.node.arguments
 
-      const prop = config.env ? (
+      const prop = (config.env && process.env.NODE_ENV === 'test') ? (
         t.SpreadElement(t.identifier(`process.env.RESELECTOR === "true" ? {'${NAME}': ${concat(
           id, CURR_ID,
         )}} : {}`))

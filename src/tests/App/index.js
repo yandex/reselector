@@ -36,4 +36,9 @@ export const ComposedComponent2 = ({ children }) => (
   <ComposedComponent><div>{children}</div></ComposedComponent>
 )
 
+/**
+ * Tests should not fail
+ */
+export const RenderFunction = ([a, b]) => <div data-a={a} data-b={b} />
+
 export default ({ children }) => <div>{children}</div>

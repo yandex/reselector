@@ -27,6 +27,11 @@ const concat = (ID, CURR_ID) => (CURR_ID === "''"
 
 const buildProps = template.expression(concat('ID', 'CURR_ID'))
 
+const buildEnv = template.expression(
+  'process.env.RESELECTOR === "true" ? {"NAME": VALUE} : {}',
+  { placeholderPattern: false, placeholderWhitelist: new Set(['NAME', 'VALUE']) },
+)
+
 const NAME = config.name
 
 const PROPS_ARG = '__props__'
@@ -110,9 +115,12 @@ module.exports = () => ({
       const [, props] = p.node.arguments
 
       const prop = (config.env && process.env.NODE_ENV === 'test') ? (
-        t.SpreadElement(t.identifier(`process.env.RESELECTOR === "true" ? {'${NAME}': ${concat(
-          id, CURR_ID,
-        )}} : {}`))
+        t.SpreadElement(buildEnv({
+          NAME,
+          VALUE: concat(
+            id, CURR_ID,
+          ),
+        }))
       ) : (
         t.ObjectProperty(t.StringLiteral(NAME), buildProps({
           CURR_ID: t.identifier(CURR_ID),

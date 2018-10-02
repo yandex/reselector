@@ -346,7 +346,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const Button = props => _react.default.createElement('button', _objectSpread({}, props, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"dda89e29\\" + (props['data-testid'] ? (' ' + props['data-testid']) : '')} : {}), props.children);
+const Button = props => _react.default.createElement('button', _objectSpread({}, props, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"dda89e29\\" + (props['data-testid'] ? (' ' + props['data-testid']) : '')
+} : {}), props.children);
 /* eslint-disable no-unused-vars */
 
 
@@ -356,7 +358,9 @@ Button[\\"data-testid\\"] = \\"dda89e29\\";
 const UnexportComponent = ({
   children,
   'data-testid': __dataprop__
-}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"c7b7156f\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}, children);
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"c7b7156f\\" + (__dataprop__ ? (' ' + __dataprop__) : '')
+} : {}, children);
 /* eslint-enable no-unused-vars */
 
 
@@ -364,7 +368,9 @@ UnexportComponent[\\"data-testid\\"] = \\"c7b7156f\\";
 
 class ClassComponent extends _react.default.Component {
   render() {
-    return _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"a8f769be\\" + (this.props['data-testid'] ? (' ' + this.props['data-testid']) : '')} : {}, this.props.children);
+    return _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+      \\"data-testid\\": \\"a8f769be\\" + (this.props['data-testid'] ? (' ' + this.props['data-testid']) : '')
+    } : {}, this.props.children);
   }
 
 }
@@ -375,7 +381,9 @@ ClassComponent[\\"data-testid\\"] = \\"a8f769be\\";
 const ArrowFunctionalComponent = ({
   children,
   'data-testid': __dataprop__
-}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"f49764c6\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}, children);
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"f49764c6\\" + (__dataprop__ ? (' ' + __dataprop__) : '')
+} : {}, children);
 
 exports.ArrowFunctionalComponent = ArrowFunctionalComponent;
 ArrowFunctionalComponent[\\"data-testid\\"] = \\"f49764c6\\";
@@ -384,7 +392,9 @@ function FunctionalComponent({
   children,
   'data-testid': __dataprop__
 }) {
-  return _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"b5d7faff\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}, children);
+  return _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
+    \\"data-testid\\": \\"b5d7faff\\" + (__dataprop__ ? (' ' + __dataprop__) : '')
+  } : {}, children);
 }
 
 FunctionalComponent[\\"data-testid\\"] = \\"b5d7faff\\";
@@ -392,7 +402,9 @@ FunctionalComponent[\\"data-testid\\"] = \\"b5d7faff\\";
 const ComposedComponent = ({
   children,
   'data-testid': __dataprop__
-}) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"8e388bfc\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}, children);
+}) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"8e388bfc\\" + (__dataprop__ ? (' ' + __dataprop__) : '')
+} : {}, children);
 
 exports.ComposedComponent = ComposedComponent;
 ComposedComponent[\\"data-testid\\"] = \\"8e388bfc\\";
@@ -402,12 +414,16 @@ const ComponentWithAttrs = ({
   'data-testid': __dataprop__
 }) => _react.default.createElement(\\"div\\", _objectSpread({
   \\"data-test\\": \\"testme\\"
-}, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"889909b2\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}), children);
+}, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"889909b2\\" + (__dataprop__ ? (' ' + __dataprop__) : '')
+} : {}), children);
 
 exports.ComponentWithAttrs = ComponentWithAttrs;
 ComponentWithAttrs[\\"data-testid\\"] = \\"889909b2\\";
 
-const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"5613b2e5\\" + (props['data-testid'] ? (' ' + props['data-testid']) : '')} : {}, props.children);
+const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"5613b2e5\\" + (props['data-testid'] ? (' ' + props['data-testid']) : '')
+} : {}, props.children);
 
 exports.ComponentNoDestructure = ComponentNoDestructure;
 ComponentNoDestructure[\\"data-testid\\"] = \\"5613b2e5\\";
@@ -415,7 +431,9 @@ ComponentNoDestructure[\\"data-testid\\"] = \\"5613b2e5\\";
 const ComposedComponent2 = ({
   children,
   'data-testid': __dataprop__
-}) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"60d032ee\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}, _react.default.createElement(\\"div\\", null, children));
+}) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"60d032ee\\" + (__dataprop__ ? (' ' + __dataprop__) : '')
+} : {}, _react.default.createElement(\\"div\\", null, children));
 /**
  * Tests should not fail
  */
@@ -427,7 +445,9 @@ ComposedComponent2[\\"data-testid\\"] = \\"60d032ee\\";
 const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", _objectSpread({
   \\"data-a\\": a,
   \\"data-b\\": b
-}, process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"ca715737\\"} : {}));
+}, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"ca715737\\"
+} : {}));
 
 exports.RenderFunction = RenderFunction;
 RenderFunction[\\"data-testid\\"] = \\"ca715737\\";
@@ -435,7 +455,9 @@ RenderFunction[\\"data-testid\\"] = \\"ca715737\\";
 var _default = ({
   children,
   'data-testid': __dataprop__
-}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {'data-testid': \\"5f9b51d4\\" + (__dataprop__ ? (' ' + __dataprop__) : '')} : {}, children);
+}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-testid\\": \\"5f9b51d4\\" + (__dataprop__ ? (' ' + __dataprop__) : '')
+} : {}, children);
 
 exports.default = _default;
 

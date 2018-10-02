@@ -346,7 +346,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const Button = props => _react.default.createElement('button', _objectSpread({}, props, process.env.RESELECTOR === \\"true\\" ? {
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+const Button = props => _react.default.createElement('button', _extends({}, props, process.env.RESELECTOR === \\"true\\" ? {
   \\"data-testid\\": \\"dda89e29\\" + (props['data-testid'] ? (' ' + props['data-testid']) : '')
 } : {}), props.children);
 /* eslint-disable no-unused-vars */
@@ -479,11 +481,9 @@ var _react = _interopRequireDefault(require(\\"react\\"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-const Button = props => _react.default.createElement('button', _objectSpread({}, props, {
+const Button = props => _react.default.createElement('button', _extends({}, props, {
   \\"data-testid\\": \\"dda89e29\\" + (props['data-testid'] ? ' ' + props['data-testid'] : '')
 }), props.children);
 /* eslint-disable no-unused-vars */

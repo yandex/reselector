@@ -114,14 +114,29 @@ module.exports = () => ({
 
       const [, props] = p.node.arguments
 
+      let helper
+
+      const spread = (objs) => {
+        if (!helper) {
+          /**
+           * Helper from babel-helper-builder-react-jsx
+           */
+          helper = config.useBuiltIns
+            ? t.memberExpression(t.identifier('Object'), t.identifier('assign'))
+            : file.addHelper('extends')
+        }
+
+        return t.callExpression(helper, [].concat(objs))
+      }
+
       const prop = (config.env && process.env.NODE_ENV === 'test') ? (
         t.SpreadElement(buildEnv({
           NAME,
           VALUE: concat(
             id, CURR_ID,
           ),
-        }))
-      ) : (
+        }),
+        )) : (
         t.ObjectProperty(t.StringLiteral(NAME), buildProps({
           CURR_ID: t.identifier(CURR_ID),
           ID: t.StringLiteral(id),
@@ -130,15 +145,19 @@ module.exports = () => ({
 
       if (t.isObjectExpression(props)) {
         props.properties.push(prop)
-      } else if (t.isNullLiteral(props)) {
-        p.node.arguments[1] = t.isSpreadElement(prop)
-          ? prop.argument
-          : t.ObjectExpression([prop])
-      } else if (t.isIdentifier(props)) {
-        p.node.arguments[1] = t.ObjectExpression([
-          t.SpreadElement(props),
-          prop,
-        ])
+      } else {
+        const arg = t.isObjectProperty(prop)
+          ? t.ObjectExpression([prop])
+          /**
+           * Spread element value
+           */
+          : prop.argument
+
+        if (t.isNullLiteral(props)) {
+          p.node.arguments[1] = arg
+        } else if (t.isIdentifier(props)) {
+          p.node.arguments[1] = spread([t.ObjectExpression([]), props, arg])
+        }
       }
 
       if (process.env.NODE_ENV !== 'test') {

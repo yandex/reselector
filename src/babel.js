@@ -102,7 +102,7 @@ const addDataProp = (componentNode) => {
 module.exports = () => ({
   visitor: {
     CallExpression(p, { file }) {
-      if (!isElement(p)) {
+      if (!isElement(p.node)) {
         return
       }
 

@@ -21,11 +21,21 @@ const buildDefaultExport = template(`
     }
 `)
 
-const concat = (ID, CURR_ID) => (CURR_ID === "''"
-  ? `"${ID}"`
-  : `"${ID}" + (${CURR_ID} ? (' ' + ${CURR_ID}) : '')`)
+const expressions = {
+  id: template.expression("'ID'"),
+  concat: template.expression("'ID' + (CURR_ID ? (' ' + CURR_ID) : '')"),
+}
 
-const buildProps = template.expression(concat('ID', 'CURR_ID'))
+const buildProps = (id, CURR_ID) => {
+  if (CURR_ID === "''") {
+    return expressions.id({ ID: t.StringLiteral(id) })
+  }
+
+  return expressions.concat({
+    ID: t.StringLiteral(id),
+    CURR_ID: t.identifier(CURR_ID),
+  })
+}
 
 const buildEnv = template.expression(
   'process.env.RESELECTOR === "true" ? {"NAME": VALUE} : {}',
@@ -132,15 +142,10 @@ module.exports = () => ({
       const prop = (config.env && process.env.NODE_ENV === 'test') ? (
         t.SpreadElement(buildEnv({
           NAME,
-          VALUE: concat(
-            id, CURR_ID,
-          ),
+          VALUE: buildProps(id, CURR_ID),
         }),
         )) : (
-        t.ObjectProperty(t.StringLiteral(NAME), buildProps({
-          CURR_ID: t.identifier(CURR_ID),
-          ID: t.StringLiteral(id),
-        }))
+        t.ObjectProperty(t.StringLiteral(NAME), buildProps(id, CURR_ID))
       )
 
       if (t.isObjectExpression(props)) {

@@ -122,17 +122,20 @@ describe('babel plugin', () => {
     expect(wrapper.find(selector).hostNodes().length).toBe(1)
   })
 
-  it('should skip React.Fragment', () => {
+  it('should pass props through the React.Fragment', () => {
     const { code } = transformFileSync(require.resolve('./App/reactFragment'))
 
     expect(code).toMatchSnapshot()
 
-    const { A, B } = require('./App/reactFragment')
+    const Fragments = require('./App/reactFragment')
 
-    const wrappers = [mount(<A />), mount(<B />)]
+    Object.values(Fragments).forEach((Component) => {
+      const wrapper = mount(<Component />)
 
-    wrappers.forEach((wrapper) => {
-      expect(wrapper.childAt(0).props()).toEqual({})
+      const selector = select`${Component}`
+
+      expect(wrapper).toMatchSnapshot()
+      expect(wrapper.find(selector).hostNodes().length).toBe(1)
     })
   })
 

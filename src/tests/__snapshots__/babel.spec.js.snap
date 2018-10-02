@@ -125,6 +125,49 @@ exports[`babel plugin should find wrapped component 1`] = `
 </ComposedComponent2>
 `;
 
+exports[`babel plugin should pass props through the React.Fragment 1`] = `
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.B = exports.A = void 0;
+
+var _react = _interopRequireWildcard(require(\\"react\\"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+const A = __props__ => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(\\"div\\", {
+  \\"data-testid\\": \\"4af8dc21\\" + (__props__['data-testid'] ? ' ' + __props__['data-testid'] : '')
+}));
+
+exports.A = A;
+A[\\"data-testid\\"] = \\"4af8dc21\\";
+
+const B = __props__ => _react.default.createElement(_react.Fragment, null, _react.default.createElement(\\"div\\", {
+  \\"data-testid\\": \\"5a8c2cc2\\" + (__props__['data-testid'] ? ' ' + __props__['data-testid'] : '')
+}));
+
+exports.B = B;
+B[\\"data-testid\\"] = \\"5a8c2cc2\\";"
+`;
+
+exports[`babel plugin should pass props through the React.Fragment 2`] = `
+<A>
+  <div
+    data-testid="4af8dc21"
+  />
+</A>
+`;
+
+exports[`babel plugin should pass props through the React.Fragment 3`] = `
+<B>
+  <div
+    data-testid="5a8c2cc2"
+  />
+</B>
+`;
+
 exports[`babel plugin should save Component\`s root attrs 1`] = `
 <ComponentWithAttrs>
   <div
@@ -139,27 +182,6 @@ DOMStringMap {
   "test": "testme",
   "testid": "889909b2",
 }
-`;
-
-exports[`babel plugin should skip React.Fragment 1`] = `
-"\\"use strict\\";
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.B = exports.A = void 0;
-
-var _react = _interopRequireWildcard(require(\\"react\\"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-const A = () => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(\\"div\\", null));
-
-exports.A = A;
-
-const B = () => _react.default.createElement(_react.Fragment, null, _react.default.createElement(\\"div\\", null));
-
-exports.B = B;"
 `;
 
 exports[`babel plugin transform should transform conditionals functions 1`] = `

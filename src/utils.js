@@ -8,7 +8,13 @@ const path = require('path')
  * Basic React.Fragment check
  * We can improve it by checking import aliases if needs
  */
-const isFragment = (element) => {
+const isReactFragment = (node) => {
+  if (t.isJSXFragment(node)) {
+    return true
+  }
+
+  const [element] = node.arguments || []
+
   if (t.isIdentifier(element)) {
     return element.name === 'Fragment'
   }
@@ -21,71 +27,71 @@ const isFragment = (element) => {
 }
 
 const isReactElement = (node) => {
-  if (!t.isMemberExpression(node)) return false
+  if (t.isJSXElement(node)) {
+    return true
+  }
 
-  const { object, property } = node
+  const { callee } = node
+
+  if (!t.isMemberExpression(callee)) return false
+
+  const { object, property } = callee
 
   return object.name === 'React' && property.name === 'createElement'
 }
 
-const isElement = (node) => {
-  if (t.isJSXElement(node)) {
-    return !t.isJSXFragment(node)
-  }
-
-  const { callee } = node
-  const [element] = node.arguments || []
-
-  return element && isReactElement(callee) && !isFragment(element)
-}
+const isElement = node => isReactElement(node) && !isReactFragment(node)
 
 const projectPath = process.cwd()
 
 module.exports.getNode = (p) => {
   const { parent } = p
 
-  switch (parent.type) {
-    case 'ConditionalExpression':
-    case 'LogicalExpression':
-    case 'ReturnStatement':
-    case 'ArrowFunctionExpression': {
-      let currentPath = p
-      const prevPaths = []
-
-      do {
-        prevPaths.push(currentPath)
-        currentPath = currentPath.parentPath
-
-        if (!currentPath) {
-          break
-        }
-
-        let componentNode = currentPath.node
-
-        switch (currentPath.type) {
-          case 'VariableDeclaration': {
-            [componentNode] = currentPath.node.declarations
-          }
-          // falls through
-          case 'ClassDeclaration':
-          case 'ExportDefaultDeclaration':
-          case 'ExportNamedDeclaration':
-          case 'FunctionDeclaration': {
-            if (currentPath.parent.type === 'ExportNamedDeclaration') {
-              prevPaths.push(currentPath)
-              currentPath = currentPath.parentPath
-            }
-
-            return { rootPath: currentPath, prevPaths, componentNode }
-          }
-        }
-
-        if (isElement(componentNode)) {
-          break
-        }
-      } while (currentPath)
-    }
+  if (![
+    isReactFragment,
+    t.isConditionalExpression,
+    t.isLogicalExpression,
+    t.isReturnStatement,
+    t.isArrowFunctionExpression,
+  ].some(f => f(parent))) {
+    return null
   }
+
+  let currentPath = p
+  const prevPaths = []
+
+  do {
+    prevPaths.push(currentPath)
+    currentPath = currentPath.parentPath
+
+    if (!currentPath) {
+      break
+    }
+
+    let componentNode = currentPath.node
+
+    switch (currentPath.type) {
+      case 'VariableDeclaration': {
+        [componentNode] = currentPath.node.declarations
+      }
+      // falls through
+      case 'ClassDeclaration':
+      case 'ExportDefaultDeclaration':
+      case 'ExportNamedDeclaration':
+      case 'FunctionDeclaration': {
+        if (currentPath.parent.type === 'ExportNamedDeclaration') {
+          prevPaths.push(currentPath)
+          currentPath = currentPath.parentPath
+        }
+
+        return { rootPath: currentPath, prevPaths, componentNode }
+      }
+    }
+
+    if (isElement(componentNode)) {
+      break
+    }
+  } while (currentPath)
 
   return null
 }
@@ -100,7 +106,7 @@ module.exports.getId = (filename, name) =>
   hash(`${path.relative(projectPath, filename)}:${name}`).toString(16)
 
 Object.assign(module.exports, {
-  isFragment,
   isElement,
+  isReactFragment,
   isReactElement,
 })

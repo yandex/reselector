@@ -9,6 +9,8 @@ const path = require('path')
  * We can improve it by checking import aliases if needs
  */
 const isReactFragment = (node) => {
+  if (!node) return false
+
   if (t.isJSXFragment(node)) {
     return true
   }
@@ -44,11 +46,14 @@ const isElement = node => isReactElement(node) && !isReactFragment(node)
 
 const projectPath = process.cwd()
 
-module.exports.getNode = (p) => {
+const getNode = (p) => {
   const { parent } = p
 
+  if (isReactFragment(parent)) {
+    return getNode(p.parentPath)
+  }
+
   if (![
-    isReactFragment,
     t.isConditionalExpression,
     t.isLogicalExpression,
     t.isReturnStatement,
@@ -96,17 +101,20 @@ module.exports.getNode = (p) => {
   return null
 }
 
-module.exports.getName = ({ rootPath, componentNode }) =>
+const getName = ({ rootPath, componentNode }) =>
   (rootPath.type === 'ExportDefaultDeclaration' ||
   rootPath.parent.type === 'ExportDefaultDeclaration'
     ? 'default'
     : componentNode.id.name)
 
-module.exports.getId = (filename, name) =>
+const getId = (filename, name) =>
   hash(`${path.relative(projectPath, filename)}:${name}`).toString(16)
 
-Object.assign(module.exports, {
+module.exports = {
+  getNode,
+  getName,
+  getId,
   isElement,
   isReactFragment,
   isReactElement,
-})
+}

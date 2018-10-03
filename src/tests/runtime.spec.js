@@ -19,4 +19,10 @@ describe('runtime', () => {
 
     expect(select`${UnexportComponent}`).toMatchSnapshot()
   })
+
+  it('should throw an error for undefined component', () => {
+    const { UndefinedComponent } = resolve('./App')
+
+    expect(() => select`${UndefinedComponent}`).toThrowErrorMatchingSnapshot()
+  })
 })

@@ -14,7 +14,13 @@ const build = selector => (strings, ...values) => (
     .reduce((acc, string, i) => {
       const value = values[i]
 
-      if (value === undefined) return acc.concat(string)
+      if (value === undefined) {
+        if (i < strings.length - 1) {
+          throw new Error("Reselector: you can't use undefined value in select")
+        }
+
+        return acc.concat(string)
+      }
 
       return acc.concat(
         string,

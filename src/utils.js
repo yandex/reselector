@@ -53,7 +53,7 @@ const getNode = (p) => {
     return getNode(p.parentPath)
   }
 
-  let isFunction = false
+  let isComponent = false
 
   if (![
     t.isConditionalExpression,
@@ -68,9 +68,10 @@ const getNode = (p) => {
   const prevPaths = []
 
   do {
-    isFunction = isFunction || (
+    isComponent = isComponent || (
       t.isArrowFunctionExpression(currentPath.node)
       || t.isFunctionExpression(currentPath.node)
+      || t.isClassExpression(currentPath.node)
     )
 
     prevPaths.push(currentPath)
@@ -86,7 +87,7 @@ const getNode = (p) => {
       case 'VariableDeclaration': {
         [componentNode] = currentPath.node.declarations
 
-        if (!isFunction) {
+        if (!isComponent) {
           break
         }
       }

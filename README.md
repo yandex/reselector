@@ -178,6 +178,10 @@ For example:
 module.exports = {env: true}
 ```
 
+### envName
+
+{**string** = `process.env.BABEL_ENV || process.env.NODE_ENV || 'development'`}
+
 ### syntaxes
 
 {**string[]**} By default, this plugin works with these syntax list:

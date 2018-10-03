@@ -139,7 +139,7 @@ module.exports = () => ({
         return t.callExpression(helper, [].concat(objs))
       }
 
-      const prop = (config.env && process.env.NODE_ENV === 'test') ? (
+      const prop = (config.env && config.envName === 'test') ? (
         t.SpreadElement(buildEnv({
           NAME,
           VALUE: buildProps(id, CURR_ID),
@@ -165,7 +165,7 @@ module.exports = () => ({
         }
       }
 
-      if (process.env.NODE_ENV !== 'test') {
+      if (config.envName !== 'test') {
         return
       }
 

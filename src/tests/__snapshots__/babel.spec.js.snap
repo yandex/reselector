@@ -75,6 +75,17 @@ exports[`babel plugin should find all the types of Components 7`] = `
 </div>
 `;
 
+exports[`babel plugin should find all the types of Components 8`] = `
+<div>
+  <SpreadPropsComponent>
+    <div
+      data-disabled={true}
+      data-testid="6da2cdef"
+    />
+  </SpreadPropsComponent>
+</div>
+`;
+
 exports[`babel plugin should find nested Component 1`] = `
 <ClassComponent>
   <div
@@ -358,11 +369,15 @@ Object.defineProperty(exports, \\"__esModule\\", {
   value: true
 });
 exports.FunctionalComponent = FunctionalComponent;
-exports.default = exports.RenderFunction = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
+exports.default = exports.SpreadPropsComponent = exports.RenderFunction = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
 
 var _react = _interopRequireDefault(require(\\"react\\"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -476,6 +491,22 @@ const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", _obje
 exports.RenderFunction = RenderFunction;
 RenderFunction[\\"data-testid\\"] = \\"ca715737\\";
 
+const SpreadPropsComponent = (_ref) => {
+  let {
+    children
+  } = _ref,
+      props = _objectWithoutProperties(_ref, [\\"children\\"]);
+
+  return _react.default.createElement(\\"div\\", _extends({}, props, _objectSpread({
+    \\"data-disabled\\": true
+  }, process.env.RESELECTOR === \\"true\\" ? {
+    \\"data-testid\\": \\"6da2cdef\\" + (_ref && _ref['data-testid'] ? ' ' + _ref['data-testid'] : '')
+  } : {})), children);
+};
+
+exports.SpreadPropsComponent = SpreadPropsComponent;
+SpreadPropsComponent[\\"data-testid\\"] = \\"6da2cdef\\";
+
 var _default = ({
   children,
   'data-testid': __dataprop__
@@ -497,11 +528,15 @@ Object.defineProperty(exports, \\"__esModule\\", {
   value: true
 });
 exports.FunctionalComponent = FunctionalComponent;
-exports.default = exports.RenderFunction = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
+exports.default = exports.SpreadPropsComponent = exports.RenderFunction = exports.ComposedComponent2 = exports.ComponentNoDestructure = exports.ComponentWithAttrs = exports.ComposedComponent = exports.ArrowFunctionalComponent = exports.ClassComponent = exports.Button = void 0;
 
 var _react = _interopRequireDefault(require(\\"react\\"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -608,6 +643,21 @@ const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", {
 
 exports.RenderFunction = RenderFunction;
 RenderFunction[\\"data-testid\\"] = \\"ca715737\\";
+
+const SpreadPropsComponent = (_ref) => {
+  let {
+    children
+  } = _ref,
+      props = _objectWithoutProperties(_ref, [\\"children\\"]);
+
+  return _react.default.createElement(\\"div\\", _extends({}, props, {
+    \\"data-disabled\\": true,
+    \\"data-testid\\": \\"6da2cdef\\" + (_ref && _ref['data-testid'] ? ' ' + _ref['data-testid'] : '')
+  }), children);
+};
+
+exports.SpreadPropsComponent = SpreadPropsComponent;
+SpreadPropsComponent[\\"data-testid\\"] = \\"6da2cdef\\";
 
 var _default = ({
   children,

@@ -111,6 +111,10 @@ const addDataProp = (componentNode) => {
   return argsMap.get(componentNode)
 }
 
+const isExtended = props => (
+  t.isCallExpression(props) && (props.callee.name === '_extends' || props.callee.name === '_objectSpread')
+)
+
 module.exports = () => ({
   visitor: {
     CallExpression(p, { file }) {
@@ -162,6 +166,8 @@ module.exports = () => ({
 
       if (t.isObjectExpression(props)) {
         props.properties.push(prop)
+      } if (isExtended(props)) {
+        props.arguments[props.arguments.length - 1].properties.push(prop)
       } else {
         const arg = t.isObjectProperty(prop)
           ? t.ObjectExpression([prop])

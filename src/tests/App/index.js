@@ -41,4 +41,8 @@ export const ComposedComponent2 = ({ children }) => (
  */
 export const RenderFunction = ([a, b]) => <div data-a={a} data-b={b} />
 
+export const SpreadPropsComponent = ({ children, ...props }) => (
+  <div {...props} data-disabled>{children}</div>
+)
+
 export default ({ children }) => <div>{children}</div>

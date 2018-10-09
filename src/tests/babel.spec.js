@@ -9,6 +9,7 @@ import {
   ComposedComponent,
   ComposedComponent2,
   ComponentWithAttrs,
+  SpreadPropsComponent,
 } from './App'
 import defaultNamedClassComponent from './App/defaultNamedClassExport'
 import defaultDeclaredNamedClassComponent from './App/defaultDeclaredNamedClassExport'
@@ -80,6 +81,7 @@ describe('babel plugin', () => {
       ComponentWithAttrs,
       defaultNamedClassComponent,
       defaultDeclaredNamedClassComponent,
+      SpreadPropsComponent,
     ]
 
     components.forEach((Component) => {

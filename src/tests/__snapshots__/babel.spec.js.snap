@@ -497,11 +497,11 @@ const SpreadPropsComponent = (_ref) => {
   } = _ref,
       props = _objectWithoutProperties(_ref, [\\"children\\"]);
 
-  return _react.default.createElement(\\"div\\", _extends({}, props, _objectSpread({
+  return _react.default.createElement(\\"div\\", _extends({}, props, {
     \\"data-disabled\\": true
   }, process.env.RESELECTOR === \\"true\\" ? {
     \\"data-testid\\": \\"6da2cdef\\" + (_ref && _ref['data-testid'] ? ' ' + _ref['data-testid'] : '')
-  } : {})), children);
+  } : {}), children);
 };
 
 exports.SpreadPropsComponent = SpreadPropsComponent;
@@ -651,7 +651,8 @@ const SpreadPropsComponent = (_ref) => {
       props = _objectWithoutProperties(_ref, [\\"children\\"]);
 
   return _react.default.createElement(\\"div\\", _extends({}, props, {
-    \\"data-disabled\\": true,
+    \\"data-disabled\\": true
+  }, {
     \\"data-testid\\": \\"6da2cdef\\" + (_ref && _ref['data-testid'] ? ' ' + _ref['data-testid'] : '')
   }), children);
 };

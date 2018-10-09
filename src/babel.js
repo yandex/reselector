@@ -166,7 +166,7 @@ module.exports = () => ({
 
       if (t.isObjectExpression(props)) {
         props.properties.push(prop)
-      } if (isExtended(props)) {
+      } else if (isExtended(props)) {
         props.arguments[props.arguments.length - 1].properties.push(prop)
       } else {
         const arg = t.isObjectProperty(prop)
@@ -178,7 +178,7 @@ module.exports = () => ({
 
         if (t.isNullLiteral(props)) {
           p.node.arguments[1] = arg
-        } else if (t.isIdentifier(props)) {
+        } else {
           p.node.arguments[1] = spread([t.ObjectExpression([]), props, arg])
         }
       }

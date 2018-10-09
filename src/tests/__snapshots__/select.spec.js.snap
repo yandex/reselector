@@ -2,6 +2,6 @@
 
 exports[`select should build css selector 1`] = `"[data-testid~=\\"30d26c9a\\"] > [data-testid~=\\"ffe55b71\\"]"`;
 
-exports[`select should build xpath selector 1`] = `"//*[@data-testid~=\\"30d26c9a\\"]/[@data-testid~=\\"ffe55b71\\"]"`;
+exports[`select should build xpath selector 1`] = `"//*[contains(@data-testid, '30d26c9a')]/[contains(@data-testid, 'ffe55b71')]"`;
 
 exports[`select should work with variables 1`] = `"[data-testid~=\\"30d26c9a\\"] > [data-testid~=\\"ffe55b71\\"]:nth-child(0)"`;

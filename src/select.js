@@ -6,7 +6,7 @@ const NAME = config.name
 
 const selectors = {
   css: value => `[${NAME}~="${value}"]`,
-  xpath: value => `[@${NAME}~="${value}"]`,
+  xpath: value => `[contains(@${NAME}, '${value}')]`,
 }
 
 const build = selector => (strings, ...values) => (

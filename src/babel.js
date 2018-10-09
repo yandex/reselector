@@ -23,16 +23,21 @@ const buildDefaultExport = template(`
 
 const expressions = {
   id: template.expression("'ID'"),
-  concat: template.expression("'ID' + (CURR_ID ? (' ' + CURR_ID) : '')"),
+  concat: template.expression("'ID' + (COND ? (' ' + CURR_ID) : '')"),
 }
 
-const buildProps = (id, CURR_ID) => {
-  if (CURR_ID === "''") {
+const buildProps = (id, { ARG, CURR_ID }) => {
+  if (!CURR_ID) {
     return expressions.id({ ID: t.StringLiteral(id) })
   }
 
+  const COND = ARG
+    ? t.logicalExpression('&&', t.identifier(ARG), t.identifier(CURR_ID))
+    : t.identifier(CURR_ID)
+
   return expressions.concat({
     ID: t.StringLiteral(id),
+    COND,
     CURR_ID: t.identifier(CURR_ID),
   })
 }
@@ -57,14 +62,19 @@ const addDataProp = (componentNode) => {
     return argsMap.get(componentNode)
   }
 
-  let CURR_ID = "''"
+  let ARG = ''
+  let CURR_ID = ''
 
   if (t.isClassDeclaration(componentNode)) {
-    CURR_ID = `this.props['${NAME}']`
+    ARG = 'this.props'
+    CURR_ID = `${ARG}['${NAME}']`
   } else {
     const curr = componentNode.init || componentNode.declaration || componentNode
 
-    if (!curr.params) return CURR_ID
+    if (!curr.params) {
+      argsMap.set(componentNode, { CURR_ID })
+      return argsMap.get(componentNode)
+    }
 
     const [props] = curr.params
 
@@ -74,13 +84,15 @@ const addDataProp = (componentNode) => {
        */
 
       curr.params.push(t.identifier(PROPS_ARG))
-      CURR_ID = `${PROPS_ARG}['${NAME}']`
+      ARG = PROPS_ARG
+      CURR_ID = `${ARG}['${NAME}']`
     } else if (t.isIdentifier(props)) {
       /**
        * Get the first argument name
        */
 
-      CURR_ID = `${props.name}['${NAME}']`
+      ARG = props.name
+      CURR_ID = `${ARG}['${NAME}']`
     } else if (t.isObjectPattern(props)) {
       /**
        * Add property
@@ -94,9 +106,9 @@ const addDataProp = (componentNode) => {
     }
   }
 
-  argsMap.set(componentNode, CURR_ID)
+  argsMap.set(componentNode, { ARG, CURR_ID })
 
-  return CURR_ID
+  return argsMap.get(componentNode)
 }
 
 module.exports = () => ({
@@ -120,8 +132,6 @@ module.exports = () => ({
       const name = getName({ rootPath, componentNode })
       const id = getId(filename, name)
 
-      const CURR_ID = addDataProp(componentNode)
-
       const [, props] = p.node.arguments
 
       let helper
@@ -139,13 +149,15 @@ module.exports = () => ({
         return t.callExpression(helper, [].concat(objs))
       }
 
+      const VALUE = buildProps(id, addDataProp(componentNode))
+
       const prop = (config.env && config.envName === 'test') ? (
         t.SpreadElement(buildEnv({
           NAME,
-          VALUE: buildProps(id, CURR_ID),
+          VALUE,
         }),
         )) : (
-        t.ObjectProperty(t.StringLiteral(NAME), buildProps(id, CURR_ID))
+        t.ObjectProperty(t.StringLiteral(NAME), VALUE)
       )
 
       if (t.isObjectExpression(props)) {

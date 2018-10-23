@@ -98,11 +98,18 @@ const addDataProp = (componentNode) => {
        * Add property
        */
 
-      props.properties.push(t.objectProperty(
-        t.identifier(`'${NAME}'`),
-        t.identifier(DATAPROP_ARG),
-      ))
-      CURR_ID = DATAPROP_ARG
+      const restProps = props.properties.find(p => t.isRestElement(p))
+
+      if (restProps) {
+        ARG = restProps.argument.name
+        CURR_ID = `${ARG}['${NAME}']`
+      } else {
+        props.properties.push(t.objectProperty(
+          t.identifier(`'${NAME}'`),
+          t.identifier(DATAPROP_ARG),
+        ))
+        CURR_ID = DATAPROP_ARG
+      }
     }
   }
 

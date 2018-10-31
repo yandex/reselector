@@ -9,6 +9,7 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'no-plusplus': 'off',
     'default-case': 'off',
+    'no-param-reassign': 'off',
   },
 
   parserOptions: {

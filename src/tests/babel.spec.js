@@ -7,7 +7,9 @@ import {
   ArrowFunctionalComponent,
   FunctionalComponent,
   ComposedComponent,
+  ComposedComponent2,
   ComponentWithAttrs,
+  SpreadPropsComponent,
 } from './App'
 import defaultNamedClassComponent from './App/defaultNamedClassExport'
 import defaultDeclaredNamedClassComponent from './App/defaultDeclaredNamedClassExport'
@@ -79,6 +81,7 @@ describe('babel plugin', () => {
       ComponentWithAttrs,
       defaultNamedClassComponent,
       defaultDeclaredNamedClassComponent,
+      SpreadPropsComponent,
     ]
 
     components.forEach((Component) => {
@@ -121,17 +124,27 @@ describe('babel plugin', () => {
     expect(wrapper.find(selector).hostNodes().length).toBe(1)
   })
 
-  it('should skip React.Fragment', () => {
+  it('should pass props through the React.Fragment', () => {
     const { code } = transformFileSync(require.resolve('./App/reactFragment'))
 
     expect(code).toMatchSnapshot()
 
-    const { A, B } = require('./App/reactFragment')
+    const Fragments = require('./App/reactFragment')
 
-    const wrappers = [mount(<A />), mount(<B />)]
+    Object.values(Fragments).forEach((Component) => {
+      const wrapper = mount(<Component />)
 
-    wrappers.forEach((wrapper) => {
-      expect(wrapper.childAt(0).props()).toEqual({})
+      const selector = select`${Component}`
+
+      expect(wrapper).toMatchSnapshot()
+      expect(wrapper.find(selector).hostNodes().length).toBe(1)
     })
+  })
+
+  it('should find wrapped component', () => {
+    const text = 'test text'
+    const wrapper = mount(<ComposedComponent2>{text}</ComposedComponent2>)
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.find(select`${ComposedComponent2}`).hostNodes().text()).toBe(text)
   })
 })

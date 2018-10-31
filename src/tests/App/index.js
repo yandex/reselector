@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const Button = props => React.createElement('button', props, props.children)
+export const Button = props => React.createElement('button', props, props.children)
 
 /* eslint-disable no-unused-vars */
 const UnexportComponent = ({ children }) => <div>{children}</div>
@@ -26,6 +26,23 @@ export const ComposedComponent = ({ children }) => <Button>{children}</Button>
 
 export const ComponentWithAttrs = ({ children }) => (
   <div data-test="testme">{children}</div>
+)
+
+export const ComponentNoDestructure = props => (
+  <p>{props.children}</p>
+)
+
+export const ComposedComponent2 = ({ children }) => (
+  <ComposedComponent><div>{children}</div></ComposedComponent>
+)
+
+/**
+ * Tests should not fail
+ */
+export const RenderFunction = ([a, b]) => <div data-a={a} data-b={b} />
+
+export const SpreadPropsComponent = ({ children, ...props }) => (
+  <div {...props} data-disabled>{children}</div>
 )
 
 export default ({ children }) => <div>{children}</div>

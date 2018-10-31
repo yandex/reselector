@@ -1,90 +1,217 @@
 'use strict'
 
 const template = require('@babel/template').default
-const hash = require('string-hash')
+const t = require('@babel/types')
 
 const config = require('./config')
-const { TEST_ID } = require('./const')
-const { getName, getId, getNode } = require('./utils')
-
-const attributeMap = {}
+const {
+  getName,
+  getId,
+  getNode,
+  isElement,
+} = require('./utils')
 
 const build = template(`
-  COMPONENT.PROP = ID
+  COMPONENT["PROP"] = ID
 `)
 
 const buildDefaultExport = template(`
     if (module.exports) {
-      module.exports.default.PROP = ID
+      module.exports.default["PROP"] = ID
     }
 `)
 
-module.exports = ({ types: t }) => {
-  /**
-   * Basic React.Fragment check
-   * We can improve it by checking import aliases if needs
-   */
-  const isFragment = ({ name }) => {
-    if (t.isJSXIdentifier(name)) {
-      return name.name === 'Fragment'
-    }
+const expressions = {
+  id: template.expression("'ID'"),
+  concat: template.expression("'ID' + (COND ? (' ' + CURR_ID) : '')"),
+}
 
-    if (t.isJSXMemberExpression(name)) {
-      return name.name === 'React' && name.property.name === 'Fragment'
-    }
-
-    return false
+const buildProps = (id, { ARG, CURR_ID }) => {
+  if (!CURR_ID) {
+    return expressions.id({ ID: t.StringLiteral(id) })
   }
 
-  return ({
-    visitor: {
-      JSXElement(p, { file }) {
-        const { openingElement, rootPath, componentNode } = getNode(t, p) || {}
+  const COND = ARG
+    ? t.logicalExpression('&&', t.identifier(ARG), t.identifier(CURR_ID))
+    : t.identifier(CURR_ID)
 
-        if (!openingElement || isFragment(openingElement)) return
-
-        const { filename } = file.opts
-        const name = getName({ rootPath, componentNode })
-        const id = getId(filename, name)
-
-        const propName = `${config.prefix}${id}`
-
-        const prop = config.env ? (
-          t.jSXSpreadAttribute(
-            t.identifier(`process.env.RESELECTOR === "true" ? {'${propName}': true} : {}`),
-          )
-        ) : (
-          t.JSXAttribute(t.JSXIdentifier(propName))
-        )
-
-        openingElement.attributes.push(prop)
-
-        const propMeta = !prop ? 'null' : hash(JSON.stringify(prop))
-        const hashId = hash(`${filename}_${name}_${propMeta}`).toString(16)
-
-        if (attributeMap[hashId]) {
-          return
-        }
-
-        attributeMap[hashId] = true
-
-        if (process.env.NODE_ENV !== 'test') {
-          return
-        }
-
-        rootPath.insertAfter(
-          name === 'default'
-            ? buildDefaultExport({
-              ID: t.StringLiteral(id),
-              PROP: t.identifier(TEST_ID),
-            })
-            : build({
-              COMPONENT: t.identifier(name),
-              ID: t.StringLiteral(id),
-              PROP: t.identifier(TEST_ID),
-            }),
-        )
-      },
-    },
+  return expressions.concat({
+    ID: t.StringLiteral(id),
+    COND,
+    CURR_ID: t.identifier(CURR_ID),
   })
 }
+
+const buildEnv = template.expression(
+  'process.env.RESELECTOR === "true" ? {"NAME": VALUE} : {}',
+  { placeholderPattern: false, placeholderWhitelist: new Set(['NAME', 'VALUE']) },
+)
+
+const NAME = config.name
+
+const PROPS_ARG = '__props__'
+const DATAPROP_ARG = '__dataprop__'
+
+
+const argsMap = new Map()
+const componentsList = new Set()
+const pathsList = new Set()
+
+const addDataProp = (componentNode) => {
+  if (argsMap.has(componentNode)) {
+    return argsMap.get(componentNode)
+  }
+
+  let ARG = ''
+  let CURR_ID = ''
+
+  if (t.isClassDeclaration(componentNode)) {
+    ARG = 'this.props'
+    CURR_ID = `${ARG}['${NAME}']`
+  } else {
+    const curr = componentNode.init || componentNode.declaration || componentNode
+
+    if (!curr.params) {
+      argsMap.set(componentNode, { CURR_ID })
+      return argsMap.get(componentNode)
+    }
+
+    const [props] = curr.params
+
+    if (!props) {
+      /**
+       * If there are no arguments, add one
+       */
+
+      curr.params.push(t.identifier(PROPS_ARG))
+      ARG = PROPS_ARG
+      CURR_ID = `${ARG}['${NAME}']`
+    } else if (t.isIdentifier(props)) {
+      /**
+       * Get the first argument name
+       */
+
+      ARG = props.name
+      CURR_ID = `${ARG}['${NAME}']`
+    } else if (t.isObjectPattern(props)) {
+      /**
+       * Add property
+       */
+
+      const restProps = props.properties.find(p => t.isRestElement(p))
+
+      if (restProps) {
+        ARG = restProps.argument.name
+        CURR_ID = `${ARG}['${NAME}']`
+      } else {
+        props.properties.push(t.objectProperty(
+          t.identifier(`'${NAME}'`),
+          t.identifier(DATAPROP_ARG),
+        ))
+        CURR_ID = DATAPROP_ARG
+      }
+    }
+  }
+
+  argsMap.set(componentNode, { ARG, CURR_ID })
+
+  return argsMap.get(componentNode)
+}
+
+const isExtended = props => (
+  t.isCallExpression(props) && (props.callee.name === '_extends' || props.callee.name === '_objectSpread')
+)
+
+module.exports = () => ({
+  visitor: {
+    CallExpression(p, { file }) {
+      if (!isElement(p.node)) {
+        return
+      }
+
+      const { rootPath, componentNode } = getNode(p) || {}
+
+      if (!rootPath) return
+
+      if (pathsList.has(p)) {
+        return
+      }
+
+      pathsList.add(p)
+
+      const { filename } = file.opts
+      const name = getName({ rootPath, componentNode })
+      const id = getId(filename, name)
+
+      const [, props] = p.node.arguments
+
+      let helper
+
+      const spread = (objs) => {
+        if (!helper) {
+          /**
+           * Helper from babel-helper-builder-react-jsx
+           */
+          helper = config.useBuiltIns
+            ? t.memberExpression(t.identifier('Object'), t.identifier('assign'))
+            : file.addHelper('extends')
+        }
+
+        return t.callExpression(helper, [].concat(objs))
+      }
+
+      const VALUE = buildProps(id, addDataProp(componentNode))
+
+      const prop = (config.env && config.envName === 'test') ? (
+        t.SpreadElement(buildEnv({
+          NAME,
+          VALUE,
+        }),
+        )) : (
+        t.ObjectProperty(t.StringLiteral(NAME), VALUE)
+      )
+
+      if (t.isObjectExpression(props)) {
+        props.properties.push(prop)
+      } else {
+        const arg = t.isObjectProperty(prop)
+          ? t.ObjectExpression([prop])
+          /**
+           * Spread element value
+           */
+          : prop.argument
+
+        if (isExtended(props)) {
+          props.arguments.push(arg)
+        } else if (t.isNullLiteral(props)) {
+          p.node.arguments[1] = arg
+        } else {
+          p.node.arguments[1] = spread([t.ObjectExpression([]), props, arg])
+        }
+      }
+
+      if (config.envName !== 'test') {
+        return
+      }
+
+      if (componentsList.has(componentNode)) {
+        return
+      }
+
+      componentsList.add(componentNode)
+
+      rootPath.insertAfter(
+        name === 'default'
+          ? buildDefaultExport({
+            ID: t.StringLiteral(id),
+            PROP: t.StringLiteral(NAME),
+          })
+          : build({
+            COMPONENT: t.identifier(name),
+            ID: t.StringLiteral(id),
+            PROP: t.StringLiteral(NAME),
+          }),
+      )
+    },
+  },
+})

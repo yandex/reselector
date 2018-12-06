@@ -48,6 +48,7 @@ const buildEnv = template.expression(
 )
 
 const NAME = config.name
+const PROP_NAME = `${NAME}-prop`
 
 const PROPS_ARG = '__props__'
 const DATAPROP_ARG = '__dataprop__'
@@ -67,7 +68,7 @@ const addDataProp = (componentNode) => {
 
   if (t.isClassDeclaration(componentNode)) {
     ARG = 'this.props'
-    CURR_ID = `${ARG}['${NAME}']`
+    CURR_ID = `${ARG}['${PROP_NAME}']`
   } else {
     const curr = componentNode.init || componentNode.declaration || componentNode
 
@@ -85,14 +86,14 @@ const addDataProp = (componentNode) => {
 
       curr.params.push(t.identifier(PROPS_ARG))
       ARG = PROPS_ARG
-      CURR_ID = `${ARG}['${NAME}']`
+      CURR_ID = `${ARG}['${PROP_NAME}']`
     } else if (t.isIdentifier(props)) {
       /**
        * Get the first argument name
        */
 
       ARG = props.name
-      CURR_ID = `${ARG}['${NAME}']`
+      CURR_ID = `${ARG}['${PROP_NAME}']`
     } else if (t.isObjectPattern(props)) {
       /**
        * Add property
@@ -102,10 +103,10 @@ const addDataProp = (componentNode) => {
 
       if (restProps) {
         ARG = restProps.argument.name
-        CURR_ID = `${ARG}['${NAME}']`
+        CURR_ID = `${ARG}['${PROP_NAME}']`
       } else {
         props.properties.push(t.objectProperty(
-          t.identifier(`'${NAME}'`),
+          t.identifier(`'${PROP_NAME}'`),
           t.identifier(DATAPROP_ARG),
         ))
         CURR_ID = DATAPROP_ARG
@@ -143,7 +144,9 @@ module.exports = () => ({
       const name = getName({ rootPath, componentNode })
       const id = getId(filename, name)
 
-      const [, props] = p.node.arguments
+      const [elementName, props] = p.node.arguments
+
+      const isTag = t.isStringLiteral(elementName)
 
       let helper
 
@@ -162,13 +165,15 @@ module.exports = () => ({
 
       const VALUE = buildProps(id, addDataProp(componentNode))
 
+      const propName = isTag ? NAME : PROP_NAME
+
       const prop = (config.env && config.envName === 'test') ? (
         t.SpreadElement(buildEnv({
-          NAME,
+          NAME: propName,
           VALUE,
         }),
         )) : (
-        t.ObjectProperty(t.StringLiteral(NAME), VALUE)
+        t.ObjectProperty(t.StringLiteral(propName), VALUE)
       )
 
       if (t.isObjectExpression(props)) {

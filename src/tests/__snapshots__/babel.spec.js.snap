@@ -149,14 +149,14 @@ var _react = _interopRequireWildcard(require(\\"react\\"));
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 const A = __props__ => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(\\"div\\", {
-  \\"data-testid\\": \\"4af8dc21\\" + (__props__ && __props__['data-testid'] ? ' ' + __props__['data-testid'] : '')
+  \\"data-testid\\": \\"4af8dc21\\" + (__props__ && __props__['data-testid-prop'] ? ' ' + __props__['data-testid-prop'] : '')
 }));
 
 exports.A = A;
 A[\\"data-testid\\"] = \\"4af8dc21\\";
 
 const B = __props__ => _react.default.createElement(_react.Fragment, null, _react.default.createElement(\\"div\\", {
-  \\"data-testid\\": \\"5a8c2cc2\\" + (__props__ && __props__['data-testid'] ? ' ' + __props__['data-testid'] : '')
+  \\"data-testid\\": \\"5a8c2cc2\\" + (__props__ && __props__['data-testid-prop'] ? ' ' + __props__['data-testid-prop'] : '')
 }));
 
 exports.B = B;
@@ -211,7 +211,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const ternaryRender = ({
   children,
   flag,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => flag ? _react.default.createElement(\\"div\\", {
   \\"data-testid\\": \\"96c8a304\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children) : _react.default.createElement(\\"a\\", {
@@ -226,7 +226,7 @@ ternaryRender[\\"data-testid\\"] = \\"96c8a304\\";
 const conditionalRender = ({
   children,
   flag,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => flag && _react.default.createElement(\\"div\\", {
   \\"data-testid\\": \\"e8ffac7d\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
@@ -239,7 +239,7 @@ conditionalRender[\\"data-testid\\"] = \\"e8ffac7d\\";
 const ifRender = ({
   children,
   flag,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => {
   if (flag) {
     return _react.default.createElement(\\"div\\", {
@@ -270,7 +270,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 class DefaultClass extends _react.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-testid\\": \\"7d3c8cda\\" + (this.props && this.props['data-testid'] ? ' ' + this.props['data-testid'] : '')
+      \\"data-testid\\": \\"7d3c8cda\\" + (this.props && this.props['data-testid-prop'] ? ' ' + this.props['data-testid-prop'] : '')
     }, this.props.children);
   }
 
@@ -295,7 +295,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _default({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"div\\", {
     \\"data-testid\\": \\"65353e34\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
@@ -323,7 +323,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 class DefaultClass extends _react.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-testid\\": \\"51b7b868\\" + (this.props && this.props['data-testid'] ? ' ' + this.props['data-testid'] : '')
+      \\"data-testid\\": \\"51b7b868\\" + (this.props && this.props['data-testid-prop'] ? ' ' + this.props['data-testid-prop'] : '')
     }, this.props.children);
   }
 
@@ -350,7 +350,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function NamedFunc({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"div\\", {
     \\"data-testid\\": \\"e7f23ea4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
@@ -378,7 +378,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 const Button = props => _react.default.createElement('button', _extends({}, props, process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-testid\\": \\"dda89e29\\" + (props && props['data-testid'] ? ' ' + props['data-testid'] : '')
+  \\"data-testid\\": \\"dda89e29\\" + (props && props['data-testid-prop'] ? ' ' + props['data-testid-prop'] : '')
 } : {}), props.children);
 /* eslint-disable no-unused-vars */
 
@@ -388,7 +388,7 @@ Button[\\"data-testid\\"] = \\"dda89e29\\";
 
 const UnexportComponent = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
   \\"data-testid\\": \\"c7b7156f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
@@ -400,7 +400,7 @@ UnexportComponent[\\"data-testid\\"] = \\"c7b7156f\\";
 class ClassComponent extends _react.default.Component {
   render() {
     return _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
-      \\"data-testid\\": \\"a8f769be\\" + (this.props && this.props['data-testid'] ? ' ' + this.props['data-testid'] : '')
+      \\"data-testid\\": \\"a8f769be\\" + (this.props && this.props['data-testid-prop'] ? ' ' + this.props['data-testid-prop'] : '')
     } : {}, this.props.children);
   }
 
@@ -411,7 +411,7 @@ ClassComponent[\\"data-testid\\"] = \\"a8f769be\\";
 
 const ArrowFunctionalComponent = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
   \\"data-testid\\": \\"f49764c6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
@@ -421,7 +421,7 @@ ArrowFunctionalComponent[\\"data-testid\\"] = \\"f49764c6\\";
 
 function FunctionalComponent({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
     \\"data-testid\\": \\"b5d7faff\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
@@ -432,9 +432,9 @@ FunctionalComponent[\\"data-testid\\"] = \\"b5d7faff\\";
 
 const ComposedComponent = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-testid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-testid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
 exports.ComposedComponent = ComposedComponent;
@@ -442,7 +442,7 @@ ComposedComponent[\\"data-testid\\"] = \\"8e388bfc\\";
 
 const ComponentWithAttrs = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
   \\"data-test\\": \\"testme\\",
   ...(process.env.RESELECTOR === \\"true\\" ? {
@@ -454,7 +454,7 @@ exports.ComponentWithAttrs = ComponentWithAttrs;
 ComponentWithAttrs[\\"data-testid\\"] = \\"889909b2\\";
 
 const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-testid\\": \\"5613b2e5\\" + (props && props['data-testid'] ? ' ' + props['data-testid'] : '')
+  \\"data-testid\\": \\"5613b2e5\\" + (props && props['data-testid-prop'] ? ' ' + props['data-testid-prop'] : '')
 } : {}, props.children);
 
 exports.ComponentNoDestructure = ComponentNoDestructure;
@@ -462,9 +462,9 @@ ComponentNoDestructure[\\"data-testid\\"] = \\"5613b2e5\\";
 
 const ComposedComponent2 = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-testid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-testid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, _react.default.createElement(\\"div\\", null, children));
 /**
  * Tests should not fail
@@ -491,7 +491,7 @@ const SpreadPropsComponent = ({
 }) => _react.default.createElement(\\"div\\", _extends({}, props, {
   \\"data-disabled\\": true
 }, process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-testid\\": \\"6da2cdef\\" + (props && props['data-testid'] ? ' ' + props['data-testid'] : '')
+  \\"data-testid\\": \\"6da2cdef\\" + (props && props['data-testid-prop'] ? ' ' + props['data-testid-prop'] : '')
 } : {}), children);
 
 exports.SpreadPropsComponent = SpreadPropsComponent;
@@ -499,7 +499,7 @@ SpreadPropsComponent[\\"data-testid\\"] = \\"6da2cdef\\";
 
 var _default = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
   \\"data-testid\\": \\"5f9b51d4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
@@ -527,7 +527,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 const Button = props => _react.default.createElement('button', _extends({}, props, {
-  \\"data-testid\\": \\"dda89e29\\" + (props && props['data-testid'] ? ' ' + props['data-testid'] : '')
+  \\"data-testid\\": \\"dda89e29\\" + (props && props['data-testid-prop'] ? ' ' + props['data-testid-prop'] : '')
 }), props.children);
 /* eslint-disable no-unused-vars */
 
@@ -537,7 +537,7 @@ Button[\\"data-testid\\"] = \\"dda89e29\\";
 
 const UnexportComponent = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
   \\"data-testid\\": \\"c7b7156f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
@@ -549,7 +549,7 @@ UnexportComponent[\\"data-testid\\"] = \\"c7b7156f\\";
 class ClassComponent extends _react.default.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-testid\\": \\"a8f769be\\" + (this.props && this.props['data-testid'] ? ' ' + this.props['data-testid'] : '')
+      \\"data-testid\\": \\"a8f769be\\" + (this.props && this.props['data-testid-prop'] ? ' ' + this.props['data-testid-prop'] : '')
     }, this.props.children);
   }
 
@@ -560,7 +560,7 @@ ClassComponent[\\"data-testid\\"] = \\"a8f769be\\";
 
 const ArrowFunctionalComponent = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
   \\"data-testid\\": \\"f49764c6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
@@ -570,7 +570,7 @@ ArrowFunctionalComponent[\\"data-testid\\"] = \\"f49764c6\\";
 
 function FunctionalComponent({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"p\\", {
     \\"data-testid\\": \\"b5d7faff\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
@@ -581,9 +581,9 @@ FunctionalComponent[\\"data-testid\\"] = \\"b5d7faff\\";
 
 const ComposedComponent = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(Button, {
-  \\"data-testid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-testid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
 exports.ComposedComponent = ComposedComponent;
@@ -591,7 +591,7 @@ ComposedComponent[\\"data-testid\\"] = \\"8e388bfc\\";
 
 const ComponentWithAttrs = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
   \\"data-test\\": \\"testme\\",
   \\"data-testid\\": \\"889909b2\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
@@ -601,7 +601,7 @@ exports.ComponentWithAttrs = ComponentWithAttrs;
 ComponentWithAttrs[\\"data-testid\\"] = \\"889909b2\\";
 
 const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", {
-  \\"data-testid\\": \\"5613b2e5\\" + (props && props['data-testid'] ? ' ' + props['data-testid'] : '')
+  \\"data-testid\\": \\"5613b2e5\\" + (props && props['data-testid-prop'] ? ' ' + props['data-testid-prop'] : '')
 }, props.children);
 
 exports.ComponentNoDestructure = ComponentNoDestructure;
@@ -609,9 +609,9 @@ ComponentNoDestructure[\\"data-testid\\"] = \\"5613b2e5\\";
 
 const ComposedComponent2 = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, {
-  \\"data-testid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-testid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, _react.default.createElement(\\"div\\", null, children));
 /**
  * Tests should not fail
@@ -636,7 +636,7 @@ const SpreadPropsComponent = ({
 }) => _react.default.createElement(\\"div\\", _extends({}, props, {
   \\"data-disabled\\": true
 }, {
-  \\"data-testid\\": \\"6da2cdef\\" + (props && props['data-testid'] ? ' ' + props['data-testid'] : '')
+  \\"data-testid\\": \\"6da2cdef\\" + (props && props['data-testid-prop'] ? ' ' + props['data-testid-prop'] : '')
 }), children);
 
 exports.SpreadPropsComponent = SpreadPropsComponent;
@@ -644,7 +644,7 @@ SpreadPropsComponent[\\"data-testid\\"] = \\"6da2cdef\\";
 
 var _default = ({
   children,
-  'data-testid': __dataprop__
+  'data-testid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
   \\"data-testid\\": \\"5f9b51d4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);

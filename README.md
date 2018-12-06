@@ -156,27 +156,31 @@ This plugin tries to find all React Component declarations and to add `data-{has
 
 You can provide some options via `reselector.config.js`, rc-files or in `package.json`.
 
-### prefix
+### name
 
-{**string**} By default, it's `data-`. So this plugin generates attributes like `data-c7b7156f`.
+{**string** = 'data-testid'} Test-attribute name, should not be empty.
 
-But you can define your own prefix, for example
+You can define your own attribute name, for example
 
 ```js
-module.exports = {prefix: ''}
+module.exports = {name: 'my-test-id'}
 ```
 
-With that, you'll get just a `{hash}` attribute on nodes like `<button c7b7156f />`.
+With that, you'll get attributes on nodes like `<button my-test-id="c7b7156f" />`.
 
 ### env
 
-{**boolean**} Be default, `false`. Just set it on `true` to control attributes appending by `process.env.RESELECTOR`. So it will no append hashes at runtime when `process.env.RESELECTOR !== 'true'`.
+{**boolean** = false} Just set it on `true` to control attributes appending by `process.env.RESELECTOR`. So it will no append hashes at runtime when `process.env.RESELECTOR !== 'true'`.
 
 For example:
 
 ```js
 module.exports = {env: true}
 ```
+
+### envName
+
+{**string** = `process.env.BABEL_ENV || process.env.NODE_ENV || 'development'`}
 
 ### syntaxes
 

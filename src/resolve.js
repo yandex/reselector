@@ -1,28 +1,44 @@
 'use strict'
 
 const { transformFileSync } = require('@babel/core')
-const { getNode, getId, getName } = require('./utils')
+const { getNode, getId, getName, isElement } = require('./utils')
 
-const { TEST_ID } = require('./const')
 const config = require('./config')
+
+const NAME = config.name
 
 const getParser = () => {
   const exports = {}
 
+  const addExport = (p, { file }) => {
+    const data = getNode(p)
+
+    if (!data) return
+
+    const { filename } = file.opts
+    const name = getName(data)
+    const id = getId(filename, name)
+
+    exports[name] = { [NAME]: id }
+  }
+
   return {
     exports,
-    plugin: ({ types: t }) => ({
+    plugin: () => ({
       visitor: {
-        JSXElement(p, { file }) {
-          const data = getNode(t, p)
+        JSXElement(p, state) {
+          if (!isElement(p.node)) {
+            return
+          }
 
-          if (!data) return
+          addExport(p, state)
+        },
+        CallExpression(p, state) {
+          if (!isElement(p.node)) {
+            return
+          }
 
-          const { filename } = file.opts
-          const name = getName(data)
-          const id = getId(filename, name)
-
-          exports[name] = { [TEST_ID]: id }
+          addExport(p, state)
         },
       },
     }),

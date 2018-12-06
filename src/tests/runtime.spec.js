@@ -1,6 +1,7 @@
 import { resolveBy, select } from '../'
 import * as app from './App'
-import { TEST_ID } from '../const'
+
+const TEST_ID = 'testid'
 
 const resolve = resolveBy(require.resolve)
 
@@ -17,5 +18,11 @@ describe('runtime', () => {
     const { UnexportComponent } = resolve('./App')
 
     expect(select`${UnexportComponent}`).toMatchSnapshot()
+  })
+
+  it('should throw an error for undefined component', () => {
+    const { UndefinedComponent } = resolve('./App')
+
+    expect(() => select`${UndefinedComponent}`).toThrowErrorMatchingSnapshot()
   })
 })

@@ -1,11 +1,12 @@
 'use strict'
 
-const { TEST_ID } = require('./const')
 const config = require('./config')
 
+const NAME = config.name
+
 const selectors = {
-  css: value => `[${config.prefix}${value}]`,
-  xpath: value => `[@${config.prefix}${value}]`,
+  css: value => `[${NAME}~="${value}"]`,
+  xpath: value => `[contains(@${NAME}, '${value}')]`,
 }
 
 const build = selector => (strings, ...values) => (
@@ -13,11 +14,17 @@ const build = selector => (strings, ...values) => (
     .reduce((acc, string, i) => {
       const value = values[i]
 
-      if (value === undefined) return acc.concat(string)
+      if (value === undefined) {
+        if (i < strings.length - 1) {
+          throw new Error("Reselector: you can't use undefined value in select")
+        }
+
+        return acc.concat(string)
+      }
 
       return acc.concat(
         string,
-        value && value[TEST_ID] ? selector(value[TEST_ID]) : value,
+        value && value[NAME] ? selector(value[NAME]) : value,
       )
     }, '')
     .replace(/\s+/g, ' ')

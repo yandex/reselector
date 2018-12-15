@@ -60,7 +60,7 @@
     "@babel/plugin-syntax-export-default-from": "7.2.0",
     "@babel/plugin-syntax-export-namespace-from": "7.2.0",
     "@babel/plugin-syntax-flow": "7.2.0",
-    "@babel/plugin-syntax-function-bind": "7.0.0",
+    "@babel/plugin-syntax-function-bind": "7.2.0",
     "@babel/plugin-syntax-function-sent": "7.0.0",
     "@babel/plugin-syntax-import-meta": "7.0.0",
     "@babel/plugin-syntax-jsx": "7.0.0",

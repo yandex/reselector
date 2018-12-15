@@ -70,7 +70,7 @@
     "@babel/plugin-syntax-optional-catch-binding": "7.2.0",
     "@babel/plugin-syntax-optional-chaining": "7.2.0",
     "@babel/plugin-syntax-pipeline-operator": "7.2.0",
-    "@babel/plugin-syntax-throw-expressions": "7.0.0",
+    "@babel/plugin-syntax-throw-expressions": "7.2.0",
     "@babel/plugin-syntax-typescript": "7.1.5",
     "@babel/template": "7.1.2",
     "@babel/types": "^7.1.5",

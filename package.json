@@ -28,7 +28,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "7.2.0",
+    "@babel/cli": "7.2.3",
     "@babel/plugin-transform-modules-commonjs": "7.2.0",
     "@babel/preset-env": "7.2.0",
     "@babel/preset-react": "7.0.0",

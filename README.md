@@ -95,12 +95,12 @@ import MyComponent from './MyComponent'
 import MyButton from './MyButton'
 
 /**
- * [data-dadad] [data-czczx]
+ * [data-tid="dadad"] [data-tid="czczx"]
  */
 console.log(select`${MyComponent} ${MyButton}`)
 
 /**
- * .myClassName > [data-czczx]
+ * .myClassName > [data-tid="czczx"]
  */
 console.log(select`.myClassName > ${MyButton}`)
 ```
@@ -116,12 +116,12 @@ const {MyComponent} = resolve(require.resolve('./MyComponent'))
 const {MyButton} = resolve(require.resolve('./MyButton'))
 
 /**
- * [data-dadad] [data-czczx]
+ * [data-tid="dadad"] [data-tid="czczx"]
  */
 console.log(select`${MyComponent} ${MyButton}`)
 
 /**
- * .myClassName > [data-czczx]
+ * .myClassName > [data-tid="czczx"]
  */
 console.log(select`.myClassName > ${MyButton}`)
 ```
@@ -137,12 +137,12 @@ const {MyComponent} = resolve('./MyComponent')
 const {MyButton} = resolve('./MyButton')
 
 /**
- * [data-dadad] [data-czczx]
+ * [data-tid="dadad"] [data-tid="czczx"]
  */
 console.log(select`${MyComponent} ${MyButton}`)
 
 /**
- * .myClassName > [data-czczx]
+ * .myClassName > [data-tid="czczx"]
  */
 console.log(select`.myClassName > ${MyButton}`)
 ```
@@ -158,7 +158,7 @@ You can provide some options via `reselector.config.js`, rc-files or in `package
 
 ### name
 
-{**string** = 'data-testid'} Test-attribute name, should not be empty.
+{**string** = 'data-tid'} Test-attribute name, should not be empty.
 
 You can define your own attribute name, for example
 

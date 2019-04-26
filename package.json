@@ -71,7 +71,7 @@
     "@babel/plugin-syntax-optional-chaining": "7.2.0",
     "@babel/plugin-syntax-pipeline-operator": "7.3.0",
     "@babel/plugin-syntax-throw-expressions": "7.2.0",
-    "@babel/plugin-syntax-typescript": "7.2.0",
+    "@babel/plugin-syntax-typescript": "7.3.3",
     "@babel/template": "7.2.2",
     "@babel/types": "^7.3.0",
     "cosmiconfig": "5.0.7",

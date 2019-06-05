@@ -125,7 +125,7 @@ const isExtended = props => (
 
 module.exports = () => ({
   visitor: {
-    CallExpression(p, { file }) {
+    CallExpression(p, { file, opts }) {
       if (!isElement(p.node)) {
         return
       }
@@ -143,6 +143,10 @@ module.exports = () => ({
       const { filename } = file.opts
       const name = getName({ rootPath, componentNode })
       const id = getId(filename, name)
+
+      if (opts.setHash) {
+        opts.setHash({ id, name, filename })
+      }
 
       const [elementName, props] = p.node.arguments
 

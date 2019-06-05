@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babel plugin with options should cache all Elements 1`] = `
+Object {
+  "5613b2e5": "App/index.js ComponentNoDestructure",
+  "5f9b51d4": "App/index.js default",
+  "60d032ee": "App/index.js ComposedComponent2",
+  "6da2cdef": "App/index.js SpreadPropsComponent",
+  "889909b2": "App/index.js ComponentWithAttrs",
+  "8e388bfc": "App/index.js ComposedComponent",
+  "a8f769be": "App/index.js ClassComponent",
+  "b5d7faff": "App/index.js FunctionalComponent",
+  "c7b7156f": "App/index.js UnexportComponent",
+  "ca715737": "App/index.js RenderFunction",
+  "dda89e29": "App/index.js Button",
+  "f49764c6": "App/index.js ArrowFunctionalComponent",
+}
+`;

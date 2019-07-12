@@ -60,6 +60,7 @@ const getNode = (p) => {
     t.isLogicalExpression,
     t.isReturnStatement,
     t.isArrowFunctionExpression,
+    t.isCallExpression,
   ].some(f => f(parent))) {
     return null
   }
@@ -72,6 +73,7 @@ const getNode = (p) => {
       t.isArrowFunctionExpression(currentPath.node)
       || t.isFunctionExpression(currentPath.node)
       || t.isClassExpression(currentPath.node)
+      || t.isObjectMethod(currentPath.node)
     )
 
     prevPaths.push(currentPath)
@@ -92,6 +94,7 @@ const getNode = (p) => {
         }
       }
       // falls through
+      case 'ObjectMethod':
       case 'ClassDeclaration':
       case 'ExportDefaultDeclaration':
       case 'ExportNamedDeclaration':
@@ -113,11 +116,12 @@ const getNode = (p) => {
   return null
 }
 
-const getName = ({ rootPath, componentNode }) =>
-  (rootPath.type === 'ExportDefaultDeclaration' ||
-  rootPath.parent.type === 'ExportDefaultDeclaration'
-    ? 'default'
-    : componentNode.id.name)
+const getName = ({ rootPath, componentNode }) => {
+  if (rootPath.type === 'ExportDefaultDeclaration' ||
+  rootPath.parent.type === 'ExportDefaultDeclaration') return 'default'
+
+  return t.isObjectMethod(componentNode) ? componentNode.key.name : componentNode.id.name
+}
 
 const getId = (filename, name) =>
   hash(`${path.relative(projectPath, filename)}:${name}`.split(path.sep).join('/')).toString(16)

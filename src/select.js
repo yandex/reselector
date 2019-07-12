@@ -16,15 +16,26 @@ const build = selector => (strings, ...values) => (
 
       if (value === undefined) {
         if (i < strings.length - 1) {
-          throw new Error("Reselector: you can't use undefined value in select")
+          throw new Error("reselector: you can't use undefined value in select")
         }
 
         return acc.concat(string)
       }
 
+      if (value && value[NAME]) {
+        return acc.concat(
+          string,
+          selector(value[NAME]),
+        )
+      }
+
+      if (typeof value === 'object' || typeof value === 'function') {
+        throw new Error('reselector: you can use only primitive values')
+      }
+
       return acc.concat(
         string,
-        value && value[NAME] ? selector(value[NAME]) : value,
+        value,
       )
     }, '')
     .replace(/\s+/g, ' ')

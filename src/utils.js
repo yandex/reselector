@@ -61,6 +61,7 @@ const getNode = (p) => {
     t.isReturnStatement,
     t.isArrowFunctionExpression,
     t.isCallExpression,
+    t.isSequenceExpression,
   ].some(f => f(parent))) {
     return null
   }

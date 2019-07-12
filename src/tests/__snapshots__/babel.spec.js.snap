@@ -97,6 +97,16 @@ exports[`babel plugin should find all the types of Components 9`] = `
 </div>
 `;
 
+exports[`babel plugin should find all the types of Components 10`] = `
+<div>
+  <CustomElement>
+    <div
+      data-tid-prop="c4220827"
+    />
+  </CustomElement>
+</div>
+`;
+
 exports[`babel plugin should find nested Component 1`] = `
 <ClassComponent>
   <div

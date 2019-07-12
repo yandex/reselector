@@ -34,6 +34,7 @@ exports[`babel plugin should find all the types of Components 4`] = `
 <div>
   <ComposedComponent>
     <Button
+      data-tid="8e388bfc"
       data-tid-prop="8e388bfc"
     >
       <button
@@ -101,6 +102,7 @@ exports[`babel plugin should find all the types of Components 10`] = `
 <div>
   <CustomElement>
     <div
+      data-tid="c4220827"
       data-tid-prop="c4220827"
     />
   </CustomElement>
@@ -122,6 +124,7 @@ exports[`babel plugin should find nested Component 1`] = `
           >
             <ComposedComponent>
               <Button
+                data-tid="8e388bfc"
                 data-tid-prop="8e388bfc"
               >
                 <button
@@ -141,9 +144,11 @@ exports[`babel plugin should find nested Component 1`] = `
 exports[`babel plugin should find wrapped component 1`] = `
 <ComposedComponent2>
   <ComposedComponent
+    data-tid="60d032ee"
     data-tid-prop="60d032ee"
   >
     <Button
+      data-tid="8e388bfc 60d032ee"
       data-tid-prop="8e388bfc 60d032ee"
     >
       <button
@@ -457,6 +462,7 @@ const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-tid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
@@ -487,6 +493,7 @@ const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-tid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, _react.default.createElement(\\"div\\", null, children));
 /**
@@ -606,6 +613,7 @@ const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(Button, {
+  \\"data-tid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
@@ -634,6 +642,7 @@ const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, {
+  \\"data-tid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, _react.default.createElement(\\"div\\", null, children));
 /**

@@ -218,6 +218,10 @@ module.exports = () => {
 
         componentsList.add(componentNode)
 
+        if (t.isObjectMethod(componentNode)) {
+          return
+        }
+
         rootPath.insertAfter(
           name === 'default'
             ? buildDefaultExport({

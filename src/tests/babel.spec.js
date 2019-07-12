@@ -13,6 +13,7 @@ import {
 } from './App'
 import defaultNamedClassComponent from './App/defaultNamedClassExport'
 import defaultDeclaredNamedClassComponent from './App/defaultDeclaredNamedClassExport'
+import wrappedElementsComponent from './App/wrappedElements'
 import { select } from '../'
 
 describe('babel plugin', () => {
@@ -82,6 +83,7 @@ describe('babel plugin', () => {
       defaultNamedClassComponent,
       defaultDeclaredNamedClassComponent,
       SpreadPropsComponent,
+      wrappedElementsComponent,
     ]
 
     components.forEach((Component) => {

@@ -71,7 +71,7 @@ const createAddDataProp = () => {
     let ARG = ''
     let CURR_ID = ''
 
-    if (t.isClassDeclaration(componentNode)) {
+    if (t.isClassMethod(componentNode)) {
       ARG = 'this.props'
       CURR_ID = `${ARG}['${PROP_NAME}']`
     } else {
@@ -148,7 +148,7 @@ module.exports = () => {
 
         const { rootPath, componentNode } = getNode(p) || {}
 
-        if (!rootPath) return
+        if (!(rootPath && componentNode)) return
 
         if (pathsList.has(p)) {
           return

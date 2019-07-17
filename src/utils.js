@@ -42,7 +42,7 @@ const isReactElement = (node) => {
   return object.name === 'React' && property.name === 'createElement'
 }
 
-const isElement = node => isReactElement(node) && !isReactFragment(node)
+const isElement = node => node && isReactElement(node) && !isReactFragment(node)
 
 const projectPath = process.cwd()
 
@@ -54,74 +54,59 @@ const getNode = (p) => {
   }
 
   let isComponent = false
-
-  if (![
-    t.isConditionalExpression,
-    t.isLogicalExpression,
-    t.isReturnStatement,
-    t.isArrowFunctionExpression,
-    t.isCallExpression,
-    t.isSequenceExpression,
-  ].some(f => f(parent))) {
-    return null
-  }
-
+  let componentNode = null
   let currentPath = p
-  const prevPaths = []
+
+  let node
+  let parentPath
 
   do {
+    ({ node, parentPath } = currentPath)
+
+    if (isElement(parentPath.node)) break
+
     isComponent = isComponent || (
-      t.isArrowFunctionExpression(currentPath.node)
-      || t.isFunctionExpression(currentPath.node)
-      || t.isClassExpression(currentPath.node)
-      || t.isObjectMethod(currentPath.node)
+      t.isArrowFunctionExpression(node)
+      || t.isFunctionExpression(node)
+      || t.isClassMethod(node)
+      || t.isObjectMethod(node)
+      || t.isFunctionDeclaration(node)
     )
 
-    prevPaths.push(currentPath)
-    currentPath = currentPath.parentPath
-
-    if (!currentPath) {
-      break
+    if (!componentNode && isComponent) {
+      componentNode = node
     }
 
-    let componentNode = currentPath.node
-
     switch (currentPath.type) {
-      case 'VariableDeclaration': {
-        [componentNode] = currentPath.node.declarations
-
-        if (!isComponent) {
-          break
-        }
-      }
-      // falls through
-      case 'ObjectMethod':
+      case 'VariableDeclaration':
       case 'ClassDeclaration':
       case 'ExportDefaultDeclaration':
       case 'ExportNamedDeclaration':
       case 'FunctionDeclaration': {
-        if (currentPath.parent.type === 'ExportNamedDeclaration') {
-          prevPaths.push(currentPath)
-          currentPath = currentPath.parentPath
-        }
+        if (!componentNode) break
 
-        return { rootPath: currentPath, prevPaths, componentNode }
+        return { rootPath: currentPath, componentNode }
       }
     }
 
-    if (isElement(componentNode)) {
-      break
-    }
+    currentPath = parentPath
   } while (currentPath)
 
   return null
 }
 
-const getName = ({ rootPath, componentNode }) => {
-  if (rootPath.type === 'ExportDefaultDeclaration' ||
-  rootPath.parent.type === 'ExportDefaultDeclaration') return 'default'
+const getName = ({ rootPath }) => {
+  if (
+    rootPath.type === 'ExportDefaultDeclaration' ||
+    rootPath.parent.type === 'ExportDefaultDeclaration'
+  ) return 'default'
 
-  return t.isObjectMethod(componentNode) ? componentNode.key.name : componentNode.id.name
+  if (rootPath.type === 'VariableDeclaration') {
+    const [declarator] = rootPath.node.declarations
+    return declarator.id.name
+  }
+
+  return rootPath.node.id.name
 }
 
 const getId = (filename, name) =>

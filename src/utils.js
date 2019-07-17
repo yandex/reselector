@@ -63,7 +63,7 @@ const getNode = (p) => {
   do {
     ({ node, parentPath } = currentPath)
 
-    if (isElement(parentPath.node)) break
+    if (parentPath && isElement(parentPath.node)) break
 
     isComponent = isComponent || (
       t.isArrowFunctionExpression(node)

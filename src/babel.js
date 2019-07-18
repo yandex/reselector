@@ -161,7 +161,7 @@ module.exports = () => {
         const id = getId(filename, name)
 
         if (opts.setHash) {
-          opts.setHash({ id, name, filename })
+          opts.setHash({ id, name, filename, loc: componentNode.loc })
         }
 
         const [elementName, props] = p.node.arguments

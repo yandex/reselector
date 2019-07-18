@@ -44,6 +44,21 @@ const isReactElement = (node) => {
 
 const isElement = node => node && isReactElement(node) && !isReactFragment(node)
 
+const isReturned = (p) => {
+  const { parent } = p
+
+  if (
+    t.isCallExpression(parent) ||
+    t.isConditionalExpression(parent) ||
+    t.isSequenceExpression(parent) ||
+    t.isLogicalExpression(parent)
+  ) {
+    return isReturned(p.parentPath)
+  }
+
+  return t.isReturnStatement(parent) || t.isArrowFunctionExpression(parent)
+}
+
 const projectPath = process.cwd()
 
 const getNode = (p) => {
@@ -52,6 +67,8 @@ const getNode = (p) => {
   if (isReactFragment(parent)) {
     return getNode(p.parentPath)
   }
+
+  if (!isReturned(p)) return null
 
   let isComponent = false
   let componentNode = null

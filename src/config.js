@@ -8,6 +8,7 @@ module.exports = Object.assign({
   env: false,
   envName: process.env.BABEL_ENV || process.env.NODE_ENV || 'development',
   name: 'data-tid',
+  propName: 'data-tid-prop',
   syntaxes: [
     '@babel/plugin-syntax-async-generators',
     '@babel/plugin-syntax-class-properties',

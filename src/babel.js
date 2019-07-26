@@ -31,20 +31,27 @@ const buildProps = (id, { ARG, CURR_ID }) => {
     return expressions.id({ ID: t.StringLiteral(id) })
   }
 
+  const currId = t.identifier(CURR_ID)
+
   const COND = ARG
-    ? t.logicalExpression('&&', t.identifier(ARG), t.identifier(CURR_ID))
-    : t.identifier(CURR_ID)
+    ? t.logicalExpression('&&', t.identifier(ARG), currId)
+    : currId
 
   return expressions.concat({
     ID: t.StringLiteral(id),
     COND,
-    CURR_ID: t.identifier(CURR_ID),
+    CURR_ID: currId,
   })
 }
 
 const buildEnv = template.expression(
   'process.env.RESELECTOR === "true" ? {"NAME": VALUE} : {}',
   { placeholderPattern: false, placeholderWhitelist: new Set(['NAME', 'VALUE']) },
+)
+
+const buildEnvWithProp = template.expression(
+  'process.env.RESELECTOR === "true" ? {"NAME": VALUE, "PROP_NAME": PROP_VALUE} : {}',
+  { placeholderPattern: false, placeholderWhitelist: new Set(['NAME', 'VALUE', 'PROP_NAME', 'PROP_VALUE']) },
 )
 
 const NAME = config.name
@@ -64,7 +71,7 @@ const createAddDataProp = () => {
     let ARG = ''
     let CURR_ID = ''
 
-    if (t.isClassDeclaration(componentNode)) {
+    if (t.isClassMethod(componentNode)) {
       ARG = 'this.props'
       CURR_ID = `${ARG}['${PROP_NAME}']`
     } else {
@@ -141,7 +148,7 @@ module.exports = () => {
 
         const { rootPath, componentNode } = getNode(p) || {}
 
-        if (!rootPath) return
+        if (!(rootPath && componentNode)) return
 
         if (pathsList.has(p)) {
           return
@@ -154,7 +161,7 @@ module.exports = () => {
         const id = getId(filename, name)
 
         if (opts.setHash) {
-          opts.setHash({ id, name, filename })
+          opts.setHash({ id, name, filename, loc: componentNode.loc })
         }
 
         const [elementName, props] = p.node.arguments
@@ -177,27 +184,42 @@ module.exports = () => {
         }
 
         const VALUE = buildProps(id, addDataProp(componentNode))
+        const PROP_VALUE = VALUE
 
-        const propName = isTag ? NAME : PROP_NAME
+        let dataProps
 
-        const prop = (config.env && config.envName === 'test') ? (
-          t.SpreadElement(buildEnv({
-            NAME: propName,
-            VALUE,
-          }),
-          )) : (
-          t.ObjectProperty(t.StringLiteral(propName), VALUE)
-        )
+        if (isTag) {
+          dataProps = (config.env && config.envName === 'test') ? [
+            t.SpreadElement(buildEnv({
+              NAME,
+              VALUE,
+            }),
+            )] : [
+            t.ObjectProperty(t.StringLiteral(NAME), VALUE),
+          ]
+        } else {
+          dataProps = (config.env && config.envName === 'test') ? [
+            t.SpreadElement(buildEnvWithProp({
+              NAME,
+              VALUE,
+              PROP_NAME,
+              PROP_VALUE,
+            }),
+            )] : [
+            t.ObjectProperty(t.StringLiteral(NAME), VALUE),
+            t.ObjectProperty(t.StringLiteral(PROP_NAME), PROP_VALUE),
+          ]
+        }
 
         if (t.isObjectExpression(props)) {
-          props.properties.push(prop)
+          props.properties.push(...dataProps)
         } else {
-          const arg = t.isObjectProperty(prop)
-            ? t.ObjectExpression([prop])
+          const arg = t.isSpreadElement(dataProps[0])
             /**
              * Spread element value
              */
-            : prop.argument
+            ? dataProps[0].argument
+            : t.ObjectExpression(dataProps)
 
           if (isExtended(props)) {
             props.arguments.push(arg)

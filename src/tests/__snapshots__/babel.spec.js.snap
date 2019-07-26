@@ -34,6 +34,7 @@ exports[`babel plugin should find all the types of Components 4`] = `
 <div>
   <ComposedComponent>
     <Button
+      data-tid="8e388bfc"
       data-tid-prop="8e388bfc"
     >
       <button
@@ -97,6 +98,27 @@ exports[`babel plugin should find all the types of Components 9`] = `
 </div>
 `;
 
+exports[`babel plugin should find all the types of Components 10`] = `
+<div>
+  <CustomElement>
+    <div
+      data-tid="c4220827"
+      data-tid-prop="c4220827"
+    />
+  </CustomElement>
+</div>
+`;
+
+exports[`babel plugin should find all the types of Components 11`] = `
+<div>
+  <ForwardRef>
+    <div
+      data-tid="d5625e1a"
+    />
+  </ForwardRef>
+</div>
+`;
+
 exports[`babel plugin should find nested Component 1`] = `
 <ClassComponent>
   <div
@@ -112,6 +134,7 @@ exports[`babel plugin should find nested Component 1`] = `
           >
             <ComposedComponent>
               <Button
+                data-tid="8e388bfc"
                 data-tid-prop="8e388bfc"
               >
                 <button
@@ -131,9 +154,11 @@ exports[`babel plugin should find nested Component 1`] = `
 exports[`babel plugin should find wrapped component 1`] = `
 <ComposedComponent2>
   <ComposedComponent
+    data-tid="60d032ee"
     data-tid-prop="60d032ee"
   >
     <Button
+      data-tid="8e388bfc 60d032ee"
       data-tid-prop="8e388bfc 60d032ee"
     >
       <button
@@ -149,48 +174,7 @@ exports[`babel plugin should find wrapped component 1`] = `
 </ComposedComponent2>
 `;
 
-exports[`babel plugin should pass props through the React.Fragment 1`] = `
-"\\"use strict\\";
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.B = exports.A = void 0;
-
-var _react = _interopRequireWildcard(require(\\"react\\"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-const A = __props__ => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"4af8dc21\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
-}));
-
-exports.A = A;
-A[\\"data-tid\\"] = \\"4af8dc21\\";
-
-const B = __props__ => _react.default.createElement(_react.Fragment, null, _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"5a8c2cc2\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
-}));
-
-exports.B = B;
-B[\\"data-tid\\"] = \\"5a8c2cc2\\";"
-`;
-
-exports[`babel plugin should pass props through the React.Fragment 2`] = `
-<A>
-  <div
-    data-tid="4af8dc21"
-  />
-</A>
-`;
-
-exports[`babel plugin should pass props through the React.Fragment 3`] = `
-<B>
-  <div
-    data-tid="5a8c2cc2"
-  />
-</B>
-`;
+exports[`babel plugin should pass props through the React.Fragment 1`] = `undefined`;
 
 exports[`babel plugin should save Component\`s root attrs 1`] = `
 <ComponentWithAttrs>
@@ -375,6 +359,41 @@ if (module.exports) {
 }"
 `;
 
+exports[`babel plugin transform should transform forwardRef right 1`] = `
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.default = exports.withRef = void 0;
+
+var _react = _interopRequireDefault(require(\\"react\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+const withRef = Base => _react.default.forwardRef((props, ref) => _react.default.createElement(Base, _extends({}, Object.assign({}, props, {
+  innerRef: ref
+}), {
+  \\"data-tid\\": \\"bad9dd77\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : ''),
+  \\"data-tid-prop\\": \\"bad9dd77\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+})));
+
+exports.withRef = withRef;
+withRef[\\"data-tid\\"] = \\"bad9dd77\\";
+
+const RefComponent = _react.default.forwardRef((props, ref) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
+  ref: ref
+}), {
+  \\"data-tid\\": \\"d5625e1a\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+})));
+
+RefComponent[\\"data-tid\\"] = \\"d5625e1a\\";
+var _default = RefComponent;
+exports.default = _default;"
+`;
+
 exports[`babel plugin transform should transform source code depends on the env option 1`] = `
 "\\"use strict\\";
 
@@ -447,6 +466,7 @@ const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-tid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
@@ -477,6 +497,7 @@ const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {
+  \\"data-tid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, _react.default.createElement(\\"div\\", null, children));
 /**
@@ -501,9 +522,9 @@ RenderFunction[\\"data-tid\\"] = \\"ca715737\\";
 const SpreadPropsComponent = ({
   children,
   ...props
-}) => _react.default.createElement(\\"div\\", _extends({}, props, {
+}) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   \\"data-disabled\\": true
-}, process.env.RESELECTOR === \\"true\\" ? {
+}), process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"6da2cdef\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 } : {}), children);
 
@@ -596,6 +617,7 @@ const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(Button, {
+  \\"data-tid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
@@ -624,6 +646,7 @@ const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, {
+  \\"data-tid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, _react.default.createElement(\\"div\\", null, children));
 /**
@@ -646,9 +669,9 @@ RenderFunction[\\"data-tid\\"] = \\"ca715737\\";
 const SpreadPropsComponent = ({
   children,
   ...props
-}) => _react.default.createElement(\\"div\\", _extends({}, props, {
+}) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   \\"data-disabled\\": true
-}, {
+}), {
   \\"data-tid\\": \\"6da2cdef\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 }), children);
 

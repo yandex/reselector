@@ -2,6 +2,8 @@
 
 const cosmiconfig = require('cosmiconfig')
 
+const { getId } = require('./utils')
+
 const { config } = (cosmiconfig('reselector').searchSync() || {})
 
 module.exports = Object.assign({
@@ -9,6 +11,7 @@ module.exports = Object.assign({
   envName: process.env.BABEL_ENV || process.env.NODE_ENV || 'development',
   name: 'data-tid',
   propName: 'data-tid-prop',
+  getId,
   syntaxes: [
     '@babel/plugin-syntax-async-generators',
     '@babel/plugin-syntax-class-properties',

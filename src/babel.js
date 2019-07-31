@@ -6,10 +6,11 @@ const t = require('@babel/types')
 const config = require('./config')
 const {
   getName,
-  getId,
   getNode,
   isElement,
 } = require('./utils')
+
+const { getId } = config
 
 const build = template(`
   COMPONENT["PROP"] = ID

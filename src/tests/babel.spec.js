@@ -136,8 +136,8 @@ describe('babel plugin', () => {
     expect(wrapper.find(selector).hostNodes().length).toBe(1)
   })
 
-  it.skip('should pass props through the React.Fragment', () => {
-    const { code } = transformFileAsync(require.resolve('./App/reactFragment'))
+  it('should pass props through the React.Fragment', async () => {
+    const { code } = await transformFileAsync(require.resolve('./App/reactFragment'))
 
     expect(code).toMatchSnapshot()
 

@@ -49,19 +49,30 @@ const cache = {}
 
 const resolve = (path) => {
   if (!cache[path]) {
-    const parser = getParser()
+    if (!config.usageNodeModulesPackages) {
+      const parser = getParser()
 
-    transformFileSync(path, {
-      babelrc: false,
-      plugins: [
-        ...config.syntaxes,
-        [parser.plugin],
-      ],
-    })
+      transformFileSync(path, {
+        babelrc: false,
+        plugins: [
+          ...config.syntaxes,
+          [parser.plugin],
+        ],
+      })
 
-    cache[path] = parser.exports
+      cache[path] = parser.exports
+    } else {
+      const file = transformFileSync(path, {
+        babelrc: false,
+        plugins: config.syntaxes,
+      })
+      const matches = file.code.match(/reselector-map__starts:(.*?)reselector-map__ends/gi) || []
+      matches.forEach((match) => {
+        const body = match.match(/reselector-map__starts:(.*?)reselector-map__ends/)[1]
+        cache[path] = Object.assign(cache[path] || {}, JSON.parse(body))
+      })
+    }
   }
-
   return cache[path]
 }
 

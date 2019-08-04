@@ -231,6 +231,10 @@ module.exports = () => {
           }
         }
 
+        if (config.usageNodeModulesPackages) {
+          rootPath.addComment('leading', `reselector-map__starts: {"${name}": {"${config.name}": "${id}"}} reselector-map__ends`)
+        }
+
         if (config.envName !== 'test') {
           return
         }

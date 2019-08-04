@@ -12,6 +12,7 @@ module.exports = Object.assign({
   name: 'data-tid',
   propName: 'data-tid-prop',
   getId,
+  usageNodeModulesPackages: true,
   syntaxes: [
     '@babel/plugin-syntax-async-generators',
     '@babel/plugin-syntax-class-properties',

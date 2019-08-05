@@ -129,6 +129,13 @@ const getName = ({ rootPath }) => {
 const getId = (filename, name) =>
   hash(`${path.relative(projectPath, filename)}:${name}`.split(path.sep).join('/')).toString(16)
 
+const buildComment = hashmap => `__reselector__start__::${JSON.stringify(hashmap)}::__reselector__end__`
+const getHashmapFromComment = (content) => {
+  const [, result = ''] = content.match(/__reselector__start__::(.*?)::__reselector__end__/) || []
+  if (result) return JSON.parse(result)
+  return ''
+}
+
 module.exports = {
   getNode,
   getName,
@@ -136,4 +143,6 @@ module.exports = {
   isElement,
   isReactFragment,
   isReactElement,
+  buildComment,
+  getHashmapFromComment,
 }

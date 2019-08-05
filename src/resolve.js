@@ -1,7 +1,8 @@
 'use strict'
 
-const { transformFileSync } = require('@babel/core')
-const { getNode, getId, getName, isElement } = require('./utils')
+const { transformSync } = require('@babel/core')
+const { readFileSync } = require('fs')
+const { getNode, getId, getName, isElement, getHashmapFromComment } = require('./utils')
 
 const config = require('./config')
 
@@ -47,22 +48,30 @@ const getParser = () => {
 
 const cache = {}
 
-const resolve = (path) => {
-  if (!cache[path]) {
-    const parser = getParser()
+const resolve = (filename) => {
+  if (!cache[filename]) {
+    const content = readFileSync(filename).toString()
+    const hashmap = getHashmapFromComment(content)
 
-    transformFileSync(path, {
-      babelrc: false,
-      plugins: [
-        ...config.syntaxes,
-        [parser.plugin],
-      ],
-    })
+    if (hashmap) {
+      cache[filename] = hashmap
+    } else {
+      const parser = getParser()
 
-    cache[path] = parser.exports
+      transformSync(content, {
+        babelrc: false,
+        filename,
+        plugins: [
+          ...config.syntaxes,
+          [parser.plugin],
+        ],
+      })
+
+      cache[filename] = parser.exports
+    }
   }
 
-  return cache[path]
+  return cache[filename]
 }
 
 const resolveBy = resolver => path => resolve(resolver(path))

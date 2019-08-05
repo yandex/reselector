@@ -8,6 +8,7 @@ const {
   getName,
   getNode,
   isElement,
+  buildComment,
 } = require('./utils')
 
 const { getId } = config
@@ -135,11 +136,16 @@ module.exports = () => {
 
   let componentsList
   let pathsList
+  let hashmap
 
   return ({
     pre() {
       componentsList = new Set()
       pathsList = new Set()
+      hashmap = {}
+    },
+    post(state) {
+      state.path.addComment('leading', buildComment(hashmap))
     },
     visitor: {
       CallExpression(p, { file, opts }) {
@@ -164,6 +170,8 @@ module.exports = () => {
         if (opts.setHash) {
           opts.setHash({ id, name, filename, loc: componentNode.loc })
         }
+
+        hashmap[name] = { [NAME]: id }
 
         const [elementName, props] = p.node.arguments
 

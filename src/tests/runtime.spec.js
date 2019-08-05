@@ -1,4 +1,5 @@
 import { resolveBy, select } from '../'
+import { getHashmapFromComment, buildComment } from '../utils'
 import * as app from './App'
 
 const TEST_ID = 'data-tid'
@@ -24,5 +25,10 @@ describe('runtime', () => {
     const { UndefinedComponent } = resolve('./App')
 
     expect(() => select`${UndefinedComponent}`).toThrowErrorMatchingSnapshot()
+  })
+
+  it('should get hashmap from comment', () => {
+    const hashmap = { Button: { [TEST_ID]: 'button-hash' } }
+    expect(getHashmapFromComment(`/*${buildComment(hashmap)}*/`)).toEqual(hashmap)
   })
 })

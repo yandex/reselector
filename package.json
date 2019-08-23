@@ -1,6 +1,6 @@
 {
   "name": "reselector",
-  "version": "0.14.1-0",
+  "version": "0.14.1",
   "description": "Use React Components in css selectors",
   "repository": {
     "type": "git",

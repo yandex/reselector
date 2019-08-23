@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`runtime should provide an access for unexported components 1`] = `"[data-tid~=\\"c7b7156f\\"]"`;
+exports[`runtime should provide an access for unexported components 1`] = `"[data-tid~=\\"2cf9b58f\\"]"`;
 
 exports[`runtime should throw an error for undefined component 1`] = `"reselector: you can't use undefined value in select"`;

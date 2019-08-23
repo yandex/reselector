@@ -2,17 +2,17 @@
 
 exports[`babel plugin with options should cache all Elements 1`] = `
 Object {
-  "5613b2e5": "App/index.js ComponentNoDestructure",
-  "5f9b51d4": "App/index.js default",
-  "60d032ee": "App/index.js ComposedComponent2",
-  "6da2cdef": "App/index.js SpreadPropsComponent",
-  "889909b2": "App/index.js ComponentWithAttrs",
-  "8e388bfc": "App/index.js ComposedComponent",
-  "a8f769be": "App/index.js ClassComponent",
-  "b5d7faff": "App/index.js FunctionalComponent",
-  "c7b7156f": "App/index.js UnexportComponent",
-  "ca715737": "App/index.js RenderFunction",
-  "dda89e29": "App/index.js Button",
-  "f49764c6": "App/index.js ArrowFunctionalComponent",
+  "165372b4": "App/index.js default",
+  "1b1a9b1f": "App/index.js FunctionalComponent",
+  "20ca140e": "App/index.js ComposedComponent2",
+  "2cf9b58f": "App/index.js UnexportComponent",
+  "7826a6": "App/index.js ArrowFunctionalComponent",
+  "7cb847d2": "App/index.js ComponentWithAttrs",
+  "9d16a7de": "App/index.js ClassComponent",
+  "cc393c49": "App/index.js Button",
+  "d2e56e0f": "App/index.js SpreadPropsComponent",
+  "f909cc1c": "App/index.js ComposedComponent",
+  "fad6b557": "App/index.js RenderFunction",
+  "fd2b1305": "App/index.js ComponentNoDestructure",
 }
 `;

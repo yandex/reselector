@@ -4,7 +4,7 @@ exports[`babel plugin should find all the types of Components 1`] = `
 <div>
   <ClassComponent>
     <div
-      data-tid="a8f769be"
+      data-tid="9d16a7de"
     />
   </ClassComponent>
 </div>
@@ -14,7 +14,7 @@ exports[`babel plugin should find all the types of Components 2`] = `
 <div>
   <ArrowFunctionalComponent>
     <div
-      data-tid="f49764c6"
+      data-tid="7826a6"
     />
   </ArrowFunctionalComponent>
 </div>
@@ -24,7 +24,7 @@ exports[`babel plugin should find all the types of Components 3`] = `
 <div>
   <FunctionalComponent>
     <p
-      data-tid="b5d7faff"
+      data-tid="1b1a9b1f"
     />
   </FunctionalComponent>
 </div>
@@ -34,12 +34,12 @@ exports[`babel plugin should find all the types of Components 4`] = `
 <div>
   <ComposedComponent>
     <Button
-      data-tid="8e388bfc"
-      data-tid-prop="8e388bfc"
+      data-tid="f909cc1c"
+      data-tid-prop="f909cc1c"
     >
       <button
-        data-tid="dda89e29 8e388bfc"
-        data-tid-prop="8e388bfc"
+        data-tid="cc393c49 f909cc1c"
+        data-tid-prop="f909cc1c"
       />
     </Button>
   </ComposedComponent>
@@ -51,7 +51,7 @@ exports[`babel plugin should find all the types of Components 5`] = `
   <ComponentWithAttrs>
     <div
       data-test="testme"
-      data-tid="889909b2"
+      data-tid="7cb847d2"
     />
   </ComponentWithAttrs>
 </div>
@@ -61,7 +61,7 @@ exports[`babel plugin should find all the types of Components 6`] = `
 <div>
   <DefaultClass>
     <div
-      data-tid="51b7b868"
+      data-tid="f328c28"
     />
   </DefaultClass>
 </div>
@@ -71,7 +71,7 @@ exports[`babel plugin should find all the types of Components 7`] = `
 <div>
   <DefaultClass>
     <div
-      data-tid="7d3c8cda"
+      data-tid="942bdffa"
     />
   </DefaultClass>
 </div>
@@ -82,7 +82,7 @@ exports[`babel plugin should find all the types of Components 8`] = `
   <SpreadPropsComponent>
     <div
       data-disabled={true}
-      data-tid="6da2cdef"
+      data-tid="d2e56e0f"
     />
   </SpreadPropsComponent>
 </div>
@@ -92,7 +92,7 @@ exports[`babel plugin should find all the types of Components 9`] = `
 <div>
   <WrappedElements>
     <div
-      data-tid="eb97e642"
+      data-tid="bdc82042"
     />
   </WrappedElements>
 </div>
@@ -102,8 +102,8 @@ exports[`babel plugin should find all the types of Components 10`] = `
 <div>
   <CustomElement>
     <div
-      data-tid="c4220827"
-      data-tid-prop="c4220827"
+      data-tid="16efc867"
+      data-tid-prop="16efc867"
     />
   </CustomElement>
 </div>
@@ -113,7 +113,7 @@ exports[`babel plugin should find all the types of Components 11`] = `
 <div>
   <ForwardRef>
     <div
-      data-tid="d5625e1a"
+      data-tid="95f380fa"
     />
   </ForwardRef>
 </div>
@@ -122,24 +122,24 @@ exports[`babel plugin should find all the types of Components 11`] = `
 exports[`babel plugin should find nested Component 1`] = `
 <ClassComponent>
   <div
-    data-tid="a8f769be"
+    data-tid="9d16a7de"
   >
     <ArrowFunctionalComponent>
       <div
-        data-tid="f49764c6"
+        data-tid="7826a6"
       >
         <FunctionalComponent>
           <p
-            data-tid="b5d7faff"
+            data-tid="1b1a9b1f"
           >
             <ComposedComponent>
               <Button
-                data-tid="8e388bfc"
-                data-tid-prop="8e388bfc"
+                data-tid="f909cc1c"
+                data-tid-prop="f909cc1c"
               >
                 <button
-                  data-tid="dda89e29 8e388bfc"
-                  data-tid-prop="8e388bfc"
+                  data-tid="cc393c49 f909cc1c"
+                  data-tid-prop="f909cc1c"
                 />
               </Button>
             </ComposedComponent>
@@ -154,16 +154,16 @@ exports[`babel plugin should find nested Component 1`] = `
 exports[`babel plugin should find wrapped component 1`] = `
 <ComposedComponent2>
   <ComposedComponent
-    data-tid="60d032ee"
-    data-tid-prop="60d032ee"
+    data-tid="20ca140e"
+    data-tid-prop="20ca140e"
   >
     <Button
-      data-tid="8e388bfc 60d032ee"
-      data-tid-prop="8e388bfc 60d032ee"
+      data-tid="f909cc1c 20ca140e"
+      data-tid-prop="f909cc1c 20ca140e"
     >
       <button
-        data-tid="dda89e29 8e388bfc 60d032ee"
-        data-tid-prop="8e388bfc 60d032ee"
+        data-tid="cc393c49 f909cc1c 20ca140e"
+        data-tid-prop="f909cc1c 20ca140e"
       >
         <div>
           test text
@@ -175,7 +175,7 @@ exports[`babel plugin should find wrapped component 1`] = `
 `;
 
 exports[`babel plugin should pass props through the React.Fragment 1`] = `
-"/*__reselector__start__::{\\"A\\":{\\"data-tid\\":\\"4af8dc21\\"},\\"B\\":{\\"data-tid\\":\\"5a8c2cc2\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"A\\":{\\"data-tid\\":\\"64afcda1\\"},\\"B\\":{\\"data-tid\\":\\"18fc102\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -188,24 +188,24 @@ var _react = _interopRequireWildcard(require(\\"react\\"));
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 const A = __props__ => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"4af8dc21\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
+  \\"data-tid\\": \\"64afcda1\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
 }));
 
 exports.A = A;
-A[\\"data-tid\\"] = \\"4af8dc21\\";
+A[\\"data-tid\\"] = \\"64afcda1\\";
 
 const B = __props__ => _react.default.createElement(_react.Fragment, null, _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"5a8c2cc2\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
+  \\"data-tid\\": \\"18fc102\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
 }));
 
 exports.B = B;
-B[\\"data-tid\\"] = \\"5a8c2cc2\\";"
+B[\\"data-tid\\"] = \\"18fc102\\";"
 `;
 
 exports[`babel plugin should pass props through the React.Fragment 2`] = `
 <A>
   <div
-    data-tid="4af8dc21"
+    data-tid="64afcda1"
   />
 </A>
 `;
@@ -213,7 +213,7 @@ exports[`babel plugin should pass props through the React.Fragment 2`] = `
 exports[`babel plugin should pass props through the React.Fragment 3`] = `
 <B>
   <div
-    data-tid="5a8c2cc2"
+    data-tid="18fc102"
   />
 </B>
 `;
@@ -222,7 +222,7 @@ exports[`babel plugin should save Component\`s root attrs 1`] = `
 <ComponentWithAttrs>
   <div
     data-test="testme"
-    data-tid="889909b2"
+    data-tid="7cb847d2"
   />
 </ComponentWithAttrs>
 `;
@@ -230,12 +230,12 @@ exports[`babel plugin should save Component\`s root attrs 1`] = `
 exports[`babel plugin should save Component\`s root attrs 2`] = `
 DOMStringMap {
   "test": "testme",
-  "tid": "889909b2",
+  "tid": "7cb847d2",
 }
 `;
 
 exports[`babel plugin transform should transform conditionals functions 1`] = `
-"/*__reselector__start__::{\\"ternaryRender\\":{\\"data-tid\\":\\"96c8a304\\"},\\"conditionalRender\\":{\\"data-tid\\":\\"e8ffac7d\\"},\\"ifRender\\":{\\"data-tid\\":\\"633adcac\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"ternaryRender\\":{\\"data-tid\\":\\"69b7be24\\"},\\"conditionalRender\\":{\\"data-tid\\":\\"889264dd\\"},\\"ifRender\\":{\\"data-tid\\":\\"592bdf8c\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -253,28 +253,28 @@ const ternaryRender = ({
   flag,
   'data-tid-prop': __dataprop__
 }) => flag ? _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"96c8a304\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"69b7be24\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children) : _react.default.createElement(\\"a\\", {
-  \\"data-tid\\": \\"96c8a304\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"69b7be24\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-disable-next-line no-unused-vars */
 
 
 exports.ternaryRender = ternaryRender;
-ternaryRender[\\"data-tid\\"] = \\"96c8a304\\";
+ternaryRender[\\"data-tid\\"] = \\"69b7be24\\";
 
 const conditionalRender = ({
   children,
   flag,
   'data-tid-prop': __dataprop__
 }) => flag && _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"e8ffac7d\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"889264dd\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-disable-next-line no-unused-vars */
 
 
 exports.conditionalRender = conditionalRender;
-conditionalRender[\\"data-tid\\"] = \\"e8ffac7d\\";
+conditionalRender[\\"data-tid\\"] = \\"889264dd\\";
 
 const ifRender = ({
   children,
@@ -283,7 +283,7 @@ const ifRender = ({
 }) => {
   if (flag) {
     return _react.default.createElement(\\"div\\", {
-      \\"data-tid\\": \\"633adcac\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+      \\"data-tid\\": \\"592bdf8c\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
     }, children);
   }
 
@@ -291,11 +291,11 @@ const ifRender = ({
 };
 
 exports.ifRender = ifRender;
-ifRender[\\"data-tid\\"] = \\"633adcac\\";"
+ifRender[\\"data-tid\\"] = \\"592bdf8c\\";"
 `;
 
 exports[`babel plugin transform should transform declared named class in default 1`] = `
-"/*__reselector__start__::{\\"DefaultClass\\":{\\"data-tid\\":\\"7d3c8cda\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"DefaultClass\\":{\\"data-tid\\":\\"942bdffa\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -311,19 +311,19 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 class DefaultClass extends _react.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-tid\\": \\"7d3c8cda\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
+      \\"data-tid\\": \\"942bdffa\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     }, this.props.children);
   }
 
 }
 
-DefaultClass[\\"data-tid\\"] = \\"7d3c8cda\\";
+DefaultClass[\\"data-tid\\"] = \\"942bdffa\\";
 var _default = DefaultClass;
 exports.default = _default;"
 `;
 
 exports[`babel plugin transform should transform default anonymous function 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"65353e34\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"e454b9b4\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -340,17 +340,17 @@ function _default({
   'data-tid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"div\\", {
-    \\"data-tid\\": \\"65353e34\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+    \\"data-tid\\": \\"e454b9b4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   }, children);
 }
 
 if (module.exports) {
-  module.exports.default[\\"data-tid\\"] = \\"65353e34\\";
+  module.exports.default[\\"data-tid\\"] = \\"e454b9b4\\";
 }"
 `;
 
 exports[`babel plugin transform should transform default named class 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"51b7b868\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"f328c28\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -366,7 +366,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 class DefaultClass extends _react.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-tid\\": \\"51b7b868\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
+      \\"data-tid\\": \\"f328c28\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     }, this.props.children);
   }
 
@@ -375,12 +375,12 @@ class DefaultClass extends _react.Component {
 exports.default = DefaultClass;
 
 if (module.exports) {
-  module.exports.default[\\"data-tid\\"] = \\"51b7b868\\";
+  module.exports.default[\\"data-tid\\"] = \\"f328c28\\";
 }"
 `;
 
 exports[`babel plugin transform should transform default named function 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"e7f23ea4\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"ae82fa24\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -397,17 +397,17 @@ function NamedFunc({
   'data-tid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"div\\", {
-    \\"data-tid\\": \\"e7f23ea4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+    \\"data-tid\\": \\"ae82fa24\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   }, children);
 }
 
 if (module.exports) {
-  module.exports.default[\\"data-tid\\"] = \\"e7f23ea4\\";
+  module.exports.default[\\"data-tid\\"] = \\"ae82fa24\\";
 }"
 `;
 
 exports[`babel plugin transform should transform forwardRef right 1`] = `
-"/*__reselector__start__::{\\"withRef\\":{\\"data-tid\\":\\"bad9dd77\\"},\\"RefComponent\\":{\\"data-tid\\":\\"d5625e1a\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"withRef\\":{\\"data-tid\\":\\"a079efd7\\"},\\"RefComponent\\":{\\"data-tid\\":\\"95f380fa\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -424,26 +424,26 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 const withRef = Base => _react.default.forwardRef((props, ref) => _react.default.createElement(Base, _extends({}, Object.assign({}, props, {
   innerRef: ref
 }), {
-  \\"data-tid\\": \\"bad9dd77\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : ''),
-  \\"data-tid-prop\\": \\"bad9dd77\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"a079efd7\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : ''),
+  \\"data-tid-prop\\": \\"a079efd7\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 })));
 
 exports.withRef = withRef;
-withRef[\\"data-tid\\"] = \\"bad9dd77\\";
+withRef[\\"data-tid\\"] = \\"a079efd7\\";
 
 const RefComponent = _react.default.forwardRef((props, ref) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   ref: ref
 }), {
-  \\"data-tid\\": \\"d5625e1a\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"95f380fa\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 })));
 
-RefComponent[\\"data-tid\\"] = \\"d5625e1a\\";
+RefComponent[\\"data-tid\\"] = \\"95f380fa\\";
 var _default = RefComponent;
 exports.default = _default;"
 `;
 
 exports[`babel plugin transform should transform source code depends on the env option 1`] = `
-"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"dda89e29\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"c7b7156f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"a8f769be\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"f49764c6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"b5d7faff\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"8e388bfc\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"889909b2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"5613b2e5\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"60d032ee\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"ca715737\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"6da2cdef\\"},\\"default\\":{\\"data-tid\\":\\"5f9b51d4\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"cc393c49\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"2cf9b58f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"9d16a7de\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"7826a6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"1b1a9b1f\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"f909cc1c\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"7cb847d2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"fd2b1305\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"20ca140e\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"fad6b557\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"d2e56e0f\\"},\\"default\\":{\\"data-tid\\":\\"165372b4\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -459,68 +459,68 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 const Button = props => _react.default.createElement('button', _extends({}, props, process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"dda89e29\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"cc393c49\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 } : {}), props.children);
 /* eslint-disable no-unused-vars */
 
 
 exports.Button = Button;
-Button[\\"data-tid\\"] = \\"dda89e29\\";
+Button[\\"data-tid\\"] = \\"cc393c49\\";
 
 const UnexportComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"c7b7156f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"2cf9b58f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 /* eslint-enable no-unused-vars */
 
 
-UnexportComponent[\\"data-tid\\"] = \\"c7b7156f\\";
+UnexportComponent[\\"data-tid\\"] = \\"2cf9b58f\\";
 
 class ClassComponent extends _react.default.Component {
   render() {
     return _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
-      \\"data-tid\\": \\"a8f769be\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
+      \\"data-tid\\": \\"9d16a7de\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     } : {}, this.props.children);
   }
 
 }
 
 exports.ClassComponent = ClassComponent;
-ClassComponent[\\"data-tid\\"] = \\"a8f769be\\";
+ClassComponent[\\"data-tid\\"] = \\"9d16a7de\\";
 
 const ArrowFunctionalComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"f49764c6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"7826a6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
 exports.ArrowFunctionalComponent = ArrowFunctionalComponent;
-ArrowFunctionalComponent[\\"data-tid\\"] = \\"f49764c6\\";
+ArrowFunctionalComponent[\\"data-tid\\"] = \\"7826a6\\";
 
 function FunctionalComponent({
   children,
   'data-tid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
-    \\"data-tid\\": \\"b5d7faff\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+    \\"data-tid\\": \\"1b1a9b1f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   } : {}, children);
 }
 
-FunctionalComponent[\\"data-tid\\"] = \\"b5d7faff\\";
+FunctionalComponent[\\"data-tid\\"] = \\"1b1a9b1f\\";
 
 const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
-  \\"data-tid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
+  \\"data-tid-prop\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
 exports.ComposedComponent = ComposedComponent;
-ComposedComponent[\\"data-tid\\"] = \\"8e388bfc\\";
+ComposedComponent[\\"data-tid\\"] = \\"f909cc1c\\";
 
 const ComponentWithAttrs = ({
   children,
@@ -528,26 +528,26 @@ const ComponentWithAttrs = ({
 }) => _react.default.createElement(\\"div\\", {
   \\"data-test\\": \\"testme\\",
   ...(process.env.RESELECTOR === \\"true\\" ? {
-    \\"data-tid\\": \\"889909b2\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+    \\"data-tid\\": \\"7cb847d2\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   } : {})
 }, children);
 
 exports.ComponentWithAttrs = ComponentWithAttrs;
-ComponentWithAttrs[\\"data-tid\\"] = \\"889909b2\\";
+ComponentWithAttrs[\\"data-tid\\"] = \\"7cb847d2\\";
 
 const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"5613b2e5\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"fd2b1305\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 } : {}, props.children);
 
 exports.ComponentNoDestructure = ComponentNoDestructure;
-ComponentNoDestructure[\\"data-tid\\"] = \\"5613b2e5\\";
+ComponentNoDestructure[\\"data-tid\\"] = \\"fd2b1305\\";
 
 const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
-  \\"data-tid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
+  \\"data-tid-prop\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, _react.default.createElement(\\"div\\", null, children));
 /**
  * Tests should not fail
@@ -555,18 +555,18 @@ const ComposedComponent2 = ({
 
 
 exports.ComposedComponent2 = ComposedComponent2;
-ComposedComponent2[\\"data-tid\\"] = \\"60d032ee\\";
+ComposedComponent2[\\"data-tid\\"] = \\"20ca140e\\";
 
 const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", {
   \\"data-a\\": a,
   \\"data-b\\": b,
   ...(process.env.RESELECTOR === \\"true\\" ? {
-    \\"data-tid\\": \\"ca715737\\"
+    \\"data-tid\\": \\"fad6b557\\"
   } : {})
 });
 
 exports.RenderFunction = RenderFunction;
-RenderFunction[\\"data-tid\\"] = \\"ca715737\\";
+RenderFunction[\\"data-tid\\"] = \\"fad6b557\\";
 
 const SpreadPropsComponent = ({
   children,
@@ -574,28 +574,28 @@ const SpreadPropsComponent = ({
 }) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   \\"data-disabled\\": true
 }), process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"6da2cdef\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"d2e56e0f\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 } : {}), children);
 
 exports.SpreadPropsComponent = SpreadPropsComponent;
-SpreadPropsComponent[\\"data-tid\\"] = \\"6da2cdef\\";
+SpreadPropsComponent[\\"data-tid\\"] = \\"d2e56e0f\\";
 
 var _default = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
-  \\"data-tid\\": \\"5f9b51d4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"165372b4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
 exports.default = _default;
 
 if (module.exports) {
-  module.exports.default[\\"data-tid\\"] = \\"5f9b51d4\\";
+  module.exports.default[\\"data-tid\\"] = \\"165372b4\\";
 }"
 `;
 
 exports[`babel plugin transform should transform source code well for development 1`] = `
-"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"dda89e29\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"c7b7156f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"a8f769be\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"f49764c6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"b5d7faff\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"8e388bfc\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"889909b2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"5613b2e5\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"60d032ee\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"ca715737\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"6da2cdef\\"},\\"default\\":{\\"data-tid\\":\\"5f9b51d4\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"cc393c49\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"2cf9b58f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"9d16a7de\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"7826a6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"1b1a9b1f\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"f909cc1c\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"7cb847d2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"fd2b1305\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"20ca140e\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"fad6b557\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"d2e56e0f\\"},\\"default\\":{\\"data-tid\\":\\"165372b4\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -611,93 +611,93 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 const Button = props => _react.default.createElement('button', _extends({}, props, {
-  \\"data-tid\\": \\"dda89e29\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"cc393c49\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 }), props.children);
 /* eslint-disable no-unused-vars */
 
 
 exports.Button = Button;
-Button[\\"data-tid\\"] = \\"dda89e29\\";
+Button[\\"data-tid\\"] = \\"cc393c49\\";
 
 const UnexportComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"c7b7156f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"2cf9b58f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-enable no-unused-vars */
 
 
-UnexportComponent[\\"data-tid\\"] = \\"c7b7156f\\";
+UnexportComponent[\\"data-tid\\"] = \\"2cf9b58f\\";
 
 class ClassComponent extends _react.default.Component {
   render() {
     return _react.default.createElement(\\"div\\", {
-      \\"data-tid\\": \\"a8f769be\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
+      \\"data-tid\\": \\"9d16a7de\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     }, this.props.children);
   }
 
 }
 
 exports.ClassComponent = ClassComponent;
-ClassComponent[\\"data-tid\\"] = \\"a8f769be\\";
+ClassComponent[\\"data-tid\\"] = \\"9d16a7de\\";
 
 const ArrowFunctionalComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"f49764c6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"7826a6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
 exports.ArrowFunctionalComponent = ArrowFunctionalComponent;
-ArrowFunctionalComponent[\\"data-tid\\"] = \\"f49764c6\\";
+ArrowFunctionalComponent[\\"data-tid\\"] = \\"7826a6\\";
 
 function FunctionalComponent({
   children,
   'data-tid-prop': __dataprop__
 }) {
   return _react.default.createElement(\\"p\\", {
-    \\"data-tid\\": \\"b5d7faff\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+    \\"data-tid\\": \\"1b1a9b1f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   }, children);
 }
 
-FunctionalComponent[\\"data-tid\\"] = \\"b5d7faff\\";
+FunctionalComponent[\\"data-tid\\"] = \\"1b1a9b1f\\";
 
 const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(Button, {
-  \\"data-tid\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
-  \\"data-tid-prop\\": \\"8e388bfc\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
+  \\"data-tid-prop\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
 exports.ComposedComponent = ComposedComponent;
-ComposedComponent[\\"data-tid\\"] = \\"8e388bfc\\";
+ComposedComponent[\\"data-tid\\"] = \\"f909cc1c\\";
 
 const ComponentWithAttrs = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
   \\"data-test\\": \\"testme\\",
-  \\"data-tid\\": \\"889909b2\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"7cb847d2\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
 exports.ComponentWithAttrs = ComponentWithAttrs;
-ComponentWithAttrs[\\"data-tid\\"] = \\"889909b2\\";
+ComponentWithAttrs[\\"data-tid\\"] = \\"7cb847d2\\";
 
 const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", {
-  \\"data-tid\\": \\"5613b2e5\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"fd2b1305\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 }, props.children);
 
 exports.ComponentNoDestructure = ComponentNoDestructure;
-ComponentNoDestructure[\\"data-tid\\"] = \\"5613b2e5\\";
+ComponentNoDestructure[\\"data-tid\\"] = \\"fd2b1305\\";
 
 const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(ComposedComponent, {
-  \\"data-tid\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
-  \\"data-tid-prop\\": \\"60d032ee\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
+  \\"data-tid-prop\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, _react.default.createElement(\\"div\\", null, children));
 /**
  * Tests should not fail
@@ -705,16 +705,16 @@ const ComposedComponent2 = ({
 
 
 exports.ComposedComponent2 = ComposedComponent2;
-ComposedComponent2[\\"data-tid\\"] = \\"60d032ee\\";
+ComposedComponent2[\\"data-tid\\"] = \\"20ca140e\\";
 
 const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", {
   \\"data-a\\": a,
   \\"data-b\\": b,
-  \\"data-tid\\": \\"ca715737\\"
+  \\"data-tid\\": \\"fad6b557\\"
 });
 
 exports.RenderFunction = RenderFunction;
-RenderFunction[\\"data-tid\\"] = \\"ca715737\\";
+RenderFunction[\\"data-tid\\"] = \\"fad6b557\\";
 
 const SpreadPropsComponent = ({
   children,
@@ -722,22 +722,22 @@ const SpreadPropsComponent = ({
 }) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   \\"data-disabled\\": true
 }), {
-  \\"data-tid\\": \\"6da2cdef\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
+  \\"data-tid\\": \\"d2e56e0f\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 }), children);
 
 exports.SpreadPropsComponent = SpreadPropsComponent;
-SpreadPropsComponent[\\"data-tid\\"] = \\"6da2cdef\\";
+SpreadPropsComponent[\\"data-tid\\"] = \\"d2e56e0f\\";
 
 var _default = ({
   children,
   'data-tid-prop': __dataprop__
 }) => _react.default.createElement(\\"div\\", {
-  \\"data-tid\\": \\"5f9b51d4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
+  \\"data-tid\\": \\"165372b4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
 exports.default = _default;
 
 if (module.exports) {
-  module.exports.default[\\"data-tid\\"] = \\"5f9b51d4\\";
+  module.exports.default[\\"data-tid\\"] = \\"165372b4\\";
 }"
 `;

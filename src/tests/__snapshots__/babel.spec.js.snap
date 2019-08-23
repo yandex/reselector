@@ -175,7 +175,8 @@ exports[`babel plugin should find wrapped component 1`] = `
 `;
 
 exports[`babel plugin should pass props through the React.Fragment 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"A\\":{\\"data-tid\\":\\"4af8dc21\\"},\\"B\\":{\\"data-tid\\":\\"5a8c2cc2\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -234,7 +235,8 @@ DOMStringMap {
 `;
 
 exports[`babel plugin transform should transform conditionals functions 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"ternaryRender\\":{\\"data-tid\\":\\"96c8a304\\"},\\"conditionalRender\\":{\\"data-tid\\":\\"e8ffac7d\\"},\\"ifRender\\":{\\"data-tid\\":\\"633adcac\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -293,7 +295,8 @@ ifRender[\\"data-tid\\"] = \\"633adcac\\";"
 `;
 
 exports[`babel plugin transform should transform declared named class in default 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"DefaultClass\\":{\\"data-tid\\":\\"7d3c8cda\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -320,7 +323,8 @@ exports.default = _default;"
 `;
 
 exports[`babel plugin transform should transform default anonymous function 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"65353e34\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -346,7 +350,8 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform default named class 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"51b7b868\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -375,7 +380,8 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform default named function 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"e7f23ea4\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -401,7 +407,8 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform forwardRef right 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"withRef\\":{\\"data-tid\\":\\"bad9dd77\\"},\\"RefComponent\\":{\\"data-tid\\":\\"d5625e1a\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -436,7 +443,8 @@ exports.default = _default;"
 `;
 
 exports[`babel plugin transform should transform source code depends on the env option 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"dda89e29\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"c7b7156f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"a8f769be\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"f49764c6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"b5d7faff\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"8e388bfc\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"889909b2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"5613b2e5\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"60d032ee\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"ca715737\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"6da2cdef\\"},\\"default\\":{\\"data-tid\\":\\"5f9b51d4\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true
@@ -587,7 +595,8 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform source code well for development 1`] = `
-"\\"use strict\\";
+"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"dda89e29\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"c7b7156f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"a8f769be\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"f49764c6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"b5d7faff\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"8e388bfc\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"889909b2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"5613b2e5\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"60d032ee\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"ca715737\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"6da2cdef\\"},\\"default\\":{\\"data-tid\\":\\"5f9b51d4\\"}}::__reselector__end__*/
+\\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
   value: true

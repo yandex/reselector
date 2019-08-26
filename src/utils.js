@@ -59,7 +59,7 @@ const isReturned = (p) => {
   return t.isReturnStatement(parent) || t.isArrowFunctionExpression(parent)
 }
 
-const projectPath = process.cwd()
+const projectPath = process.cwd().toLowerCase()
 
 const getNode = (p) => {
   const { parent } = p
@@ -127,7 +127,7 @@ const getName = ({ rootPath }) => {
 }
 
 const getId = (filename, name) =>
-  hash(`${path.relative(projectPath, filename).toLowerCase()}:${name}`.split(path.sep).join('/')).toString(16)
+  hash(`${path.relative(projectPath, filename.toLowerCase())}:${name}`.split(path.sep).join('/')).toString(16)
 
 const buildComment = hashmap => `__reselector__start__::${JSON.stringify(hashmap)}::__reselector__end__`
 const getHashmapFromComment = (content) => {

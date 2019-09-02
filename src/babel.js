@@ -138,17 +138,25 @@ module.exports = () => {
   let pathsList
   let hashmap
 
+  let proceed = false
+
   return ({
-    pre() {
+    pre(state) {
       componentsList = new Set()
       pathsList = new Set()
       hashmap = {}
+      /** don't apply reselector for files that were already proceed */
+      proceed = (state.ast.comments || []).some(x => x.value.includes('__reselector__start__::'))
     },
     post(state) {
-      state.path.addComment('leading', buildComment(hashmap))
+      if (Object.keys(hashmap).length > 0) {
+        state.path.addComment('leading', buildComment(hashmap))
+      }
     },
     visitor: {
       CallExpression(p, { file, opts }) {
+        if (proceed) return
+
         if (!isElement(p.node)) {
           return
         }

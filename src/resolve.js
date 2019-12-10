@@ -10,16 +10,21 @@ const createResolve = (config) => {
   const getParser = () => {
     const exports = {}
 
+    // TODO: reuse exports management with babel plugin
     const addExport = (p, { file }) => {
       const data = getNode(p)
 
       if (!data) return
 
       const { filename } = file.opts
-      const name = getName(data)
+      const [name, ...additionalNames] = getName(data)
       const id = config.getId(filename, name)
 
       exports[name] = { [NAME]: id }
+
+      additionalNames.forEach((key) => {
+        exports[key] = { [NAME]: id }
+      })
     }
 
     return {

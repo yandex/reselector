@@ -116,14 +116,20 @@ const getName = ({ rootPath }) => {
   if (
     rootPath.type === 'ExportDefaultDeclaration' ||
     rootPath.parent.type === 'ExportDefaultDeclaration'
-  ) return 'default'
+  ) {
+    const names = ['default']
+    if (rootPath.node && rootPath.node.id && rootPath.node.id.name) {
+      names.push(rootPath.node.id.name)
+    }
+    return names
+  }
 
   if (rootPath.type === 'VariableDeclaration') {
     const [declarator] = rootPath.node.declarations
-    return declarator.id.name
+    return [declarator.id.name]
   }
 
-  return rootPath.node.id.name
+  return [rootPath.node.id.name]
 }
 
 const getId = (filename, name) =>

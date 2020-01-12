@@ -64,7 +64,7 @@
     "@babel/plugin-syntax-function-sent": "7.8.0",
     "@babel/plugin-syntax-import-meta": "7.8.0",
     "@babel/plugin-syntax-jsx": "7.8.0",
-    "@babel/plugin-syntax-nullish-coalescing-operator": "7.2.0",
+    "@babel/plugin-syntax-nullish-coalescing-operator": "7.8.0",
     "@babel/plugin-syntax-numeric-separator": "7.2.0",
     "@babel/plugin-syntax-object-rest-spread": "7.2.0",
     "@babel/plugin-syntax-optional-catch-binding": "7.2.0",

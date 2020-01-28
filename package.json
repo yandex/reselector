@@ -48,7 +48,7 @@
     "raf": "^3.4.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "rimraf": "^3.0.0"
+    "rimraf": "^3.0.1"
   },
   "dependencies": {
     "@babel/core": "^7.5.5",

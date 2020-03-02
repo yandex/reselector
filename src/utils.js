@@ -136,6 +136,35 @@ const getHashmapFromComment = (content) => {
   return ''
 }
 
+
+const createSelectorsMap = (selectorsMap, createSelectors, idPropName) => {
+  const map = {}
+  const componentsMap = {}
+  const mappers = {}
+
+  Object.keys(selectorsMap).forEach((key) => {
+    const getSelector = selectorsMap[key]
+    const componentMap = componentsMap[key] = {}
+
+    map[key] = (component, cb) => {
+      componentMap[component[idPropName]] = cb
+    }
+
+    mappers[key] = (id) => {
+      const selector = getSelector(id)
+
+      if (componentMap[id]) return componentMap[id](selector)
+
+      return selector
+    }
+  })
+
+  if (createSelectors) createSelectors(map)
+
+  return mappers
+}
+
+
 module.exports = {
   getNode,
   getName,
@@ -145,4 +174,5 @@ module.exports = {
   isReactElement,
   buildComment,
   getHashmapFromComment,
+  createSelectorsMap,
 }

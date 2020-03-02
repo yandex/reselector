@@ -1,13 +1,14 @@
 'use strict'
 
 const config = require('./config')
+const { createSelectorsMap } = require('./utils')
 
 const NAME = config.name
 
-const selectors = {
-  css: value => `[${NAME}~="${value}"]`,
+const selectors = createSelectorsMap({
+  css: id => `[${NAME}~="${id}"]`,
   xpath: value => `[contains(@${NAME}, '${value}')]`,
-}
+}, config.selectors, NAME)
 
 const build = selector => (strings, ...values) => (
   strings

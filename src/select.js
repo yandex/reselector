@@ -5,11 +5,6 @@ const { createSelectorsMap } = require('./utils')
 
 const NAME = config.name
 
-const selectors = createSelectorsMap({
-  css: id => `[${NAME}~="${id}"]`,
-  xpath: value => `[contains(@${NAME}, '${value}')]`,
-}, config.selectors, NAME)
-
 const build = selector => (strings, ...values) => (
   strings
     .reduce((acc, string, i) => {
@@ -42,6 +37,11 @@ const build = selector => (strings, ...values) => (
     .replace(/\s+/g, ' ')
     .trim()
 )
+
+const selectors = createSelectorsMap({
+  css: id => `[${NAME}~="${id}"]`,
+  xpath: value => `[contains(@${NAME}, '${value}')]`,
+}, config.selectors, NAME, build)
 
 const select = build(selectors.css)
 

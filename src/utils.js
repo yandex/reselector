@@ -137,14 +137,17 @@ const getHashmapFromComment = (content) => {
 }
 
 
-const createSelectorsMap = (selectorsMap, createSelectors, idPropName) => {
+const createSelectorsMap = (selectorsMap, createSelectors, idPropName, build) => {
   const map = {}
   const componentsMap = {}
   const mappers = {}
+  const defaultSelectors = {}
 
   Object.keys(selectorsMap).forEach((key) => {
     const getSelector = selectorsMap[key]
     const componentMap = componentsMap[key] = {}
+
+    defaultSelectors[key] = build(getSelector)
 
     map[key] = (component, cb) => {
       componentMap[component[idPropName]] = cb
@@ -159,7 +162,7 @@ const createSelectorsMap = (selectorsMap, createSelectors, idPropName) => {
     }
   })
 
-  if (createSelectors) createSelectors(map)
+  if (createSelectors) createSelectors(map, require('./resolve'), defaultSelectors)
 
   return mappers
 }

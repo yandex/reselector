@@ -66,7 +66,7 @@ describe('select modifiers', () => {
     jest.resetModules()
 
     // eslint-disable-next-line no-shadow
-    require('../config').selectors = (map) => {
+    require('../config').selectors = (map, resolve) => {
       const Component = resolve(path)[componentName]
 
       map.css(Component, selectCssMod)

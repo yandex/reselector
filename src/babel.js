@@ -173,7 +173,7 @@ module.exports = () => {
 
         const { filename } = file.opts
         const name = getName({ rootPath, componentNode })
-        const id = getId(filename, name)
+        const id = getId(filename, name, require('./resolve'))
 
         if (opts.setHash) {
           opts.setHash({ id, name, filename, loc: componentNode.loc })

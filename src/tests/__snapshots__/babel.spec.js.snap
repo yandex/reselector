@@ -350,7 +350,7 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform default named class 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"f328c28\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"f328c28\\"},\\"DefaultClass\\":{\\"data-tid\\":\\"f328c28\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -380,7 +380,7 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform default named function 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"ae82fa24\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"ae82fa24\\"},\\"NamedFunc\\":{\\"data-tid\\":\\"ae82fa24\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {

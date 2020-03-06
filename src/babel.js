@@ -172,7 +172,7 @@ module.exports = () => {
         pathsList.add(p)
 
         const { filename } = file.opts
-        const name = getName({ rootPath, componentNode })
+        const [name, ...additionalNames] = getName({ rootPath, componentNode })
         const id = getId(filename, name, require('./resolve'))
 
         if (opts.setHash) {
@@ -180,6 +180,10 @@ module.exports = () => {
         }
 
         hashmap[name] = { [NAME]: id }
+
+        additionalNames.forEach((key) => {
+          hashmap[key] = { [NAME]: id }
+        })
 
         const [elementName, props] = p.node.arguments
 

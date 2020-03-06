@@ -18,7 +18,7 @@ const createResolve = (config) => {
 
       const { filename } = file.opts
       const [name, ...additionalNames] = getName(data)
-      const id = config.getId(filename, name)
+      const id = config.getId(filename, name, require('./resolve'))
 
       exports[name] = { [NAME]: id }
 

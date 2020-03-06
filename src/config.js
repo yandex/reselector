@@ -9,6 +9,7 @@ const { config } = (cosmiconfig('reselector').searchSync() || {})
 module.exports = Object.assign({
   env: false,
   envName: process.env.BABEL_ENV || process.env.NODE_ENV || 'development',
+  selectors: null,
   name: 'data-tid',
   propName: 'data-tid-prop',
   getId,

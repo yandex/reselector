@@ -152,7 +152,7 @@ module.exports = () => {
       proceed = (state.ast.comments || []).some(x => x.value.includes('__reselector__start__::'))
 
       if (proceed) {
-        dataFromComment = getHashmapFromComment((state.ast.comments || []).find(x => x.value.includes('__reselector__start__::')))
+        dataFromComment = getHashmapFromComment((state.ast.comments || []).find(x => x.value.includes('__reselector__start__::')).value)
       }
     },
     post(state) {

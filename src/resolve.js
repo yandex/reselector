@@ -52,9 +52,10 @@ const createResolve = (config) => {
 
   const cache = {}
 
-  const resolve = (filename) => {
+  const resolve = (filename, contentFromFile) => {
     if (!cache[filename]) {
-      const content = readFileSync(filename).toString()
+      // contentFromFile is here for testing purposes only
+      const content = contentFromFile || readFileSync(filename).toString()
       const hashmap = getHashmapFromComment(content)
 
       if (hashmap) {

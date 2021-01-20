@@ -2,6 +2,8 @@ import React from 'react'
 import { transformFileAsync } from '@babel/core'
 import { mount } from 'enzyme'
 
+import resolve from '../resolve'
+
 import {
   ClassComponent,
   ArrowFunctionalComponent,
@@ -78,6 +80,36 @@ describe('babel plugin', () => {
       const { code } = await transformFileAsync(require.resolve('./App/forwardRefComponent'))
 
       expect(code).toMatchSnapshot()
+    })
+
+    it('should read hashmap from processed file', async () => {
+      const store = {}
+      const setHash = ({ filename, id, name, loc }) => {
+        store[id] = { id, filename, name, loc }
+      }
+
+      const { code } = await transformFileAsync(require.resolve('./App/forwardRefComponent'), {
+        babelrc: false,
+        configFile: false,
+        presets: ['@babel/preset-react'],
+        plugins: [
+          [
+            require.resolve('../babel'),
+            {
+              setHash,
+            },
+          ],
+        ],
+      })
+
+      const ids = Object.keys(store)
+
+      const hashmap = resolve(require.resolve('./App/emptyFile'), code)
+
+      for (let i = 0; i < ids.length; i++) {
+        const componentName = store[ids[i]].name
+        expect(hashmap[componentName]).toEqual({ 'data-tid': ids[i] })
+      }
     })
   })
 

@@ -58,7 +58,7 @@ const createResolve = (config) => {
       const hashmap = getHashmapFromComment(content)
 
       if (hashmap) {
-        cache[filename] = hashmap
+        cache[filename] = { [hashmap.name]: { [config.name]: hashmap.id } }
       } else {
         const parser = getParser()
 

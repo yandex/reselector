@@ -58,7 +58,12 @@ const createResolve = (config) => {
       const hashmap = getHashmapFromComment(content)
 
       if (hashmap) {
-        cache[filename] = { [hashmap.name]: { [config.name]: hashmap.id } }
+        const componentNames = Object.keys(hashmap)
+        cache[filename] = {}
+
+        for (let i = 0; i < componentNames.length; i++) {
+          cache[filename][componentNames[i]] = { [config.name]: hashmap[componentNames[i]].id }
+        }
       } else {
         const parser = getParser()
 

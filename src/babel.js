@@ -204,10 +204,10 @@ module.exports = () => {
           opts.setHash({ id, name, filename, loc: componentNode.loc })
         }
 
-        hashmap[name] = { id, loc: componentNode.loc, name }
+        hashmap[name] = { id, loc: componentNode.loc, name, [NAME]: id }
 
         additionalNames.forEach((key) => {
-          hashmap[key] = { id, loc: componentNode.loc, name: key }
+          hashmap[key] = { id, loc: componentNode.loc, name: key, [NAME]: id }
         })
 
         const [elementName, props] = p.node.arguments

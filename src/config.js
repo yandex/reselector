@@ -37,4 +37,4 @@ const BASE_CONFIG = {
   ],
 }
 
-module.exports = typeof config === 'function' ? config(BASE_CONFIG) : Object.assign(BASE_CONFIG, config)
+module.exports = (typeof config === 'function' && config(BASE_CONFIG)) || Object.assign(BASE_CONFIG, config)

@@ -233,3 +233,22 @@ module.exports = {
   ],
 }
 ```
+
+###Custom configuration
+You also can change base configuration in your .reselectorrc.js. Example:
+```js
+// .reselectorrc.js
+
+module.exports = function configurate(baseConfig) {
+    const tsxSyntax = [
+      '@babel/plugin-syntax-typescrypt',
+      {
+        isTSX: true
+      }
+    ]
+
+    return Object.assign(baseConfig, {
+      syntaxes: baseConfig.syntaxes.concat([tsxSyntax])
+    })
+}
+```

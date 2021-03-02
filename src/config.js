@@ -6,7 +6,7 @@ const { getId } = require('./utils')
 
 const { config } = (cosmiconfig('reselector').searchSync() || {})
 
-module.exports = Object.assign({
+const BASE_CONFIG = {
   env: false,
   envName: process.env.BABEL_ENV || process.env.NODE_ENV || 'development',
   selectors: null,
@@ -35,4 +35,6 @@ module.exports = Object.assign({
     ['@babel/plugin-syntax-pipeline-operator', { proposal: 'minimal' }],
     '@babel/plugin-syntax-throw-expressions',
   ],
-}, config)
+}
+
+module.exports = (typeof config === 'function' && config(BASE_CONFIG)) || Object.assign(BASE_CONFIG, config)

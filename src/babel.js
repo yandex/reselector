@@ -9,6 +9,7 @@ const {
   getNode,
   isElement,
   buildComment,
+  getHashmapFromComment,
 } = require('./utils')
 
 const { getId } = config
@@ -140,6 +141,8 @@ module.exports = () => {
 
   let proceed = false
 
+  let dataFromComment = {}
+
   return ({
     pre(state) {
       componentsList = new Set()
@@ -147,6 +150,10 @@ module.exports = () => {
       hashmap = {}
       /** don't apply reselector for files that were already proceed */
       proceed = (state.ast.comments || []).some(x => x.value.includes('__reselector__start__::'))
+
+      if (proceed) {
+        dataFromComment = getHashmapFromComment((state.ast.comments || []).find(x => x.value.includes('__reselector__start__::')).value)
+      }
     },
     post(state) {
       if (Object.keys(hashmap).length > 0) {
@@ -155,7 +162,26 @@ module.exports = () => {
     },
     visitor: {
       CallExpression(p, { file, opts }) {
-        if (proceed) return
+        const { filename } = file.opts
+
+        if (proceed) {
+          if (opts.setHash) {
+            const names = Object.keys(dataFromComment)
+            for (let i = 0; i < names.length; i++) {
+              opts.setHash({
+                id: dataFromComment[names[i]].id,
+                name: names[i],
+                filename,
+                loc: dataFromComment[names[i]].loc,
+              })
+            }
+          }
+          return
+        }
+
+        if (proceed) {
+          return
+        }
 
         if (!isElement(p.node)) {
           return
@@ -171,7 +197,6 @@ module.exports = () => {
 
         pathsList.add(p)
 
-        const { filename } = file.opts
         const [name, ...additionalNames] = getName({ rootPath, componentNode })
         const id = getId(filename, name, require('./resolve'))
 
@@ -179,10 +204,10 @@ module.exports = () => {
           opts.setHash({ id, name, filename, loc: componentNode.loc })
         }
 
-        hashmap[name] = { [NAME]: id }
+        hashmap[name] = { id, loc: componentNode.loc, name, [NAME]: id }
 
         additionalNames.forEach((key) => {
-          hashmap[key] = { [NAME]: id }
+          hashmap[key] = { id, loc: componentNode.loc, name: key, [NAME]: id }
         })
 
         const [elementName, props] = p.node.arguments

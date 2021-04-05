@@ -175,7 +175,7 @@ exports[`babel plugin should find wrapped component 1`] = `
 `;
 
 exports[`babel plugin should pass props through the React.Fragment 1`] = `
-"/*__reselector__start__::{\\"A\\":{\\"data-tid\\":\\"64afcda1\\"},\\"B\\":{\\"data-tid\\":\\"18fc102\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"A\\":{\\"id\\":\\"64afcda1\\",\\"loc\\":{\\"start\\":{\\"line\\":3,\\"column\\":17},\\"end\\":{\\"line\\":3,\\"column\\":63}},\\"name\\":\\"A\\",\\"data-tid\\":\\"64afcda1\\"},\\"B\\":{\\"id\\":\\"18fc102\\",\\"loc\\":{\\"start\\":{\\"line\\":4,\\"column\\":17},\\"end\\":{\\"line\\":4,\\"column\\":51}},\\"name\\":\\"B\\",\\"data-tid\\":\\"18fc102\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -235,7 +235,7 @@ DOMStringMap {
 `;
 
 exports[`babel plugin transform should transform conditionals functions 1`] = `
-"/*__reselector__start__::{\\"ternaryRender\\":{\\"data-tid\\":\\"69b7be24\\"},\\"conditionalRender\\":{\\"data-tid\\":\\"889264dd\\"},\\"ifRender\\":{\\"data-tid\\":\\"592bdf8c\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"ternaryRender\\":{\\"id\\":\\"69b7be24\\",\\"loc\\":{\\"start\\":{\\"line\\":4,\\"column\\":29},\\"end\\":{\\"line\\":8,\\"column\\":1}},\\"name\\":\\"ternaryRender\\",\\"data-tid\\":\\"69b7be24\\"},\\"conditionalRender\\":{\\"id\\":\\"889264dd\\",\\"loc\\":{\\"start\\":{\\"line\\":11,\\"column\\":33},\\"end\\":{\\"line\\":12,\\"column\\":33}},\\"name\\":\\"conditionalRender\\",\\"data-tid\\":\\"889264dd\\"},\\"ifRender\\":{\\"id\\":\\"592bdf8c\\",\\"loc\\":{\\"start\\":{\\"line\\":15,\\"column\\":24},\\"end\\":{\\"line\\":21,\\"column\\":1}},\\"name\\":\\"ifRender\\",\\"data-tid\\":\\"592bdf8c\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -295,7 +295,7 @@ ifRender[\\"data-tid\\"] = \\"592bdf8c\\";"
 `;
 
 exports[`babel plugin transform should transform declared named class in default 1`] = `
-"/*__reselector__start__::{\\"DefaultClass\\":{\\"data-tid\\":\\"942bdffa\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"DefaultClass\\":{\\"id\\":\\"942bdffa\\",\\"loc\\":{\\"start\\":{\\"line\\":5,\\"column\\":2},\\"end\\":{\\"line\\":7,\\"column\\":3}},\\"name\\":\\"DefaultClass\\",\\"data-tid\\":\\"942bdffa\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -323,7 +323,7 @@ exports.default = _default;"
 `;
 
 exports[`babel plugin transform should transform default anonymous function 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"e454b9b4\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"id\\":\\"e454b9b4\\",\\"loc\\":{\\"start\\":{\\"line\\":3,\\"column\\":15},\\"end\\":{\\"line\\":9,\\"column\\":1}},\\"name\\":\\"default\\",\\"data-tid\\":\\"e454b9b4\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -350,7 +350,7 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform default named class 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"f328c28\\"},\\"DefaultClass\\":{\\"data-tid\\":\\"f328c28\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"id\\":\\"f328c28\\",\\"loc\\":{\\"start\\":{\\"line\\":5,\\"column\\":2},\\"end\\":{\\"line\\":7,\\"column\\":3}},\\"name\\":\\"default\\",\\"data-tid\\":\\"f328c28\\"},\\"DefaultClass\\":{\\"id\\":\\"f328c28\\",\\"loc\\":{\\"start\\":{\\"line\\":5,\\"column\\":2},\\"end\\":{\\"line\\":7,\\"column\\":3}},\\"name\\":\\"DefaultClass\\",\\"data-tid\\":\\"f328c28\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -380,7 +380,7 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform default named function 1`] = `
-"/*__reselector__start__::{\\"default\\":{\\"data-tid\\":\\"ae82fa24\\"},\\"NamedFunc\\":{\\"data-tid\\":\\"ae82fa24\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"default\\":{\\"id\\":\\"ae82fa24\\",\\"loc\\":{\\"start\\":{\\"line\\":3,\\"column\\":15},\\"end\\":{\\"line\\":9,\\"column\\":1}},\\"name\\":\\"default\\",\\"data-tid\\":\\"ae82fa24\\"},\\"NamedFunc\\":{\\"id\\":\\"ae82fa24\\",\\"loc\\":{\\"start\\":{\\"line\\":3,\\"column\\":15},\\"end\\":{\\"line\\":9,\\"column\\":1}},\\"name\\":\\"NamedFunc\\",\\"data-tid\\":\\"ae82fa24\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -407,7 +407,7 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform forwardRef right 1`] = `
-"/*__reselector__start__::{\\"withRef\\":{\\"data-tid\\":\\"a079efd7\\"},\\"RefComponent\\":{\\"data-tid\\":\\"95f380fa\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"withRef\\":{\\"id\\":\\"a079efd7\\",\\"loc\\":{\\"start\\":{\\"line\\":5,\\"column\\":48},\\"end\\":{\\"line\\":5,\\"column\\":98}},\\"name\\":\\"withRef\\",\\"data-tid\\":\\"a079efd7\\"},\\"RefComponent\\":{\\"id\\":\\"95f380fa\\",\\"loc\\":{\\"start\\":{\\"line\\":7,\\"column\\":38},\\"end\\":{\\"line\\":7,\\"column\\":82}},\\"name\\":\\"RefComponent\\",\\"data-tid\\":\\"95f380fa\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -443,7 +443,7 @@ exports.default = _default;"
 `;
 
 exports[`babel plugin transform should transform source code depends on the env option 1`] = `
-"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"cc393c49\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"2cf9b58f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"9d16a7de\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"7826a6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"1b1a9b1f\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"f909cc1c\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"7cb847d2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"fd2b1305\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"20ca140e\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"fad6b557\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"d2e56e0f\\"},\\"default\\":{\\"data-tid\\":\\"165372b4\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"Button\\":{\\"id\\":\\"cc393c49\\",\\"loc\\":{\\"start\\":{\\"line\\":5,\\"column\\":22},\\"end\\":{\\"line\\":5,\\"column\\":83}},\\"name\\":\\"Button\\",\\"data-tid\\":\\"cc393c49\\"},\\"UnexportComponent\\":{\\"id\\":\\"2cf9b58f\\",\\"loc\\":{\\"start\\":{\\"line\\":8,\\"column\\":26},\\"end\\":{\\"line\\":8,\\"column\\":65}},\\"name\\":\\"UnexportComponent\\",\\"data-tid\\":\\"2cf9b58f\\"},\\"ClassComponent\\":{\\"id\\":\\"9d16a7de\\",\\"loc\\":{\\"start\\":{\\"line\\":12,\\"column\\":2},\\"end\\":{\\"line\\":14,\\"column\\":3}},\\"name\\":\\"ClassComponent\\",\\"data-tid\\":\\"9d16a7de\\"},\\"ArrowFunctionalComponent\\":{\\"id\\":\\"7826a6\\",\\"loc\\":{\\"start\\":{\\"line\\":17,\\"column\\":40},\\"end\\":{\\"line\\":19,\\"column\\":1}},\\"name\\":\\"ArrowFunctionalComponent\\",\\"data-tid\\":\\"7826a6\\"},\\"FunctionalComponent\\":{\\"id\\":\\"1b1a9b1f\\",\\"loc\\":{\\"start\\":{\\"line\\":21,\\"column\\":7},\\"end\\":{\\"line\\":23,\\"column\\":1}},\\"name\\":\\"FunctionalComponent\\",\\"data-tid\\":\\"1b1a9b1f\\"},\\"ComposedComponent\\":{\\"id\\":\\"f909cc1c\\",\\"loc\\":{\\"start\\":{\\"line\\":25,\\"column\\":33},\\"end\\":{\\"line\\":25,\\"column\\":78}},\\"name\\":\\"ComposedComponent\\",\\"data-tid\\":\\"f909cc1c\\"},\\"ComponentWithAttrs\\":{\\"id\\":\\"7cb847d2\\",\\"loc\\":{\\"start\\":{\\"line\\":27,\\"column\\":34},\\"end\\":{\\"line\\":29,\\"column\\":1}},\\"name\\":\\"ComponentWithAttrs\\",\\"data-tid\\":\\"7cb847d2\\"},\\"ComponentNoDestructure\\":{\\"id\\":\\"fd2b1305\\",\\"loc\\":{\\"start\\":{\\"line\\":31,\\"column\\":38},\\"end\\":{\\"line\\":33,\\"column\\":1}},\\"name\\":\\"ComponentNoDestructure\\",\\"data-tid\\":\\"fd2b1305\\"},\\"ComposedComponent2\\":{\\"id\\":\\"20ca140e\\",\\"loc\\":{\\"start\\":{\\"line\\":35,\\"column\\":34},\\"end\\":{\\"line\\":37,\\"column\\":1}},\\"name\\":\\"ComposedComponent2\\",\\"data-tid\\":\\"20ca140e\\"},\\"RenderFunction\\":{\\"id\\":\\"fad6b557\\",\\"loc\\":{\\"start\\":{\\"line\\":42,\\"column\\":30},\\"end\\":{\\"line\\":42,\\"column\\":71}},\\"name\\":\\"RenderFunction\\",\\"data-tid\\":\\"fad6b557\\"},\\"SpreadPropsComponent\\":{\\"id\\":\\"d2e56e0f\\",\\"loc\\":{\\"start\\":{\\"line\\":44,\\"column\\":36},\\"end\\":{\\"line\\":46,\\"column\\":1}},\\"name\\":\\"SpreadPropsComponent\\",\\"data-tid\\":\\"d2e56e0f\\"},\\"default\\":{\\"id\\":\\"165372b4\\",\\"loc\\":{\\"start\\":{\\"line\\":48,\\"column\\":15},\\"end\\":{\\"line\\":48,\\"column\\":54}},\\"name\\":\\"default\\",\\"data-tid\\":\\"165372b4\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {
@@ -595,7 +595,7 @@ if (module.exports) {
 `;
 
 exports[`babel plugin transform should transform source code well for development 1`] = `
-"/*__reselector__start__::{\\"Button\\":{\\"data-tid\\":\\"cc393c49\\"},\\"UnexportComponent\\":{\\"data-tid\\":\\"2cf9b58f\\"},\\"ClassComponent\\":{\\"data-tid\\":\\"9d16a7de\\"},\\"ArrowFunctionalComponent\\":{\\"data-tid\\":\\"7826a6\\"},\\"FunctionalComponent\\":{\\"data-tid\\":\\"1b1a9b1f\\"},\\"ComposedComponent\\":{\\"data-tid\\":\\"f909cc1c\\"},\\"ComponentWithAttrs\\":{\\"data-tid\\":\\"7cb847d2\\"},\\"ComponentNoDestructure\\":{\\"data-tid\\":\\"fd2b1305\\"},\\"ComposedComponent2\\":{\\"data-tid\\":\\"20ca140e\\"},\\"RenderFunction\\":{\\"data-tid\\":\\"fad6b557\\"},\\"SpreadPropsComponent\\":{\\"data-tid\\":\\"d2e56e0f\\"},\\"default\\":{\\"data-tid\\":\\"165372b4\\"}}::__reselector__end__*/
+"/*__reselector__start__::{\\"Button\\":{\\"id\\":\\"cc393c49\\",\\"loc\\":{\\"start\\":{\\"line\\":5,\\"column\\":22},\\"end\\":{\\"line\\":5,\\"column\\":83}},\\"name\\":\\"Button\\",\\"data-tid\\":\\"cc393c49\\"},\\"UnexportComponent\\":{\\"id\\":\\"2cf9b58f\\",\\"loc\\":{\\"start\\":{\\"line\\":8,\\"column\\":26},\\"end\\":{\\"line\\":8,\\"column\\":65}},\\"name\\":\\"UnexportComponent\\",\\"data-tid\\":\\"2cf9b58f\\"},\\"ClassComponent\\":{\\"id\\":\\"9d16a7de\\",\\"loc\\":{\\"start\\":{\\"line\\":12,\\"column\\":2},\\"end\\":{\\"line\\":14,\\"column\\":3}},\\"name\\":\\"ClassComponent\\",\\"data-tid\\":\\"9d16a7de\\"},\\"ArrowFunctionalComponent\\":{\\"id\\":\\"7826a6\\",\\"loc\\":{\\"start\\":{\\"line\\":17,\\"column\\":40},\\"end\\":{\\"line\\":19,\\"column\\":1}},\\"name\\":\\"ArrowFunctionalComponent\\",\\"data-tid\\":\\"7826a6\\"},\\"FunctionalComponent\\":{\\"id\\":\\"1b1a9b1f\\",\\"loc\\":{\\"start\\":{\\"line\\":21,\\"column\\":7},\\"end\\":{\\"line\\":23,\\"column\\":1}},\\"name\\":\\"FunctionalComponent\\",\\"data-tid\\":\\"1b1a9b1f\\"},\\"ComposedComponent\\":{\\"id\\":\\"f909cc1c\\",\\"loc\\":{\\"start\\":{\\"line\\":25,\\"column\\":33},\\"end\\":{\\"line\\":25,\\"column\\":78}},\\"name\\":\\"ComposedComponent\\",\\"data-tid\\":\\"f909cc1c\\"},\\"ComponentWithAttrs\\":{\\"id\\":\\"7cb847d2\\",\\"loc\\":{\\"start\\":{\\"line\\":27,\\"column\\":34},\\"end\\":{\\"line\\":29,\\"column\\":1}},\\"name\\":\\"ComponentWithAttrs\\",\\"data-tid\\":\\"7cb847d2\\"},\\"ComponentNoDestructure\\":{\\"id\\":\\"fd2b1305\\",\\"loc\\":{\\"start\\":{\\"line\\":31,\\"column\\":38},\\"end\\":{\\"line\\":33,\\"column\\":1}},\\"name\\":\\"ComponentNoDestructure\\",\\"data-tid\\":\\"fd2b1305\\"},\\"ComposedComponent2\\":{\\"id\\":\\"20ca140e\\",\\"loc\\":{\\"start\\":{\\"line\\":35,\\"column\\":34},\\"end\\":{\\"line\\":37,\\"column\\":1}},\\"name\\":\\"ComposedComponent2\\",\\"data-tid\\":\\"20ca140e\\"},\\"RenderFunction\\":{\\"id\\":\\"fad6b557\\",\\"loc\\":{\\"start\\":{\\"line\\":42,\\"column\\":30},\\"end\\":{\\"line\\":42,\\"column\\":71}},\\"name\\":\\"RenderFunction\\",\\"data-tid\\":\\"fad6b557\\"},\\"SpreadPropsComponent\\":{\\"id\\":\\"d2e56e0f\\",\\"loc\\":{\\"start\\":{\\"line\\":44,\\"column\\":36},\\"end\\":{\\"line\\":46,\\"column\\":1}},\\"name\\":\\"SpreadPropsComponent\\",\\"data-tid\\":\\"d2e56e0f\\"},\\"default\\":{\\"id\\":\\"165372b4\\",\\"loc\\":{\\"start\\":{\\"line\\":48,\\"column\\":15},\\"end\\":{\\"line\\":48,\\"column\\":54}},\\"name\\":\\"default\\",\\"data-tid\\":\\"165372b4\\"}}::__reselector__end__*/
 \\"use strict\\";
 
 Object.defineProperty(exports, \\"__esModule\\", {

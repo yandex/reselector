@@ -52,13 +52,19 @@ const createResolve = (config) => {
 
   const cache = {}
 
-  const resolve = (filename) => {
+  const resolve = (filename, contentFromFile) => {
     if (!cache[filename]) {
-      const content = readFileSync(filename).toString()
+      // contentFromFile is here for testing purposes only
+      const content = contentFromFile || readFileSync(filename).toString()
       const hashmap = getHashmapFromComment(content)
 
       if (hashmap) {
-        cache[filename] = hashmap
+        const componentNames = Object.keys(hashmap)
+        cache[filename] = {}
+
+        for (let i = 0; i < componentNames.length; i++) {
+          cache[filename][componentNames[i]] = { [config.name]: hashmap[componentNames[i]].id }
+        }
       } else {
         const parser = getParser()
 

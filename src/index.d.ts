@@ -1,4 +1,9 @@
-type Selector = (strings: TemplateStringsArray, ... values: (string | number)[]) => string;
+// inlined to avoid depending on @types/react
+type ComponentType = (...args: any[]) => JSX.Element;
+
+type ResolvedValue = string;
+
+type Selector = (strings: TemplateStringsArray, ... values: (ResolvedValue | ComponentType)[]) => string;
 
 /**
  * Validated selectors
@@ -35,11 +40,11 @@ export const select: Selector & {
  * resolve(path.resolve('./MyComponent')) // [data-tid="1k2v56"]
  * ```
  */
-type Resolve = (filename: string) => Record<string, string>;
+type Resolve = (filename: string) => Record<string, ResolvedValue>;
 
 type Resolver = (path: string) => string;
 
-type ResolveBy = (resolver: Resolver) => ((path: string) => Record<string, string>);
+type ResolveBy = (resolver: Resolver) => Resolve;
 
 interface ResolverConfig {
     name: string;

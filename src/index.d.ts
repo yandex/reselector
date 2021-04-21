@@ -3,7 +3,7 @@ type ComponentType = (...args: any[]) => JSX.Element;
 
 type ResolvedValue = string;
 
-type Selector = (strings: TemplateStringsArray, ... values: (ResolvedValue | ComponentType)[]) => string;
+type Selector = (strings: TemplateStringsArray, ... values: (ResolvedValue | number | boolean | ComponentType)[]) => string;
 
 /**
  * Validated selectors

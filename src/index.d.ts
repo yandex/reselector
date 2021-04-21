@@ -1,9 +1,9 @@
 // inlined to avoid depending on @types/react
-type ComponentType = (...args: any[]) => JSX.Element;
+type ComponentType = (...args: any[]) => any;
 
 type ResolvedValue = string;
 
-type Selector = (strings: TemplateStringsArray, ... values: (ResolvedValue | ComponentType)[]) => string;
+type Selector = (strings: TemplateStringsArray, ... values: (ResolvedValue | number | boolean | ComponentType)[]) => string;
 
 /**
  * Validated selectors

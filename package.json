@@ -7,14 +7,14 @@
     "url": "git@github.com:lttb/reselector.git"
   },
   "author": "",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "main": "src/index.js",
   "scripts": {
     "clean": "rimraf lib",
     "prebuild": "npm run clean",
     "build": "BABEL_ENV=production ./node_modules/.bin/babel src --ignore '**/tests/**' --out-dir lib",
     "postbuild": "npm run cp:meta",
-    "cp:meta": "copyfiles -e '**/tests/**' './src/*.d.ts' package.json README.md 'src/.*' -a -f lib",
+    "cp:meta": "copyfiles -e '**/tests/**' './src/*.d.ts' package.json README.md LICENSE 'src/.*' -a -f lib",
     "test": "BABEL_ENV=test jest",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "./node_modules/.bin/eslint .",

@@ -185,16 +185,18 @@ exports.B = exports.A = void 0;
 
 var _react = _interopRequireWildcard(require(\\"react\\"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== \\"function\\") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-const A = __props__ => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(\\"div\\", {
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== \\"object\\" && typeof obj !== \\"function\\") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== \\"default\\" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+const A = __props__ => /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-tid\\": \\"64afcda1\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
 }));
 
 exports.A = A;
 A[\\"data-tid\\"] = \\"64afcda1\\";
 
-const B = __props__ => _react.default.createElement(_react.Fragment, null, _react.default.createElement(\\"div\\", {
+const B = __props__ => /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-tid\\": \\"18fc102\\" + (__props__ && __props__['data-tid-prop'] ? ' ' + __props__['data-tid-prop'] : '')
 }));
 
@@ -252,9 +254,9 @@ const ternaryRender = ({
   children,
   flag,
   'data-tid-prop': __dataprop__
-}) => flag ? _react.default.createElement(\\"div\\", {
+}) => flag ? /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-tid\\": \\"69b7be24\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
-}, children) : _react.default.createElement(\\"a\\", {
+}, children) : /*#__PURE__*/_react.default.createElement(\\"a\\", {
   \\"data-tid\\": \\"69b7be24\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-disable-next-line no-unused-vars */
@@ -267,7 +269,7 @@ const conditionalRender = ({
   children,
   flag,
   'data-tid-prop': __dataprop__
-}) => flag && _react.default.createElement(\\"div\\", {
+}) => flag && /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-tid\\": \\"889264dd\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-disable-next-line no-unused-vars */
@@ -282,7 +284,7 @@ const ifRender = ({
   'data-tid-prop': __dataprop__
 }) => {
   if (flag) {
-    return _react.default.createElement(\\"div\\", {
+    return /*#__PURE__*/_react.default.createElement(\\"div\\", {
       \\"data-tid\\": \\"592bdf8c\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
     }, children);
   }
@@ -305,12 +307,14 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require(\\"react\\"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== \\"function\\") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== \\"object\\" && typeof obj !== \\"function\\") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== \\"default\\" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 // eslint-disable-next-line
 class DefaultClass extends _react.Component {
   render() {
-    return _react.default.createElement(\\"div\\", {
+    return /*#__PURE__*/_react.default.createElement(\\"div\\", {
       \\"data-tid\\": \\"942bdffa\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     }, this.props.children);
   }
@@ -339,7 +343,7 @@ function _default({
   children,
   'data-tid-prop': __dataprop__
 }) {
-  return _react.default.createElement(\\"div\\", {
+  return /*#__PURE__*/_react.default.createElement(\\"div\\", {
     \\"data-tid\\": \\"e454b9b4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   }, children);
 }
@@ -360,12 +364,14 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require(\\"react\\"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== \\"function\\") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== \\"object\\" && typeof obj !== \\"function\\") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== \\"default\\" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 // eslint-disable-next-line
 class DefaultClass extends _react.Component {
   render() {
-    return _react.default.createElement(\\"div\\", {
+    return /*#__PURE__*/_react.default.createElement(\\"div\\", {
       \\"data-tid\\": \\"f328c28\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     }, this.props.children);
   }
@@ -396,7 +402,7 @@ function NamedFunc({
   children,
   'data-tid-prop': __dataprop__
 }) {
-  return _react.default.createElement(\\"div\\", {
+  return /*#__PURE__*/_react.default.createElement(\\"div\\", {
     \\"data-tid\\": \\"ae82fa24\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   }, children);
 }
@@ -421,7 +427,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-const withRef = Base => _react.default.forwardRef((props, ref) => _react.default.createElement(Base, _extends({}, Object.assign({}, props, {
+const withRef = Base => /*#__PURE__*/_react.default.forwardRef((props, ref) => /*#__PURE__*/_react.default.createElement(Base, _extends({}, Object.assign({}, props, {
   innerRef: ref
 }), {
   \\"data-tid\\": \\"a079efd7\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : ''),
@@ -431,7 +437,7 @@ const withRef = Base => _react.default.forwardRef((props, ref) => _react.default
 exports.withRef = withRef;
 withRef[\\"data-tid\\"] = \\"a079efd7\\";
 
-const RefComponent = _react.default.forwardRef((props, ref) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
+const RefComponent = /*#__PURE__*/_react.default.forwardRef((props, ref) => /*#__PURE__*/_react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   ref: ref
 }), {
   \\"data-tid\\": \\"95f380fa\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
@@ -458,7 +464,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-const Button = props => _react.default.createElement('button', _extends({}, props, process.env.RESELECTOR === \\"true\\" ? {
+const Button = props => /*#__PURE__*/_react.default.createElement('button', _extends({}, props, process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"cc393c49\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 } : {}), props.children);
 /* eslint-disable no-unused-vars */
@@ -470,7 +476,7 @@ Button[\\"data-tid\\"] = \\"cc393c49\\";
 const UnexportComponent = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"2cf9b58f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 /* eslint-enable no-unused-vars */
@@ -480,7 +486,7 @@ UnexportComponent[\\"data-tid\\"] = \\"2cf9b58f\\";
 
 class ClassComponent extends _react.default.Component {
   render() {
-    return _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+    return /*#__PURE__*/_react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
       \\"data-tid\\": \\"9d16a7de\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     } : {}, this.props.children);
   }
@@ -493,7 +499,7 @@ ClassComponent[\\"data-tid\\"] = \\"9d16a7de\\";
 const ArrowFunctionalComponent = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"7826a6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
@@ -504,7 +510,7 @@ function FunctionalComponent({
   children,
   'data-tid-prop': __dataprop__
 }) {
-  return _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
+  return /*#__PURE__*/_react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
     \\"data-tid\\": \\"1b1a9b1f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   } : {}, children);
 }
@@ -514,7 +520,7 @@ FunctionalComponent[\\"data-tid\\"] = \\"1b1a9b1f\\";
 const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {
+}) => /*#__PURE__*/_react.default.createElement(Button, process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
@@ -525,7 +531,7 @@ ComposedComponent[\\"data-tid\\"] = \\"f909cc1c\\";
 const ComponentWithAttrs = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-test\\": \\"testme\\",
   ...(process.env.RESELECTOR === \\"true\\" ? {
     \\"data-tid\\": \\"7cb847d2\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
@@ -535,7 +541,7 @@ const ComponentWithAttrs = ({
 exports.ComponentWithAttrs = ComponentWithAttrs;
 ComponentWithAttrs[\\"data-tid\\"] = \\"7cb847d2\\";
 
-const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
+const ComponentNoDestructure = props => /*#__PURE__*/_react.default.createElement(\\"p\\", process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"fd2b1305\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 } : {}, props.children);
 
@@ -545,10 +551,10 @@ ComponentNoDestructure[\\"data-tid\\"] = \\"fd2b1305\\";
 const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {
+}) => /*#__PURE__*/_react.default.createElement(ComposedComponent, process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
-} : {}, _react.default.createElement(\\"div\\", null, children));
+} : {}, /*#__PURE__*/_react.default.createElement(\\"div\\", null, children));
 /**
  * Tests should not fail
  */
@@ -557,7 +563,7 @@ const ComposedComponent2 = ({
 exports.ComposedComponent2 = ComposedComponent2;
 ComposedComponent2[\\"data-tid\\"] = \\"20ca140e\\";
 
-const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", {
+const RenderFunction = ([a, b]) => /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-a\\": a,
   \\"data-b\\": b,
   ...(process.env.RESELECTOR === \\"true\\" ? {
@@ -571,7 +577,7 @@ RenderFunction[\\"data-tid\\"] = \\"fad6b557\\";
 const SpreadPropsComponent = ({
   children,
   ...props
-}) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   \\"data-disabled\\": true
 }), process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"d2e56e0f\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
@@ -583,7 +589,7 @@ SpreadPropsComponent[\\"data-tid\\"] = \\"d2e56e0f\\";
 var _default = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", process.env.RESELECTOR === \\"true\\" ? {
   \\"data-tid\\": \\"165372b4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 } : {}, children);
 
@@ -610,7 +616,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-const Button = props => _react.default.createElement('button', _extends({}, props, {
+const Button = props => /*#__PURE__*/_react.default.createElement('button', _extends({}, props, {
   \\"data-tid\\": \\"cc393c49\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 }), props.children);
 /* eslint-disable no-unused-vars */
@@ -622,7 +628,7 @@ Button[\\"data-tid\\"] = \\"cc393c49\\";
 const UnexportComponent = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-tid\\": \\"2cf9b58f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 /* eslint-enable no-unused-vars */
@@ -632,7 +638,7 @@ UnexportComponent[\\"data-tid\\"] = \\"2cf9b58f\\";
 
 class ClassComponent extends _react.default.Component {
   render() {
-    return _react.default.createElement(\\"div\\", {
+    return /*#__PURE__*/_react.default.createElement(\\"div\\", {
       \\"data-tid\\": \\"9d16a7de\\" + (this.props && this.props['data-tid-prop'] ? ' ' + this.props['data-tid-prop'] : '')
     }, this.props.children);
   }
@@ -645,7 +651,7 @@ ClassComponent[\\"data-tid\\"] = \\"9d16a7de\\";
 const ArrowFunctionalComponent = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-tid\\": \\"7826a6\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 
@@ -656,7 +662,7 @@ function FunctionalComponent({
   children,
   'data-tid-prop': __dataprop__
 }) {
-  return _react.default.createElement(\\"p\\", {
+  return /*#__PURE__*/_react.default.createElement(\\"p\\", {
     \\"data-tid\\": \\"1b1a9b1f\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
   }, children);
 }
@@ -666,7 +672,7 @@ FunctionalComponent[\\"data-tid\\"] = \\"1b1a9b1f\\";
 const ComposedComponent = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(Button, {
+}) => /*#__PURE__*/_react.default.createElement(Button, {
   \\"data-tid\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"f909cc1c\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
@@ -677,7 +683,7 @@ ComposedComponent[\\"data-tid\\"] = \\"f909cc1c\\";
 const ComponentWithAttrs = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-test\\": \\"testme\\",
   \\"data-tid\\": \\"7cb847d2\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
@@ -685,7 +691,7 @@ const ComponentWithAttrs = ({
 exports.ComponentWithAttrs = ComponentWithAttrs;
 ComponentWithAttrs[\\"data-tid\\"] = \\"7cb847d2\\";
 
-const ComponentNoDestructure = props => _react.default.createElement(\\"p\\", {
+const ComponentNoDestructure = props => /*#__PURE__*/_react.default.createElement(\\"p\\", {
   \\"data-tid\\": \\"fd2b1305\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
 }, props.children);
 
@@ -695,10 +701,10 @@ ComponentNoDestructure[\\"data-tid\\"] = \\"fd2b1305\\";
 const ComposedComponent2 = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(ComposedComponent, {
+}) => /*#__PURE__*/_react.default.createElement(ComposedComponent, {
   \\"data-tid\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : ''),
   \\"data-tid-prop\\": \\"20ca140e\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
-}, _react.default.createElement(\\"div\\", null, children));
+}, /*#__PURE__*/_react.default.createElement(\\"div\\", null, children));
 /**
  * Tests should not fail
  */
@@ -707,7 +713,7 @@ const ComposedComponent2 = ({
 exports.ComposedComponent2 = ComposedComponent2;
 ComposedComponent2[\\"data-tid\\"] = \\"20ca140e\\";
 
-const RenderFunction = ([a, b]) => _react.default.createElement(\\"div\\", {
+const RenderFunction = ([a, b]) => /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-a\\": a,
   \\"data-b\\": b,
   \\"data-tid\\": \\"fad6b557\\"
@@ -719,7 +725,7 @@ RenderFunction[\\"data-tid\\"] = \\"fad6b557\\";
 const SpreadPropsComponent = ({
   children,
   ...props
-}) => _react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", _extends({}, Object.assign({}, props, {
   \\"data-disabled\\": true
 }), {
   \\"data-tid\\": \\"d2e56e0f\\" + (props && props['data-tid-prop'] ? ' ' + props['data-tid-prop'] : '')
@@ -731,7 +737,7 @@ SpreadPropsComponent[\\"data-tid\\"] = \\"d2e56e0f\\";
 var _default = ({
   children,
   'data-tid-prop': __dataprop__
-}) => _react.default.createElement(\\"div\\", {
+}) => /*#__PURE__*/_react.default.createElement(\\"div\\", {
   \\"data-tid\\": \\"165372b4\\" + (__dataprop__ ? ' ' + __dataprop__ : '')
 }, children);
 

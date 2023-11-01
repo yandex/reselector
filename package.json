@@ -4,11 +4,11 @@
   "description": "Use React Components in css selectors",
   "repository": {
     "type": "git",
-    "url": "git@github.com:lttb/reselector.git"
+    "url": "git@github.com:yandex/reselector.git"
   },
   "author": "",
   "license": "MPL-2.0",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "clean": "rimraf lib",
     "prebuild": "npm run clean",
